@@ -81,7 +81,6 @@
 		CE95A5902C69E7A200AF3E56 /* 02 Abschluss */ = {
 			isa = PBXGroup;
 			children = (
-				FADFEAB42C6A39BA00C485A2 /* protocoll */,
 				FADFEA9F2C6A387D00C485A2 /* warenkorb */,
 				FADFEA9E2C6A386900C485A2 /* shop */,
 				FADFEA9D2C6A386400C485A2 /* produkte */,
@@ -94,7 +93,7 @@
 		FADFEA9C2C6A385D00C485A2 /* kunde */ = {
 			isa = PBXGroup;
 			children = (
-				FADFEAA42C6A393C00C485A2 /* classKunde.swift */,
+				FADFEABF2C6A4B0900C485A2 /* class */,
 			);
 			path = kunde;
 			sourceTree = "<group>";
@@ -102,10 +101,8 @@
 		FADFEA9D2C6A386400C485A2 /* produkte */ = {
 			isa = PBXGroup;
 			children = (
-				FADFEAA82C6A396B00C485A2 /* classProdukt.swift */,
-				FADFEAAA2C6A397700C485A2 /* classIMac.swift */,
-				FADFEAAC2C6A398200C485A2 /* classMacBookAir.swift */,
-				FADFEAAE2C6A398A00C485A2 /* classIPhone.swift */,
+				FADFEAB42C6A39BA00C485A2 /* protocoll */,
+				FADFEAC02C6A4B1000C485A2 /* class */,
 			);
 			path = produkte;
 			sourceTree = "<group>";
@@ -113,10 +110,9 @@
 		FADFEA9E2C6A386900C485A2 /* shop */ = {
 			isa = PBXGroup;
 			children = (
-				FADFEAA22C6A393000C485A2 /* classShop.swift */,
-				FADFEAB02C6A399F00C485A2 /* structGeschenk.swift */,
-				FADFEAB22C6A39AC00C485A2 /* structZubehoer.swift */,
-				FADFEAB92C6A39EF00C485A2 /* enumShopStatus.swift */,
+				FADFEABD2C6A4AD800C485A2 /* enum */,
+				FADFEABC2C6A4AC800C485A2 /* struct */,
+				FADFEABB2C6A4AC200C485A2 /* class */,
 			);
 			path = shop;
 			sourceTree = "<group>";
@@ -124,7 +120,7 @@
 		FADFEA9F2C6A387D00C485A2 /* warenkorb */ = {
 			isa = PBXGroup;
 			children = (
-				FADFEAA62C6A394E00C485A2 /* structWarenkorb.swift */,
+				FADFEABE2C6A4AEB00C485A2 /* struct */,
 			);
 			path = warenkorb;
 			sourceTree = "<group>";
@@ -136,6 +132,58 @@
 				FADFEAB72C6A39DB00C485A2 /* protocollRabattierbar.swift */,
 			);
 			path = protocoll;
+			sourceTree = "<group>";
+		};
+		FADFEABB2C6A4AC200C485A2 /* class */ = {
+			isa = PBXGroup;
+			children = (
+				FADFEAA22C6A393000C485A2 /* classShop.swift */,
+			);
+			path = class;
+			sourceTree = "<group>";
+		};
+		FADFEABC2C6A4AC800C485A2 /* struct */ = {
+			isa = PBXGroup;
+			children = (
+				FADFEAB22C6A39AC00C485A2 /* structZubehoer.swift */,
+				FADFEAB02C6A399F00C485A2 /* structGeschenk.swift */,
+			);
+			path = struct;
+			sourceTree = "<group>";
+		};
+		FADFEABD2C6A4AD800C485A2 /* enum */ = {
+			isa = PBXGroup;
+			children = (
+				FADFEAB92C6A39EF00C485A2 /* enumShopStatus.swift */,
+			);
+			path = enum;
+			sourceTree = "<group>";
+		};
+		FADFEABE2C6A4AEB00C485A2 /* struct */ = {
+			isa = PBXGroup;
+			children = (
+				FADFEAA62C6A394E00C485A2 /* structWarenkorb.swift */,
+			);
+			path = struct;
+			sourceTree = "<group>";
+		};
+		FADFEABF2C6A4B0900C485A2 /* class */ = {
+			isa = PBXGroup;
+			children = (
+				FADFEAA42C6A393C00C485A2 /* classKunde.swift */,
+			);
+			path = class;
+			sourceTree = "<group>";
+		};
+		FADFEAC02C6A4B1000C485A2 /* class */ = {
+			isa = PBXGroup;
+			children = (
+				FADFEAAE2C6A398A00C485A2 /* classIPhone.swift */,
+				FADFEAAC2C6A398200C485A2 /* classMacBookAir.swift */,
+				FADFEAAA2C6A397700C485A2 /* classIMac.swift */,
+				FADFEAA82C6A396B00C485A2 /* classProdukt.swift */,
+			);
+			path = class;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
