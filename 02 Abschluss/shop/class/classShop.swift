@@ -74,20 +74,18 @@ class Shop {
     Guthaben        \(aktiverKunde!.kontostand) EUR
     Bonuspunkte     \(aktiverKunde!.bonuspunkte)
 
-    Warenkorb:
+    Dein Bonuskonto entspricht aktuell
+    einem Wert von: \(aktiverKunde!.bonuspunkte / 100) EUR
 
 """)
-            aktiverKunde?.warenkorb.anzeigen()
-            print()
-            
             beliebigetaste()
             menueAnzeigen()
-            
-    
+        
             
         case 2: // Produktauswahl
-            
     
+            let maxIndex = produkteListe.count
+            
             repeat {
                 
                 produkteAnzeigen()
@@ -95,14 +93,16 @@ class Shop {
                 print()
                 print("Lege Artikel in deinen Warenkorb.")
                 print("Wähle zwischen \(produkteListe.startIndex + 1) und \(produkteListe.endIndex) in der Liste. <ENTER> um ins Hauptmenü zu gelangen. ")
-                sleep(2)
-                
+                sleep(1)
                 
                 if let kundenauswahl = Int(readLine()!) {
+                    
+                    if kundenauswahl <= maxIndex {
                     
                     let kundenauswahlProdukt = produkteListe[kundenauswahl - 1]
                     
                     print(kundenauswahlProdukt.lagerbestand)
+                    
                     if kundenauswahlProdukt.lagerbestand >= 1 {
                         
                         print("Super, du hast dich für ein \(kundenauswahlProdukt.name.split(separator: " ")[0]) entschieden.")
@@ -118,37 +118,46 @@ class Shop {
                             
                             print("Super, wieviele möchtest du kaufen: ", terminator: " ")
                             let mengeAuswahl = Int(readLine()!)
-                           
-                            print("Dein Produkt wurde \(mengeAuswahl ?? 1)x dem Warenkorb hinzugefügt!")
+                            
+                            print("Dein Produkt wurde \(mengeAuswahl ?? 1) Stk. dem Warenkorb hinzugefügt!")
                             
                             aktiverKunde?.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: mengeAuswahl!)
                             
                             
                             sleep(2)
-                                                   
+                            
                             
                         case "n":
                             
                             print("Ok, dein Produkt wurde dem Warenkorb hinzugefügt!")
                             aktiverKunde?.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: 1)
-                            sleep(2)
+                            beliebigetaste()
                             
                             
                         default:
                             break
                         }
                         
+                        
+                        
                     } else {
                         print("Leider ist dieses Modell nicht mehr an Lager. Aktueller Lagerbestand: \(kundenauswahlProdukt.lagerbestand) Stück")
-                        print("Die Artikelübersicht wird wieder angezeigt! \n")
-                        sleep(5)
+                        print("Die Artikelübersicht wird dir gleich wieder angezeigt! \n")
+                        sleep(3)
                     }
                     
                     
-
+                    
                 } else {
-                    print("Es geht zurück ins Hauptmenü!")
-                    sleep(2)
+                    print("Leider war deine Eingabe fehlerhaft. Wähle erneut aus!")
+                    print("Die Artikelübersicht wird dir gleich wieder angezeigt! \n")
+                    sleep(3)
+                    
+                }
+                
+                } else {
+                    print("Ok, wir leiten dich jetzt zurück ins Hauptmenü!")
+                    sleep(3)
                     menueAnzeigen()
                 }
                 
@@ -158,8 +167,12 @@ class Shop {
           
         
         case 3:
-            break
-            // Warenkorb anzeigen
+            
+            aktiverKunde?.warenkorb.anzeigen()
+            print()
+            beliebigetaste()
+            menueAnzeigen()
+            
         case 4:
             break
             // Bestellung abschließen
@@ -170,19 +183,7 @@ class Shop {
             
             // Testcase
             
-            aktiverKunde?.warenkorb.hinzufuegen(artikelNr: "IPHHONE_A001", mengeNeu: 2)
-            aktiverKunde?.warenkorb.hinzufuegen(artikelNr: "IMAC_A003", mengeNeu: 3)
-            
-            
-            shop_1.produkteAnzeigen()
-            
             menueAnzeigen()
-            
-            
-           
-            
-            
-            
             
         default:
             break

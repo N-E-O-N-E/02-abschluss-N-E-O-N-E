@@ -23,9 +23,12 @@ struct Warenkorb {
     
     func anzeigen() {
         
-        for (artikelkNr, menge) in produkte {
-            
-            print("         Menge: \(menge)\tArtikelNr.: \(artikelkNr)")
+        if produkte.isEmpty {
+            print("Der Warenkornb ist leer!")
+        } else {
+            for (artikelkNr, menge) in produkte {
+                print("         Menge: \(menge)\tArtikelNr.: \(artikelkNr)")
+            }
         }
         
         
