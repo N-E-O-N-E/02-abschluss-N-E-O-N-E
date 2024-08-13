@@ -10,8 +10,8 @@ import Foundation
 
 protocol Kaufbar {
     var preis: Double { get }
-    var lagerbestand: Double { get }
+    var lagerbestand: Int { get }
     
-    func kaufen(menge: Int) -> Bool
+    func aktualisiereLagerbestand(bestand: Int)
     
 }

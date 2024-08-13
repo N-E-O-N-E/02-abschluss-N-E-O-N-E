@@ -10,13 +10,17 @@ import Foundation
 class Kunde {
     
     let kundenNr: String
+    let name: String
     let kontostand: Double
     let bonuspunkte: Int
+    var warenkorb: Warenkorb
     
-    init(kundenNr: String, kontostand: Double, bonuspunkte: Int) {
+    init(kundenNr: String, name: String,  kontostand: Double, bonuspunkte: Int, warenkorb: Warenkorb) {
         self.kundenNr = kundenNr
+        self.name = name
         self.kontostand = kontostand
         self.bonuspunkte = bonuspunkte
+        self.warenkorb = warenkorb
     }
     
     func anzeigen() {

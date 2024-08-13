@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		CE95A5922C69E7A200AF3E56 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE95A5912C69E7A200AF3E56 /* main.swift */; };
+		FA71C5B42C6B4A15002345DB /* instanzenKunde.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71C5B32C6B4A15002345DB /* instanzenKunde.swift */; };
+		FA71C5B62C6B4A21002345DB /* instanzenProdukte.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71C5B52C6B4A21002345DB /* instanzenProdukte.swift */; };
+		FA71C5B82C6B4F27002345DB /* instanzenShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71C5B72C6B4F27002345DB /* instanzenShop.swift */; };
 		FADFEAA32C6A393000C485A2 /* classShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFEAA22C6A393000C485A2 /* classShop.swift */; };
 		FADFEAA52C6A393C00C485A2 /* classKunde.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFEAA42C6A393C00C485A2 /* classKunde.swift */; };
 		FADFEAA72C6A394E00C485A2 /* structWarenkorb.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFEAA62C6A394E00C485A2 /* structWarenkorb.swift */; };
@@ -37,6 +40,9 @@
 /* Begin PBXFileReference section */
 		CE95A58E2C69E7A200AF3E56 /* 02 Abschluss */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "02 Abschluss"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE95A5912C69E7A200AF3E56 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		FA71C5B32C6B4A15002345DB /* instanzenKunde.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = instanzenKunde.swift; sourceTree = "<group>"; };
+		FA71C5B52C6B4A21002345DB /* instanzenProdukte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = instanzenProdukte.swift; sourceTree = "<group>"; };
+		FA71C5B72C6B4F27002345DB /* instanzenShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = instanzenShop.swift; sourceTree = "<group>"; };
 		FADFEAA22C6A393000C485A2 /* classShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = classShop.swift; sourceTree = "<group>"; };
 		FADFEAA42C6A393C00C485A2 /* classKunde.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = classKunde.swift; sourceTree = "<group>"; };
 		FADFEAA62C6A394E00C485A2 /* structWarenkorb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = structWarenkorb.swift; sourceTree = "<group>"; };
@@ -93,6 +99,7 @@
 		FADFEA9C2C6A385D00C485A2 /* kunde */ = {
 			isa = PBXGroup;
 			children = (
+				FA71C5B32C6B4A15002345DB /* instanzenKunde.swift */,
 				FADFEABF2C6A4B0900C485A2 /* class */,
 			);
 			path = kunde;
@@ -101,6 +108,7 @@
 		FADFEA9D2C6A386400C485A2 /* produkte */ = {
 			isa = PBXGroup;
 			children = (
+				FA71C5B52C6B4A21002345DB /* instanzenProdukte.swift */,
 				FADFEAB42C6A39BA00C485A2 /* protocoll */,
 				FADFEAC02C6A4B1000C485A2 /* class */,
 			);
@@ -110,6 +118,7 @@
 		FADFEA9E2C6A386900C485A2 /* shop */ = {
 			isa = PBXGroup;
 			children = (
+				FA71C5B72C6B4F27002345DB /* instanzenShop.swift */,
 				FADFEABD2C6A4AD800C485A2 /* enum */,
 				FADFEABC2C6A4AC800C485A2 /* struct */,
 				FADFEABB2C6A4AC200C485A2 /* class */,
@@ -246,6 +255,7 @@
 			files = (
 				FADFEAA72C6A394E00C485A2 /* structWarenkorb.swift in Sources */,
 				FADFEAB12C6A399F00C485A2 /* structGeschenk.swift in Sources */,
+				FA71C5B82C6B4F27002345DB /* instanzenShop.swift in Sources */,
 				FADFEAB32C6A39AC00C485A2 /* structZubehoer.swift in Sources */,
 				FADFEAA92C6A396B00C485A2 /* classProdukt.swift in Sources */,
 				FADFEAAB2C6A397700C485A2 /* classIMac.swift in Sources */,
@@ -255,7 +265,9 @@
 				FADFEABA2C6A39EF00C485A2 /* enumShopStatus.swift in Sources */,
 				FADFEAAF2C6A398A00C485A2 /* classIPhone.swift in Sources */,
 				FADFEAA52C6A393C00C485A2 /* classKunde.swift in Sources */,
+				FA71C5B42C6B4A15002345DB /* instanzenKunde.swift in Sources */,
 				CE95A5922C69E7A200AF3E56 /* main.swift in Sources */,
+				FA71C5B62C6B4A21002345DB /* instanzenProdukte.swift in Sources */,
 				FADFEAB82C6A39DB00C485A2 /* protocollRabattierbar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

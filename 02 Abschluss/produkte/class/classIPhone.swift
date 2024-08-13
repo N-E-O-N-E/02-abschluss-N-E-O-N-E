@@ -16,6 +16,12 @@ class IPhone: Produkt {
         super.init(artikelNr: artikelNr, name: name, preis: preis, lagerbestand: lagerbestand)
     }
     
+    override func anzeigen() {
+        
+        print("Name: \(name), Preis: \(preis) EUR, Arbeitsspeicher: \(speicher) GB")
+        
+    }
+    
     func upgradeSpeicher() {
         
         

@@ -9,14 +9,25 @@ import Foundation
 
 struct Warenkorb {
     
-    let produkte: [Produkt]
+    var produkte: [String: Int]
+
+    mutating func hinzufuegen(artikelNr: String, mengeNeu: Int) {
+           
+                if let menge = produkte[artikelNr] {
+                    produkte[artikelNr] = menge + mengeNeu
+                } else {
+                    produkte[artikelNr] = mengeNeu
+                }
+            }
     
-    
-    func hinzufuegen(produkt: Produkt) {
-        
-    }
     
     func anzeigen() {
+        
+        for (artikelkNr, menge) in produkte {
+            
+            print("         Menge: \(menge)\tArtikelNr.: \(artikelkNr)")
+        }
+        
         
     }
     

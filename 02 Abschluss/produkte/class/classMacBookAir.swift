@@ -16,6 +16,12 @@ class MacBookAir: Produkt {
         super.init(artikelNr: artikelNr, name: name, preis: preis, lagerbestand: lagerbestand)
     }
     
+    override func anzeigen() {
+        
+        print("Name: \(name), Preis: \(preis) EUR, Prozessor: \(prozessor)")
+        
+    }
+    
     func upgradeProzessor() {
         
     }
