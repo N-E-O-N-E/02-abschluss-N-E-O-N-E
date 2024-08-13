@@ -26,6 +26,7 @@ struct Warenkorb {
         if produkte.isEmpty {
             print("Der Warenkornb ist leer!")
         } else {
+            print("Dein Warenkorb enthällt aktuell: \n")
             for (artikelkNr, menge) in produkte {
                 print("         Menge: \(menge)\tArtikelNr.: \(artikelkNr)")
             }

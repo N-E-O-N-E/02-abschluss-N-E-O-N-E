@@ -26,13 +26,13 @@ class Shop {
         for (index,i) in produkteListe.enumerated() {
             print("Nr. \(index + 1 ))\tArt.Nr: \(i.artikelNr), Produktname: \(i.name), Preis: \(i.preis) EUR, Bestand: \(i.lagerbestand) Stk")
         }
-     
+        
         print()
         
     }
     
     func beliebigetaste() {
-        print("Weiter mit beliebiger Taste...")
+        print("Weiter mit beliebiger Taste...", terminator: " ")
         let _ = readLine()
     }
     
@@ -51,18 +51,18 @@ class Shop {
     5) Bestellvorgang abbrechen
 
 """)
-        
+        print("Deine Auswahl: ", terminator: " ")
         let usereingabe = readLine()!
         let auswahl = Int(usereingabe)
-    
+        
         
         switch auswahl {
             
             
         case 1: // Kundenkonto anzeigen
-
             
-        print("""
+            
+            print("""
 
     Kundenkonto - Übersicht
     -----------------------
@@ -78,10 +78,10 @@ class Shop {
 """)
             beliebigetaste()
             menueAnzeigen()
-        
+            
             
         case 2: // Produktauswahl
-    
+            
             let maxIndex = produkteListe.count
             var mengeAuswahl: Int = 0
             
@@ -91,89 +91,97 @@ class Shop {
                 
                 print()
                 print("Lege Artikel in deinen Warenkorb.")
-                print("Wähle zwischen \(produkteListe.startIndex + 1) und \(produkteListe.endIndex) in der Liste. <ENTER> um ins Hauptmenü zu gelangen. ")
-                sleep(1)
+                print("Wähle zwischen \(produkteListe.startIndex + 1) und \(produkteListe.endIndex) in der Liste. <ENTER> um ins Hauptmenü zu gelangen.")
+                print("Deine Auswahl: ", terminator: "")
                 
                 if let kundenauswahl = Int(readLine()!) {
                     
                     if kundenauswahl <= maxIndex {
-                    
-                    let kundenauswahlProdukt = produkteListe[kundenauswahl - 1]
-                    
-                    print(kundenauswahlProdukt.lagerbestand)
-                    
-                    if kundenauswahlProdukt.lagerbestand >= 1 {
                         
-                        print("Super, du hast dich für ein \(kundenauswahlProdukt.name.split(separator: " ")[0]) entschieden.")
-                        kundenauswahlProdukt.anzeigen()
+                        let kundenauswahlProdukt = produkteListe[kundenauswahl - 1]
                         
-                        print("Möchtest du mehr als ein Gerät kaufen? (j/n): ", terminator: " ")
-                        
-                        let auswahl = readLine()!
-                        
-                        switch auswahl {
+                        if kundenauswahlProdukt.lagerbestand >= 1 {
                             
-                        case "j":
+                            print("Super, du hast dich für ein \(kundenauswahlProdukt.name.split(separator: " ")[0]) entschieden.")
+                            kundenauswahlProdukt.anzeigen()
                             
-                            print("Super, wieviele möchtest du kaufen: ", terminator: " ")
-                            mengeAuswahl = Int(readLine()!)!
+                            print("Möchtest du mehr als ein Gerät kaufen? (j/n): ", terminator: " ")
+                            let auswahl = readLine()!
                             
-                            if mengeAuswahl > 0 {
+                            switch auswahl {
                                 
-                                print("\(mengeAuswahl) Stk. wurden dem Warenkorb hinzugefügt!")
+                            case "j":
                                 
-                                shop_1.produkte[kundenauswahl - 1].lagerbestand -= mengeAuswahl
-                                aktiverKunde?.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: mengeAuswahl)
+                                print("Super, wieviele möchtest du kaufen: ", terminator: " ")
                                 
+                                mengeAuswahl = Int(readLine()!)!
+                                
+                                if mengeAuswahl > 0 {
+                                    
+                                    if mengeAuswahl < shop_1.produkte[kundenauswahl - 1].lagerbestand {
+                                        
+                                        print("\(mengeAuswahl) Stk. wurden dem Warenkorb hinzugefügt!")
+                                        shop_1.produkte[kundenauswahl - 1].lagerbestand -= mengeAuswahl
+                                        aktiverKunde?.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: mengeAuswahl)
+                                        sleep(2)
+                                        
+                                    } else {
+                                        
+                                        print("Leider ist unser Lagerbestnd zu gering.")
+                                        print("Es wurden dir nur \(shop_1.produkte[kundenauswahl - 1].lagerbestand) Stk in den Warenkorb gelegt!")
+                                        aktiverKunde?.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: shop_1.produkte[kundenauswahl - 1].lagerbestand)
+                                        shop_1.produkte[kundenauswahl - 1].lagerbestand = 0
+                                        sleep(2)
+                                    }
+                                    
+                                } else {
+                                    print("Fehlerhafte Eingabe! ")
+                                    print("Die Artikelübersicht wird dir gleich wieder angezeigt! \n")
+                                    sleep(2)
+                                    break
+                                }
+                                
+                            case "n":
+                                
+                                print("Ok, dein Produkt wurde 1x dem Warenkorb hinzugefügt!")
+                                aktiverKunde?.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: 1)
+                                shop_1.produkte[kundenauswahl - 1].lagerbestand -= 1
                                 sleep(2)
+                                beliebigetaste()
                                 
-                            } else {
-                                print("Fehlerhafte Eingabe! ")
-                                print("Die Artikelübersicht wird dir gleich wieder angezeigt! \n")
-                                sleep(2)
+                                
+                            default:
                                 break
                             }
                             
-                        case "n":
-                            
-                            print("Ok, dein Produkt wurde 1x dem Warenkorb hinzugefügt!")
-                            aktiverKunde?.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: 1)
-                            shop_1.produkte[kundenauswahl - 1].lagerbestand -= 1
-                            beliebigetaste()
                             
                             
-                        default:
-                            break
+                        } else {
+                            print("Leider ist dieses Modell nicht mehr an Lager. Aktueller Lagerbestand: \(kundenauswahlProdukt.lagerbestand) Stück")
+                            print("Die Artikelübersicht wird dir gleich wieder angezeigt! \n")
+                            sleep(3)
                         }
                         
                         
                         
                     } else {
-                        print("Leider ist dieses Modell nicht mehr an Lager. Aktueller Lagerbestand: \(kundenauswahlProdukt.lagerbestand) Stück")
+                        print("Leider war deine Eingabe fehlerhaft. Wähle erneut aus!")
                         print("Die Artikelübersicht wird dir gleich wieder angezeigt! \n")
                         sleep(3)
+                        
                     }
                     
-                    
-                    
                 } else {
-                    print("Leider war deine Eingabe fehlerhaft. Wähle erneut aus!")
-                    print("Die Artikelübersicht wird dir gleich wieder angezeigt! \n")
-                    sleep(3)
-                    
-                }
-                
-                } else {
-                    print("Ok, wir leiten dich jetzt zurück ins Hauptmenü!")
-                    sleep(3)
+                    print("Ok, wir leiten dich jetzt zurück ins Hauptmenü!", terminator: "")
+                    sleep(2)
                     menueAnzeigen()
                 }
                 
                 
             } while true
             
-          
-        
+            
+            
         case 3:
             
             aktiverKunde?.warenkorb.anzeigen()
