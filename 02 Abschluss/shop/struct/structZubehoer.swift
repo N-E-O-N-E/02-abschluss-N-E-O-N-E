@@ -6,3 +6,20 @@
 //
 
 import Foundation
+
+
+struct Zubehoer {
+    
+    let name: String
+    let preis: Double
+    let rabattPreis: Double
+    
+    func anzeigen() {
+        
+    }
+    
+    func berechneRabatt() {
+        
+    }
+    
+}

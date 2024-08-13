@@ -6,3 +6,22 @@
 //
 
 import Foundation
+
+struct Warenkorb {
+    
+    let produkte: [Produkt]
+    
+    
+    func hinzufuegen(produkt: Produkt) {
+        
+    }
+    
+    func anzeigen() {
+        
+    }
+    
+    func gesamtpreis() {
+        
+    }
+    
+}

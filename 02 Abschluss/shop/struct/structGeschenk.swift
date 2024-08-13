@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+struct Geschenk {
+    
+    let name: String
+    let wert: Double
+    let beschreibung: String
+    
+    
+    func anzeigen() {
+        
+        
+    }
+
+}

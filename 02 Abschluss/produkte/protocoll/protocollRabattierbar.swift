@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+
+protocol Rabattierbar {
+    var rabatt: Double { get set }
+    var originalpreis: Double { get }
+    
+    func berechnePreis() -> Double
+    
+}

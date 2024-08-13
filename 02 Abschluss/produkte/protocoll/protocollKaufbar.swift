@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+
+protocol Kaufbar {
+    var preis: Double { get }
+    var lagerbestand: Double { get }
+    
+    func kaufen(menge: Int) -> Bool
+    
+}

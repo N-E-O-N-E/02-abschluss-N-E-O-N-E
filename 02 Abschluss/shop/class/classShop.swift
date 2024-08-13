@@ -6,3 +6,30 @@
 //
 
 import Foundation
+
+class Shop {
+    
+    let produkte: [Produkt]
+    let kunden: [Kunde]
+    let status: ShopStatus
+    
+    init(produkte: [Produkt], kunden: [Kunde], status: ShopStatus) {
+        self.produkte = produkte
+        self.kunden = kunden
+        self.status = status
+    }
+    
+    func produkteAnzeigen() {
+        
+    }
+    
+    func menueAnzeigen() {
+        
+    }
+    
+    func shoppingStart() {
+        
+    }
+    
+}
+
