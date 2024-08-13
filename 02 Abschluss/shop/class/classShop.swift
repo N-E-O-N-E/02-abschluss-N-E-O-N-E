@@ -54,9 +54,7 @@ class Shop {
         
         let usereingabe = readLine()!
         let auswahl = Int(usereingabe)
-        
-        
-        
+    
         
         switch auswahl {
             
@@ -85,6 +83,7 @@ class Shop {
         case 2: // Produktauswahl
     
             let maxIndex = produkteListe.count
+            var mengeAuswahl: Int = 0
             
             repeat {
                 
@@ -117,20 +116,29 @@ class Shop {
                         case "j":
                             
                             print("Super, wieviele möchtest du kaufen: ", terminator: " ")
-                            let mengeAuswahl = Int(readLine()!)
+                            mengeAuswahl = Int(readLine()!)!
                             
-                            print("Dein Produkt wurde \(mengeAuswahl ?? 1) Stk. dem Warenkorb hinzugefügt!")
-                            
-                            aktiverKunde?.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: mengeAuswahl!)
-                            
-                            
-                            sleep(2)
-                            
+                            if mengeAuswahl > 0 {
+                                
+                                print("\(mengeAuswahl) Stk. wurden dem Warenkorb hinzugefügt!")
+                                
+                                shop_1.produkte[kundenauswahl - 1].lagerbestand -= mengeAuswahl
+                                aktiverKunde?.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: mengeAuswahl)
+                                
+                                sleep(2)
+                                
+                            } else {
+                                print("Fehlerhafte Eingabe! ")
+                                print("Die Artikelübersicht wird dir gleich wieder angezeigt! \n")
+                                sleep(2)
+                                break
+                            }
                             
                         case "n":
                             
-                            print("Ok, dein Produkt wurde dem Warenkorb hinzugefügt!")
+                            print("Ok, dein Produkt wurde 1x dem Warenkorb hinzugefügt!")
                             aktiverKunde?.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: 1)
+                            shop_1.produkte[kundenauswahl - 1].lagerbestand -= 1
                             beliebigetaste()
                             
                             
