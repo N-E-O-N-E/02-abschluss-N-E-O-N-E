@@ -12,6 +12,6 @@ protocol Kaufbar {
     var preis: Double { get }
     var lagerbestand: Int { get }
     
-    func aktualisiereLagerbestand(bestand: Int)
+    func reduziereLagerbestand(bestand: Int)
     
 }

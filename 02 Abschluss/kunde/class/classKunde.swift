@@ -11,9 +11,21 @@ class Kunde {
     
     let kundenNr: String
     let name: String
-    let kontostand: Double
-    let bonuspunkte: Int
-    var warenkorb: Warenkorb
+    var kontostand: Double {
+        didSet {
+            print(">>> Dein Kontostand wurde aktualisiert! <<<")
+        }
+    }
+    var bonuspunkte: Int {
+        didSet {
+            print(">>> Deine Bonuspounkte wurden aktualisiert! <<<")
+        }
+    }
+    var warenkorb: Warenkorb {
+        didSet {
+            print(">>> Dein Warenkorn wurde aktualisiert! <<<")
+        }
+    }
     
     init(kundenNr: String, name: String,  kontostand: Double, bonuspunkte: Int, warenkorb: Warenkorb) {
         self.kundenNr = kundenNr
@@ -28,6 +40,7 @@ class Kunde {
     }
     
     func kontostandAktualisieren() {
+        
         
     }
     

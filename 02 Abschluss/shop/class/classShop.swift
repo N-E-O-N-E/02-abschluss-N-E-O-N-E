@@ -118,19 +118,21 @@ class Shop {
                                 
                                 if mengeAuswahl > 0 {
                                     
-                                    if mengeAuswahl < shop_1.produkte[kundenauswahl - 1].lagerbestand {
+                                    if mengeAuswahl < kundenauswahlProdukt.lagerbestand {
                                         
                                         print("\(mengeAuswahl) Stk. wurden dem Warenkorb hinzugefügt!")
-                                        shop_1.produkte[kundenauswahl - 1].lagerbestand -= mengeAuswahl
+                                        kundenauswahlProdukt.reduziereLagerbestand(bestand: mengeAuswahl)
                                         aktiverKunde?.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: mengeAuswahl)
                                         sleep(2)
                                         
                                     } else {
                                         
                                         print("Leider ist unser Lagerbestnd zu gering.")
-                                        print("Es wurden dir nur \(shop_1.produkte[kundenauswahl - 1].lagerbestand) Stk in den Warenkorb gelegt!")
-                                        aktiverKunde?.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: shop_1.produkte[kundenauswahl - 1].lagerbestand)
-                                        shop_1.produkte[kundenauswahl - 1].lagerbestand = 0
+                                        print("Es wurden dir nur \(kundenauswahlProdukt.lagerbestand) Stk in den Warenkorb gelegt!")
+                                        
+                                        aktiverKunde?.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: kundenauswahlProdukt.lagerbestand)
+                                        
+                                        kundenauswahlProdukt.reduziereLagerbestand(bestand: kundenauswahlProdukt.lagerbestand)
                                         sleep(2)
                                     }
                                     
@@ -145,7 +147,9 @@ class Shop {
                                 
                                 print("Ok, dein Produkt wurde 1x dem Warenkorb hinzugefügt!")
                                 aktiverKunde?.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: 1)
-                                shop_1.produkte[kundenauswahl - 1].lagerbestand -= 1
+                                kundenauswahlProdukt.reduziereLagerbestand(bestand: 1)
+                                
+                                
                                 sleep(2)
                                 beliebigetaste()
                                 
@@ -183,23 +187,21 @@ class Shop {
             
             
         case 3:
+            shopStatus = ShopStatus.bestellbestaetigung
             
             aktiverKunde?.warenkorb.anzeigen()
             print()
+            
             beliebigetaste()
             menueAnzeigen()
             
         case 4:
+            shopStatus = ShopStatus.bestellabschluss
             break
             // Bestellung abschließen
         case 5:
             break
             // Bestellung abbrechen
-        case 6:
-            
-            // Testcase
-            
-            menueAnzeigen()
             
         default:
             break

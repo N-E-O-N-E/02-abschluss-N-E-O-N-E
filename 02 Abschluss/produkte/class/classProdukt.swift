@@ -22,7 +22,7 @@ class Produkt: Kaufbar {
         self.lagerbestand = lagerbestand
     }
     
-    func aktualisiereLagerbestand(bestand: Int) {
+    func reduziereLagerbestand(bestand: Int) {
         
         lagerbestand -= bestand
         
