@@ -84,6 +84,7 @@ class Shop {
             
             let maxIndex = produkteListe.count
             var mengeAuswahl: Int = 0
+            var betragBonuspunkte: Double = 0.0
             
             repeat {
                 
@@ -99,6 +100,7 @@ class Shop {
                     if kundenauswahl <= maxIndex {
                         
                         let kundenauswahlProdukt = produkteListe[kundenauswahl - 1]
+                        betragBonuspunkte = kundenauswahlProdukt.preis
                         
                         if kundenauswahlProdukt.lagerbestand >= 1 {
                             
@@ -123,6 +125,7 @@ class Shop {
                                         print("\(mengeAuswahl) Stk. wurden dem Warenkorb hinzugefügt!")
                                         kundenauswahlProdukt.reduziereLagerbestand(bestand: mengeAuswahl)
                                         aktiverKunde?.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: mengeAuswahl)
+                                        aktiverKunde?.bonuspunkteAktualisieren(betrag: betragBonuspunkte)
                                         sleep(2)
                                         
                                     } else {
@@ -131,8 +134,8 @@ class Shop {
                                         print("Es wurden dir nur \(kundenauswahlProdukt.lagerbestand) Stk in den Warenkorb gelegt!")
                                         
                                         aktiverKunde?.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: kundenauswahlProdukt.lagerbestand)
-                                        
                                         kundenauswahlProdukt.reduziereLagerbestand(bestand: kundenauswahlProdukt.lagerbestand)
+                                        aktiverKunde?.bonuspunkteAktualisieren(betrag: betragBonuspunkte)
                                         sleep(2)
                                     }
                                     
@@ -148,6 +151,10 @@ class Shop {
                                 print("Ok, dein Produkt wurde 1x dem Warenkorb hinzugefügt!")
                                 aktiverKunde?.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: 1)
                                 kundenauswahlProdukt.reduziereLagerbestand(bestand: 1)
+
+                                aktiverKunde?.bonuspunkteAktualisieren(betrag: betragBonuspunkte)
+                                
+                                
                                 
                                 
                                 sleep(2)
@@ -191,7 +198,6 @@ class Shop {
             
             aktiverKunde?.warenkorb.anzeigen()
             print()
-            
             beliebigetaste()
             menueAnzeigen()
             
@@ -202,6 +208,7 @@ class Shop {
         case 5:
             break
             // Bestellung abbrechen
+        
             
         default:
             break

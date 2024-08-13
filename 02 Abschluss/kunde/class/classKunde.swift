@@ -11,6 +11,7 @@ class Kunde {
     
     let kundenNr: String
     let name: String
+    
     var kontostand: Double {
         didSet {
             print(">>> Dein Kontostand wurde aktualisiert! <<<")
@@ -19,6 +20,7 @@ class Kunde {
     var bonuspunkte: Int {
         didSet {
             print(">>> Deine Bonuspounkte wurden aktualisiert! <<<")
+            print("Du hast für deinen Einkauf \(bonuspunkte - oldValue) erhalten!")
         }
     }
     var warenkorb: Warenkorb {
@@ -35,16 +37,19 @@ class Kunde {
         self.warenkorb = warenkorb
     }
     
-    func anzeigen() {
+
+    
+    func kontostandAktualisieren(betrag: Double) {
+        
+        
         
     }
     
-    func kontostandAktualisieren() {
+    func bonuspunkteAktualisieren(betrag: Double) {
         
+        let betragBerechnet = Int(betrag / 10)
+        bonuspunkte += betragBerechnet
         
-    }
-    
-    func bonuspunkteAktualisieren() {
         
     }
     
