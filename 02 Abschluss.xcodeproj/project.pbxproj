@@ -128,8 +128,8 @@
 		FADFEA9E2C6A386900C485A2 /* shop */ = {
 			isa = PBXGroup;
 			children = (
-				FAAB9F352C6CCC9600F03FF6 /* extension */,
 				FA71C5B72C6B4F27002345DB /* instanzenShop.swift */,
+				FAAB9F352C6CCC9600F03FF6 /* extension */,
 				FADFEABD2C6A4AD800C485A2 /* enum */,
 				FADFEABC2C6A4AC800C485A2 /* struct */,
 				FADFEABB2C6A4AC200C485A2 /* class */,

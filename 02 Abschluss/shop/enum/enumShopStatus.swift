@@ -12,4 +12,3 @@ enum ShopStatus {
     case shopping, bestellbestaetigung, bestellabschluss
 }
 
-
