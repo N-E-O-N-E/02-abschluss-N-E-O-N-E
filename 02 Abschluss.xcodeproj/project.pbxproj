@@ -20,7 +20,6 @@
 		FADFEAAD2C6A398200C485A2 /* classMacBookAir.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFEAAC2C6A398200C485A2 /* classMacBookAir.swift */; };
 		FADFEAAF2C6A398A00C485A2 /* classIPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFEAAE2C6A398A00C485A2 /* classIPhone.swift */; };
 		FADFEAB12C6A399F00C485A2 /* structGeschenk.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFEAB02C6A399F00C485A2 /* structGeschenk.swift */; };
-		FADFEAB32C6A39AC00C485A2 /* structZubehoer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFEAB22C6A39AC00C485A2 /* structZubehoer.swift */; };
 		FADFEAB62C6A39CC00C485A2 /* protocollKaufbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFEAB52C6A39CC00C485A2 /* protocollKaufbar.swift */; };
 		FADFEAB82C6A39DB00C485A2 /* protocollRabattierbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFEAB72C6A39DB00C485A2 /* protocollRabattierbar.swift */; };
 		FADFEABA2C6A39EF00C485A2 /* enumShopStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFEAB92C6A39EF00C485A2 /* enumShopStatus.swift */; };
@@ -53,7 +52,6 @@
 		FADFEAAC2C6A398200C485A2 /* classMacBookAir.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = classMacBookAir.swift; sourceTree = "<group>"; };
 		FADFEAAE2C6A398A00C485A2 /* classIPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = classIPhone.swift; sourceTree = "<group>"; };
 		FADFEAB02C6A399F00C485A2 /* structGeschenk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = structGeschenk.swift; sourceTree = "<group>"; };
-		FADFEAB22C6A39AC00C485A2 /* structZubehoer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = structZubehoer.swift; sourceTree = "<group>"; };
 		FADFEAB52C6A39CC00C485A2 /* protocollKaufbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = protocollKaufbar.swift; sourceTree = "<group>"; };
 		FADFEAB72C6A39DB00C485A2 /* protocollRabattierbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = protocollRabattierbar.swift; sourceTree = "<group>"; };
 		FADFEAB92C6A39EF00C485A2 /* enumShopStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enumShopStatus.swift; sourceTree = "<group>"; };
@@ -131,7 +129,6 @@
 				FA71C5B72C6B4F27002345DB /* instanzenShop.swift */,
 				FAAB9F352C6CCC9600F03FF6 /* extension */,
 				FADFEABD2C6A4AD800C485A2 /* enum */,
-				FADFEABC2C6A4AC800C485A2 /* struct */,
 				FADFEABB2C6A4AC200C485A2 /* class */,
 			);
 			path = shop;
@@ -162,15 +159,6 @@
 			path = class;
 			sourceTree = "<group>";
 		};
-		FADFEABC2C6A4AC800C485A2 /* struct */ = {
-			isa = PBXGroup;
-			children = (
-				FADFEAB22C6A39AC00C485A2 /* structZubehoer.swift */,
-				FADFEAB02C6A399F00C485A2 /* structGeschenk.swift */,
-			);
-			path = struct;
-			sourceTree = "<group>";
-		};
 		FADFEABD2C6A4AD800C485A2 /* enum */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				FADFEAA62C6A394E00C485A2 /* structWarenkorb.swift */,
+				FADFEAB02C6A399F00C485A2 /* structGeschenk.swift */,
 			);
 			path = struct;
 			sourceTree = "<group>";
@@ -268,7 +257,6 @@
 				FAAB9F372C6CCCAD00F03FF6 /* extensions.swift in Sources */,
 				FADFEAB12C6A399F00C485A2 /* structGeschenk.swift in Sources */,
 				FA71C5B82C6B4F27002345DB /* instanzenShop.swift in Sources */,
-				FADFEAB32C6A39AC00C485A2 /* structZubehoer.swift in Sources */,
 				FADFEAA92C6A396B00C485A2 /* classProdukt.swift in Sources */,
 				FADFEAAB2C6A397700C485A2 /* classIMac.swift in Sources */,
 				FADFEAA32C6A393000C485A2 /* classShop.swift in Sources */,

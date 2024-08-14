@@ -11,6 +11,7 @@ class Kunde {
     
     let kundenNr: String
     let name: String
+    var passwort: String
     
     var kontostand: Double {
         didSet {
@@ -29,19 +30,20 @@ class Kunde {
         }
     }
     
-    init(kundenNr: String, name: String,  kontostand: Double, bonuspunkte: Int, warenkorb: Warenkorb) {
+    init(kundenNr: String, name: String, passwort: String, kontostand: Double, bonuspunkte: Int, warenkorb: Warenkorb) {
         self.kundenNr = kundenNr
         self.name = name
         self.kontostand = kontostand
         self.bonuspunkte = bonuspunkte
         self.warenkorb = warenkorb
+        self.passwort = passwort
     }
     
 
     
-    func kontostandAktualisieren(betrag: Double) {
+    func kontostandReduzieren(betrag: Double) {
         
-        
+        kontostand -= betrag
         
     }
     
@@ -52,5 +54,5 @@ class Kunde {
         
         
     }
-    
+
 }

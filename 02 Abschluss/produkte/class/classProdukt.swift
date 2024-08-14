@@ -36,6 +36,7 @@ class Produkt: Kaufbar {
     
     func rabattgeben(prozent: Int) {
         
+        
     }
     
 }

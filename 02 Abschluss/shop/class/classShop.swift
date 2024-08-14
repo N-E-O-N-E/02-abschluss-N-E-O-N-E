@@ -11,7 +11,7 @@ class Shop {
     
     let produkte: [Produkt]
     let kunden: [Kunde]
-    let status: ShopStatus
+    var status: ShopStatus
     
     init(produkte: [Produkt], kunden: [Kunde], status: ShopStatus) {
         self.produkte = produkte
@@ -105,7 +105,7 @@ class Shop {
         let _ = readLine()
     }
     
-    func menueAnzeigen() {
+    func startShopping(aktiverKunde: Kunde) {
         
         print("""
         
@@ -144,7 +144,7 @@ class Shop {
 
         print("""
 
-    Angemeldet: \(aktiverKunde!.name)
+    Angemeldet: \(aktiverKunde.name)
     ------------------------------------
 
     1) 🙍‍♂️ Kundenkonto anzeigen
@@ -159,12 +159,11 @@ class Shop {
         let usereingabe = readLine()!
         let auswahl = Int(usereingabe)
         
-        
         switch auswahl {
-            
             
         case 1: // Kundenkonto anzeigen
             
+            status = ShopStatus.shopping
             
             print("""
     
@@ -197,20 +196,23 @@ class Shop {
     ╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝   ╚═╝
     ═════════════════════════════════════════════════════════════
 
-    🆔 KundenNr        \(aktiverKunde?.kundenNr ?? "#Fehler")
-    🙍‍♂️ Kunde           \(aktiverKunde?.name ?? "#Fehler")
-    💰 Guthaben        \(aktiverKunde?.kontostand ?? 0) EUR
-    🔸 Bonuspunkte     \(aktiverKunde?.bonuspunkte ?? 0)
+    🆔 KundenNr        \(aktiverKunde.kundenNr)
+    🔑 Passwort        \(aktiverKunde.passwort)
+    🙍‍♂️ Kunde           \(aktiverKunde.name)
+    💰 Guthaben        \(aktiverKunde.kontostand) EUR
+    🔸 Bonuspunkte     \(aktiverKunde.bonuspunkte)
 
     Dein Bonuskonto entspricht aktuell
-    einem Wert von: \(aktiverKunde?.bonuspunkte ?? 0 / 100) EUR
+    einem Wert von: \(aktiverKunde.bonuspunkte / 1000) EUR
 
 """)
             beliebigetaste()
-            menueAnzeigen()
+            startShopping(aktiverKunde: aktiverKunde)
             
             
         case 2: // Produktauswahl
+            
+            status = ShopStatus.shopping
             
             let maxIndex = produkteListe.count
             var mengeAuswahl: Int = 0
@@ -254,8 +256,9 @@ class Shop {
                                         
                                         print("🛍️ \(mengeAuswahl) Stk. wurden dem Warenkorb hinzugefügt!")
                                         kundenauswahlProdukt.reduziereLagerbestand(bestand: mengeAuswahl)
-                                        aktiverKunde?.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: mengeAuswahl)
-                                        aktiverKunde?.bonuspunkteAktualisieren(betrag: betragBonuspunkte * Double(mengeAuswahl))
+                                        aktiverKunde.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: mengeAuswahl)
+                                        aktiverKunde.bonuspunkteAktualisieren(betrag: betragBonuspunkte * Double(mengeAuswahl))
+                                        
                                         beliebigetaste()
                                         
                                     } else {
@@ -263,9 +266,9 @@ class Shop {
                                         print("⭕️ Leider ist unser Lagerbestnd zu gering.")
                                         print("🛍️ Es wurden dir nur \(kundenauswahlProdukt.lagerbestand) Stk in den Warenkorb gelegt!")
                                         
-                                        aktiverKunde?.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: kundenauswahlProdukt.lagerbestand)
+                                        aktiverKunde.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: kundenauswahlProdukt.lagerbestand)
                                         kundenauswahlProdukt.reduziereLagerbestand(bestand: kundenauswahlProdukt.lagerbestand)
-                                        aktiverKunde?.bonuspunkteAktualisieren(betrag: betragBonuspunkte)
+                                        aktiverKunde.bonuspunkteAktualisieren(betrag: betragBonuspunkte)
                                         beliebigetaste()
                                     }
                                     
@@ -279,10 +282,10 @@ class Shop {
                             case "n":
                                 print()
                                 print("👍 Dein Produkt wurde 1x dem Warenkorb hinzugefügt!")
-                                aktiverKunde?.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: 1)
+                                aktiverKunde.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: 1)
                                 kundenauswahlProdukt.reduziereLagerbestand(bestand: 1)
 
-                                aktiverKunde?.bonuspunkteAktualisieren(betrag: betragBonuspunkte)
+                                aktiverKunde.bonuspunkteAktualisieren(betrag: betragBonuspunkte)
                                 beliebigetaste()
                                 
                                 
@@ -310,7 +313,7 @@ class Shop {
                 } else {
                     print("Ok, wir leiten dich jetzt zurück ins Hauptmenü!")
                     sleep(2)
-                    menueAnzeigen()
+                    startShopping(aktiverKunde: aktiverKunde)
                 }
                 
                 
@@ -319,25 +322,30 @@ class Shop {
             
             
         case 3:
-            shopStatus = ShopStatus.bestellbestaetigung
             
-            aktiverKunde?.warenkorb.anzeigen()
+            status = ShopStatus.bestellbestaetigung
+            
+            aktiverKunde.warenkorb.anzeigen(aktiverKunde: aktiverKunde)
             print()
             beliebigetaste()
-            menueAnzeigen()
+            startShopping(aktiverKunde: aktiverKunde)
             
         case 4:
-            shopStatus = ShopStatus.bestellabschluss
-            break
-            // Bestellung abschließen
+            
+            status = ShopStatus.bestellabschluss
+            
+            Thread.exit()
+            
         case 5:
-            break
+            print("\n    >>> Vielen Dank für Ihren Besuch. Bis Bald 🙋‍♂️")
+            sleep(2)
+            Thread.exit()
             // Bestellung abbrechen
         
             
         default:
             break
-            // Produkte anzeigen
+            
         }
         
     }

@@ -11,14 +11,21 @@ import Foundation
 // Zur korrekten Darstellung der Tabelle im Shop
 
 extension String {
-    func spaltenbreite(laenge length: Int) -> String {
+    
+    func spaltenbreite(laenge: Int) -> String {
         
-        if self.count < length {
-            return self + String(repeating: " ", count: length - self.count) // erweitert die länge mit leerzeichen
+        
+        if self.count < laenge {
+            return self + String(repeating: " ", count: laenge - self.count) // erweitert die länge mit leerzeichen
         } else {
-            return String(self.prefix(length)) // lürzt die länge fals .self zu kange ist
+            return String(self.prefix(laenge)) // lürzt die länge fals .self zu kange ist
         }
     }
+    
 }
 
-
+extension Double {
+    
+    // Formatierung der Preise in ##.###,##
+    
+}
