@@ -38,7 +38,7 @@ struct Warenkorb {
     
     mutating func geschenkHinzu(geschenk: Geschenk) {
         
-        print("Super, ein Geschenk 🎁 wurde deinem Warenkorn hinzugefügt!")
+        print("\tSuper, ein Geschenk 🎁 wurde deinem Warenkorn hinzugefügt!")
         geschenk.anzeigen()
         
     }
@@ -60,7 +60,7 @@ struct Warenkorb {
             if let match = findeArtikel(liste: liste, artikelnummer: artikelnummer) {
                 gesamtsumme += match.preis * Double(menge)
             } else {
-                print("Produkt ArtikelNr. \(artikelnummer), nicht gefunden!")
+                print("\tProdukt ArtikelNr. \(artikelnummer), nicht gefunden!")
             }
             
         }
@@ -102,9 +102,9 @@ struct Warenkorb {
 """)
         
         if produkte.isEmpty {
-            print("  🔴 Der Warenkornb ist leer!")
+            print("\t🔴 Der Warenkornb ist leer!")
         } else {
-            print("    \(aktiverKunde.name), dein Warenkorb enthällt aktuell:")
+            print("\t\(aktiverKunde.name), dein Warenkorb enthällt aktuell:")
             
             for (artikelkNr, menge) in produkte {
                 let produktMatch = findeArtikel(liste: produkteListe, artikelnummer: artikelkNr)
@@ -121,8 +121,8 @@ struct Warenkorb {
         }
         
         let warenWert = aktiverKunde.warenkorb.gesamtpreis(liste: produkteListe)
-        print("\n   💰 Gesamtwert deines Warenkorbes: \(String(format: "%.2f",warenWert)) EUR")
-        print("\n   🔸 Aktuell hast du \(aktiverKunde.bonuspunkte) Bonuspunkte (\(aktiverKunde.bonuspunkte / 1000) €)")
+        print("\n\t💰 Gesamtwert deines Warenkorbes: \(String(format: "%.2f",warenWert)) EUR")
+        print("\n\t🔸 Aktuell hast du \(aktiverKunde.bonuspunkte) Bonuspunkte (\(aktiverKunde.bonuspunkte / 1000) €)")
         
         //geschenkOption(warenkorbWert: warenWert ?? 0.00)
         

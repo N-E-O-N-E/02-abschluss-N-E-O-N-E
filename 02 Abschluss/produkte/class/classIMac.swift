@@ -18,7 +18,7 @@ class IMac: Produkt {
     
     override func anzeigen() {
         
-        print("Name: \(name), Preis: \(preis) EUR, Farbe: \(caseColor)")
+        print("\tName: \(name), Preis: \(preis) EUR, Farbe: \(caseColor)")
         
     }
     

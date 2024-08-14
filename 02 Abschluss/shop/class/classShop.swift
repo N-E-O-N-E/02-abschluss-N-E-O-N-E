@@ -101,7 +101,7 @@ class Shop {
     }
     
     func beliebigetaste() {
-        print("▶︎ Weiter mit beliebiger Taste...", terminator: " ")
+        print("\t▶︎ Weiter mit beliebiger Taste...", terminator: " ")
         let _ = readLine()
     }
     
@@ -223,8 +223,8 @@ class Shop {
                 produkteAnzeigen()
                 
                 print()
-                print("🔍 Wähle zwischen \(produkteListe.startIndex + 1) und \(produkteListe.endIndex) aus dem Sortiment.")
-                print("❓ Triff eine Auswahl oder mit <ENTER> zum Menü: ", terminator: "")
+                print("\t🔍 Wähle zwischen \(produkteListe.startIndex + 1) und \(produkteListe.endIndex) aus dem Sortiment.")
+                print("\t❓ Triff eine Auswahl oder mit <ENTER> zum Menü: ", terminator: "")
                 
                 if let kundenauswahl = Int(readLine()!) {
                     
@@ -236,25 +236,31 @@ class Shop {
                         
                         if kundenauswahlProdukt.lagerbestand >= 1 {
                             
-                            print("🙂 Super, du hast dich für ein \(kundenauswahlProdukt.name.split(separator: " ")[1]) entschieden.")
+                            print("\t🙂 Super, du hast dich für ein \(kundenauswahlProdukt.name.split(separator: " ")[1]) entschieden.")
                             kundenauswahlProdukt.anzeigen()
                             
-                            print("🤷‍♂️ Möchtest du mehr als ein Gerät kaufen? (j/n): ", terminator: " ")
+                            print("\t🤷‍♂️ Möchtest du mehr als ein Gerät kaufen? (j/n): ", terminator: " ")
                             let auswahl = readLine()!
                             
                             switch auswahl {
                                 
                             case "j":
                                 
-                                print("❓ Wieviele möchtest du kaufen: ", terminator: " ")
+                                print("\t❓ Wieviele möchtest du kaufen: ", terminator: " ")
                                 
-                                mengeAuswahl = Int(readLine()!)!
+                                guard let mengeAuswahl = Int(readLine()!), !auswahl.isEmpty else {
+                                    print("\t❌ Du musst eine gültige Auswahl treffen!")
+                                    sleep(2)
+                                    
+                                    continue
+                                }
+                                //mengeAuswahl = Int(readLine()!)!
                                 
                                 if mengeAuswahl > 0 {
                                     
                                     if mengeAuswahl < kundenauswahlProdukt.lagerbestand {
                                         
-                                        print("🛍️ \(mengeAuswahl) Stk. wurden dem Warenkorb hinzugefügt!")
+                                        print("\t🛍️ \(mengeAuswahl) Stk. wurden dem Warenkorb hinzugefügt!")
                                         kundenauswahlProdukt.reduziereLagerbestand(bestand: mengeAuswahl)
                                         aktiverKunde.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: mengeAuswahl)
                                         aktiverKunde.bonuspunkteAktualisieren(betrag: betragBonuspunkte * Double(mengeAuswahl))
@@ -263,8 +269,8 @@ class Shop {
                                         
                                     } else {
                                         
-                                        print("⭕️ Leider ist unser Lagerbestnd zu gering.")
-                                        print("🛍️ Es wurden dir nur \(kundenauswahlProdukt.lagerbestand) Stk in den Warenkorb gelegt!")
+                                        print("\t⭕️ Leider ist unser Lagerbestnd zu gering.")
+                                        print("\t🛍️ Es wurden dir nur \(kundenauswahlProdukt.lagerbestand) Stk in den Warenkorb gelegt!")
                                         
                                         aktiverKunde.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: kundenauswahlProdukt.lagerbestand)
                                         kundenauswahlProdukt.reduziereLagerbestand(bestand: kundenauswahlProdukt.lagerbestand)
@@ -273,15 +279,15 @@ class Shop {
                                     }
                                     
                                 } else {
-                                    print("Fehlerhafte Eingabe! ")
-                                    print("⌛️ Die Artikelübersicht wird dir wieder angezeigt! \n")
+                                    print("\t❌ Du musst eine gültige Auswahl treffen!")
+                                    print("\t⌛️ Die Artikelübersicht wird dir wieder angezeigt! \n")
                                     sleep(3)
                                     break
                                 }
                                 
                             case "n":
                                 print()
-                                print("👍 Dein Produkt wurde 1x dem Warenkorb hinzugefügt!")
+                                print("\t👍 Dein Produkt wurde 1x dem Warenkorb hinzugefügt!")
                                 aktiverKunde.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: 1)
                                 kundenauswahlProdukt.reduziereLagerbestand(bestand: 1)
 
@@ -296,22 +302,22 @@ class Shop {
                             
                             
                         } else {
-                            print("Leider ist dieses Modell nicht mehr an Lager. Aktueller Lagerbestand: \(kundenauswahlProdukt.lagerbestand) Stück")
-                            print("Die Artikelübersicht wird dir gleich wieder angezeigt! \n")
+                            print("\tLeider ist dieses Modell nicht mehr an Lager. Aktueller Lagerbestand: \(kundenauswahlProdukt.lagerbestand) Stück")
+                            print("\tDie Artikelübersicht wird dir gleich wieder angezeigt! \n")
                             sleep(3)
                         }
                         
                         
                         
                     } else {
-                        print("Leider war deine Eingabe fehlerhaft. Wähle erneut aus!")
-                        print("Die Artikelübersicht wird dir gleich wieder angezeigt! \n")
+                        print("\tLeider war deine Eingabe fehlerhaft. Wähle erneut aus!")
+                        print("\tDie Artikelübersicht wird dir gleich wieder angezeigt! \n")
                         sleep(3)
                         
                     }
                     
                 } else {
-                    print("Ok, wir leiten dich jetzt zurück ins Hauptmenü!")
+                    print("\t👍 Es geht zurück ins Hauptmenü!")
                     sleep(2)
                     startShopping(aktiverKunde: aktiverKunde)
                 }
@@ -337,14 +343,16 @@ class Shop {
             Thread.exit()
             
         case 5:
-            print("\n    >>> Vielen Dank für deinen Besuch. Bis Bald 🙋‍♂️")
+            print("\n\t>>> Vielen Dank für deinen Besuch. Bis Bald 🙋‍♂️")
             sleep(2)
             Thread.exit()
             // Bestellung abbrechen
         
             
         default:
-            break
+            print("\t❌ Du musst eine gültige Auswahl treffen!")
+            sleep(2)
+            startShopping(aktiverKunde: aktiverKunde)
             
         }
         

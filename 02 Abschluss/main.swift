@@ -43,8 +43,8 @@ func start() {
         guard let auswahl = readLine(), !auswahl.isEmpty else {
             print("\t❌ Du musst eine gültige Auswahl treffen!")
             sleep(2)
-            start()
-            return
+            
+            continue
         }
         
         
@@ -54,7 +54,7 @@ func start() {
             
             Thread.exit()
             
-
+            
         case "r":
             
             repeat {
@@ -135,7 +135,5 @@ func start() {
         }
     } while true
 }
-
-
 
 start()

@@ -18,7 +18,7 @@ class MacBookAir: Produkt {
     
     override func anzeigen() {
         
-        print("Name: \(name), Preis: \(preis) EUR, Prozessor: \(prozessor)")
+        print("\tName: \(name), Preis: \(preis) EUR, Prozessor: \(prozessor)")
         
     }
     
