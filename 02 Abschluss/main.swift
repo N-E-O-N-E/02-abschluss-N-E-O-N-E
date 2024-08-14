@@ -7,4 +7,3 @@ print("Herzlich Willkommen in deinem AppleStore \n")
 print("Hallo \(aktiverKunde!.name), viel Spaß beim Shoppen.")
 
 shop_1.menueAnzeigen()
-

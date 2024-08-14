@@ -24,12 +24,50 @@ class Shop {
         print("Aktuell haben wir folgende Artikel in unserem Shop: \n")
         
         for (index,i) in produkteListe.enumerated() {
+        
+            if let iMac = i as? IMac { // (if i is IMac) liefert nur den Typ, kein Zugriff auf spezifische eigenschaften daher ( i as? IMac
+                // Greift jetzt auf die eigenschaften des MacBooks zurück
+                print("""
+    ---------------------------------------------------------------------
+    Nr \(index + 1 ))\t Produkt: \(iMac.name)\t Artikel-Nr.: \(iMac.artikelNr)
+    \t\t Preis: \(iMac.preis) EUR \t\t\t\t Bestand: \(iMac.lagerbestand) Stk
+    \t\t Produktfarbe: \(iMac.caseColor)
+""")
+                
+            }
+            else if let macBookAir = i as? MacBookAir {
+                print("""
+    ---------------------------------------------------------------------
+    Nr \(index + 1 ))\t Produkt: \(macBookAir.name)\t Artikel-Nr.: \(macBookAir.artikelNr)
+    \t\t Preis: \(macBookAir.preis) EUR \t\t\t\t\t\t\t Bestand: \(macBookAir.lagerbestand) Stk
+    \t\t Prozessor: \(macBookAir.prozessor)
+""")
+            }
+            else if let iPhone = i as? IPhone {
+                print("""
+    ---------------------------------------------------------------------
+    Nr \(index + 1 ))\t Produkt: \(iPhone.name)\t\t\t\t Artikel-Nr.: \(iPhone.artikelNr)
+    \t\t Preis: \(iPhone.preis) EUR \t\t\t\t\t\t Bestand: \(iPhone.lagerbestand) Stk
+    \t\t Arbeitsspeicher (RAM): \(iPhone.speicher) GB
+""")
+            }
+                        
+        }
+    
+        print()
+    }
+    
+    func produkteAnzeigenBACKUP() {
+        
+        print("Aktuell haben wir folgende Artikel in unserem Shop: \n")
+        
+        for (index,i) in produkteListe.enumerated() {
             print("Nr. \(index + 1 ))\tArt.Nr: \(i.artikelNr), Produktname: \(i.name), Preis: \(i.preis) EUR, Bestand: \(i.lagerbestand) Stk")
         }
-        
+    
         print()
-        
     }
+    
     
     func beliebigetaste() {
         print("Weiter mit beliebiger Taste...", terminator: " ")
