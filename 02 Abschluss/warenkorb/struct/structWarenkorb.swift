@@ -51,9 +51,19 @@ struct Warenkorb {
         if produkte.isEmpty {
             print("Der Warenkornb ist leer!")
         } else {
-            print("Dein Warenkorb enthällt aktuell: \n")
+            print("Dein Warenkorb enthällt aktuell:")
+            
             for (artikelkNr, menge) in produkte {
-                print("         Menge: \(menge)\tArtikelNr.: \(artikelkNr)")
+                let produktMatch = findeArtikel(liste: produkteListe, artikelnummer: artikelkNr)
+                print("""
+
+    Produkt:     \(produktMatch?.name ?? "Fehler")
+    Stückpreis:  \(produktMatch?.preis ?? 0) €
+    Menge:       \(menge) Stück
+    Gesamt:      \((produktMatch!.preis) * Double(menge))) €
+    Artikel-Nr:  \(artikelkNr)
+
+""")
             }
         }
         

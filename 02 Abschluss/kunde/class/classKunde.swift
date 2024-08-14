@@ -14,18 +14,18 @@ class Kunde {
     
     var kontostand: Double {
         didSet {
-            print(">>> Dein Kontostand wurde aktualisiert! <<<")
+            print(">>> Dein Kontostand wurde aktualisiert! <<<\n")
         }
     }
     var bonuspunkte: Int {
         didSet {
             print(">>> Deine Bonuspounkte wurden aktualisiert! <<<")
-            print("Du hast für deinen Einkauf \(bonuspunkte - oldValue) erhalten!")
+            print("Du hast für diesen Einkauf \(bonuspunkte - oldValue) Bonuspunkte erhalten!\n")
         }
     }
     var warenkorb: Warenkorb {
         didSet {
-            print(">>> Dein Warenkorn wurde aktualisiert! <<<")
+            print(">>> Dein Warenkorn wurde aktualisiert! <<<\n")
         }
     }
     

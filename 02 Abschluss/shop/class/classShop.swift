@@ -67,13 +67,13 @@ class Shop {
     Kundenkonto - Übersicht
     -----------------------
 
-    KundenNr        \(aktiverKunde!.kundenNr)
-    Kunde           \(aktiverKunde!.name)
-    Guthaben        \(aktiverKunde!.kontostand) EUR
-    Bonuspunkte     \(aktiverKunde!.bonuspunkte)
+    KundenNr        \(aktiverKunde?.kundenNr ?? "#Fehler")
+    Kunde           \(aktiverKunde?.name ?? "#Fehler")
+    Guthaben        \(aktiverKunde?.kontostand ?? 0) EUR
+    Bonuspunkte     \(aktiverKunde?.bonuspunkte ?? 0)
 
     Dein Bonuskonto entspricht aktuell
-    einem Wert von: \(aktiverKunde!.bonuspunkte / 100) EUR
+    einem Wert von: \(aktiverKunde?.bonuspunkte ?? 0 / 100) EUR
 
 """)
             beliebigetaste()
@@ -100,6 +100,7 @@ class Shop {
                     if kundenauswahl <= maxIndex {
                         
                         let kundenauswahlProdukt = produkteListe[kundenauswahl - 1]
+                        
                         betragBonuspunkte = kundenauswahlProdukt.preis
                         
                         if kundenauswahlProdukt.lagerbestand >= 1 {
@@ -125,7 +126,7 @@ class Shop {
                                         print("\(mengeAuswahl) Stk. wurden dem Warenkorb hinzugefügt!")
                                         kundenauswahlProdukt.reduziereLagerbestand(bestand: mengeAuswahl)
                                         aktiverKunde?.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: mengeAuswahl)
-                                        aktiverKunde?.bonuspunkteAktualisieren(betrag: betragBonuspunkte)
+                                        aktiverKunde?.bonuspunkteAktualisieren(betrag: betragBonuspunkte * Double(mengeAuswahl))
                                         sleep(2)
                                         
                                     } else {
