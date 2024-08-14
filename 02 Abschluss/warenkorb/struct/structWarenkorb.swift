@@ -49,7 +49,7 @@ struct Warenkorb {
     func anzeigen() {
         
         if produkte.isEmpty {
-            print("Der Warenkornb ist leer!")
+            print("🔴 Der Warenkornb ist leer!")
         } else {
             print("Dein Warenkorb enthällt aktuell:")
             
@@ -69,8 +69,8 @@ struct Warenkorb {
         
         
         let warenWert = aktiverKunde?.warenkorb.gesamtpreis(liste: produkteListe)
-        print("\n         Gesamtwert deines Warenkorbes: \(String(format: "%.2f",warenWert!)) EUR")
-        print("\n         Aktuell hast du \(aktiverKunde!.bonuspunkte) Bonuspunkte")
+        print("\n         💰 Gesamtwert deines Warenkorbes: \(String(format: "%.2f",warenWert!)) EUR")
+        print("\n         🔸 Aktuell hast du \(aktiverKunde!.bonuspunkte) Bonuspunkte")
         
         //aktiverKunde?.bonuspunkteAktualisieren(betrag: warenWert!)
         // Bonuspunkte bei bestellabschluß ändern!

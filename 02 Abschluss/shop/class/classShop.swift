@@ -23,54 +23,54 @@ class Shop {
         
         print("Aktuell haben wir folgende Artikel in unserem Shop: \n")
         
+        print("Nr.  Produkt                            Artikel-Nr.         Preis       Bestand   Feature             ")
+        print("---  -------                            -----------         -------     -------   -------             ")
+        
         for (index,i) in produkteListe.enumerated() {
         
             if let iMac = i as? IMac { // (if i is IMac) liefert nur den Typ, kein Zugriff auf spezifische eigenschaften daher ( i as? IMac
                 // Greift jetzt auf die eigenschaften des MacBooks zurück
-                print("""
-    ---------------------------------------------------------------------
-    Nr \(index + 1 ))\t Produkt: \(iMac.name)\t Artikel-Nr.: \(iMac.artikelNr)
-    \t\t Preis: \(iMac.preis) EUR \t\t\t\t Bestand: \(iMac.lagerbestand) Stk
-    \t\t Produktfarbe: \(iMac.caseColor)
-""")
+            
+                let index_ = String(index + 1).spaltenbreite(laenge: 5)
+                let name_ = iMac.name.spaltenbreite(laenge: 35)
+                let artikelNr_ = iMac.artikelNr.spaltenbreite(laenge: 20)
+                let preis_ = String(iMac.preis).spaltenbreite(laenge: 12)
+                let bestad_ = String(iMac.lagerbestand).spaltenbreite(laenge: 10)
+                let feature_ = iMac.caseColor.spaltenbreite(laenge: 13)
+                
+                print("\(index_)\(name_)\(artikelNr_)\(preis_)\(bestad_)Farbe: \(feature_)")
                 
             }
             else if let macBookAir = i as? MacBookAir {
-                print("""
-    ---------------------------------------------------------------------
-    Nr \(index + 1 ))\t Produkt: \(macBookAir.name)\t Artikel-Nr.: \(macBookAir.artikelNr)
-    \t\t Preis: \(macBookAir.preis) EUR \t\t\t\t\t\t\t Bestand: \(macBookAir.lagerbestand) Stk
-    \t\t Prozessor: \(macBookAir.prozessor)
-""")
+                
+                let index_ = String(index + 1).spaltenbreite(laenge: 5)
+                let name_ = macBookAir.name.spaltenbreite(laenge: 35)
+                let artikelNr_ = macBookAir.artikelNr.spaltenbreite(laenge: 20)
+                let preis_ = String(macBookAir.preis).spaltenbreite(laenge: 12)
+                let bestad_ = String(macBookAir.lagerbestand).spaltenbreite(laenge: 10)
+                let feature_ = macBookAir.prozessor.spaltenbreite(laenge: 13)
+                
+                print("\(index_)\(name_)\(artikelNr_)\(preis_)\(bestad_)Prozessor: \(feature_)")
+                
             }
             else if let iPhone = i as? IPhone {
-                print("""
-    ---------------------------------------------------------------------
-    Nr \(index + 1 ))\t Produkt: \(iPhone.name)\t\t\t\t Artikel-Nr.: \(iPhone.artikelNr)
-    \t\t Preis: \(iPhone.preis) EUR \t\t\t\t\t\t Bestand: \(iPhone.lagerbestand) Stk
-    \t\t Arbeitsspeicher (RAM): \(iPhone.speicher) GB
-""")
+                
+                let index_ = String(index + 1).spaltenbreite(laenge: 5)
+                let name_ = iPhone.name.spaltenbreite(laenge: 35)
+                let artikelNr_ = iPhone.artikelNr.spaltenbreite(laenge: 20)
+                let preis_ = String(iPhone.preis).spaltenbreite(laenge: 12)
+                let bestad_ = String(iPhone.lagerbestand).spaltenbreite(laenge: 10)
+                let feature_ = String(iPhone.speicher).spaltenbreite(laenge: 13)
+                
+                print("\(index_)\(name_)\(artikelNr_)\(preis_)\(bestad_)Speicher (RAM): \(feature_)")
+                
             }
-                        
         }
-    
         print()
     }
-    
-    func produkteAnzeigenBACKUP() {
-        
-        print("Aktuell haben wir folgende Artikel in unserem Shop: \n")
-        
-        for (index,i) in produkteListe.enumerated() {
-            print("Nr. \(index + 1 ))\tArt.Nr: \(i.artikelNr), Produktname: \(i.name), Preis: \(i.preis) EUR, Bestand: \(i.lagerbestand) Stk")
-        }
-    
-        print()
-    }
-    
     
     func beliebigetaste() {
-        print("Weiter mit beliebiger Taste...", terminator: " ")
+        print("▶︎ Weiter mit beliebiger Taste...", terminator: " ")
         let _ = readLine()
     }
     
@@ -81,12 +81,12 @@ class Shop {
     AppleStore - Hauptmenü
     -------------------------
 
-    1) Kundenkonto anzeigen
-    2) Produkte auswählen
-    3) Warenkorb anzeigen
-    4) Bestellung abschließen
+    1) 🙍‍♂️ Kundenkonto anzeigen
+    2) 🛍️ Produkte auswählen
+    3) 🛒 Warenkorb anzeigen
+    4) 💳 Bestellung abschließen
 
-    5) Bestellvorgang abbrechen
+    5) 👋 Bestellvorgang abbrechen
 
 """)
         print("Deine Auswahl: ", terminator: " ")
@@ -105,10 +105,10 @@ class Shop {
     Kundenkonto - Übersicht
     -----------------------
 
-    KundenNr        \(aktiverKunde?.kundenNr ?? "#Fehler")
-    Kunde           \(aktiverKunde?.name ?? "#Fehler")
-    Guthaben        \(aktiverKunde?.kontostand ?? 0) EUR
-    Bonuspunkte     \(aktiverKunde?.bonuspunkte ?? 0)
+    🆔 KundenNr        \(aktiverKunde?.kundenNr ?? "#Fehler")
+    🙍‍♂️ Kunde           \(aktiverKunde?.name ?? "#Fehler")
+    💰 Guthaben        \(aktiverKunde?.kontostand ?? 0) EUR
+    🔸 Bonuspunkte     \(aktiverKunde?.bonuspunkte ?? 0)
 
     Dein Bonuskonto entspricht aktuell
     einem Wert von: \(aktiverKunde?.bonuspunkte ?? 0 / 100) EUR
@@ -129,9 +129,8 @@ class Shop {
                 produkteAnzeigen()
                 
                 print()
-                print("Lege Artikel in deinen Warenkorb.")
-                print("Wähle zwischen \(produkteListe.startIndex + 1) und \(produkteListe.endIndex) in der Liste. <ENTER> um ins Hauptmenü zu gelangen.")
-                print("Deine Auswahl: ", terminator: "")
+                print("🔍 Wähle zwischen \(produkteListe.startIndex + 1) und \(produkteListe.endIndex) aus dem Sortiment.")
+                print("❓ Triff eine Auswahl oder mit <ENTER> zum Menü: ", terminator: "")
                 
                 if let kundenauswahl = Int(readLine()!) {
                     
@@ -143,17 +142,17 @@ class Shop {
                         
                         if kundenauswahlProdukt.lagerbestand >= 1 {
                             
-                            print("Super, du hast dich für ein \(kundenauswahlProdukt.name.split(separator: " ")[0]) entschieden.")
+                            print("🙂 Super, du hast dich für ein \(kundenauswahlProdukt.name.split(separator: " ")[1]) entschieden.")
                             kundenauswahlProdukt.anzeigen()
                             
-                            print("Möchtest du mehr als ein Gerät kaufen? (j/n): ", terminator: " ")
+                            print("🤷‍♂️ Möchtest du mehr als ein Gerät kaufen? (j/n): ", terminator: " ")
                             let auswahl = readLine()!
                             
                             switch auswahl {
                                 
                             case "j":
                                 
-                                print("Super, wieviele möchtest du kaufen: ", terminator: " ")
+                                print("❓ Wieviele möchtest du kaufen: ", terminator: " ")
                                 
                                 mengeAuswahl = Int(readLine()!)!
                                 
@@ -161,42 +160,37 @@ class Shop {
                                     
                                     if mengeAuswahl < kundenauswahlProdukt.lagerbestand {
                                         
-                                        print("\(mengeAuswahl) Stk. wurden dem Warenkorb hinzugefügt!")
+                                        print("🛍️ \(mengeAuswahl) Stk. wurden dem Warenkorb hinzugefügt!")
                                         kundenauswahlProdukt.reduziereLagerbestand(bestand: mengeAuswahl)
                                         aktiverKunde?.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: mengeAuswahl)
                                         aktiverKunde?.bonuspunkteAktualisieren(betrag: betragBonuspunkte * Double(mengeAuswahl))
-                                        sleep(2)
+                                        beliebigetaste()
                                         
                                     } else {
                                         
-                                        print("Leider ist unser Lagerbestnd zu gering.")
-                                        print("Es wurden dir nur \(kundenauswahlProdukt.lagerbestand) Stk in den Warenkorb gelegt!")
+                                        print("⭕️ Leider ist unser Lagerbestnd zu gering.")
+                                        print("🛍️ Es wurden dir nur \(kundenauswahlProdukt.lagerbestand) Stk in den Warenkorb gelegt!")
                                         
                                         aktiverKunde?.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: kundenauswahlProdukt.lagerbestand)
                                         kundenauswahlProdukt.reduziereLagerbestand(bestand: kundenauswahlProdukt.lagerbestand)
                                         aktiverKunde?.bonuspunkteAktualisieren(betrag: betragBonuspunkte)
-                                        sleep(2)
+                                        beliebigetaste()
                                     }
                                     
                                 } else {
                                     print("Fehlerhafte Eingabe! ")
-                                    print("Die Artikelübersicht wird dir gleich wieder angezeigt! \n")
-                                    sleep(2)
+                                    print("⌛️ Die Artikelübersicht wird dir wieder angezeigt! \n")
+                                    sleep(3)
                                     break
                                 }
                                 
                             case "n":
-                                
-                                print("Ok, dein Produkt wurde 1x dem Warenkorb hinzugefügt!")
+                                print()
+                                print("👍 Dein Produkt wurde 1x dem Warenkorb hinzugefügt!")
                                 aktiverKunde?.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: 1)
                                 kundenauswahlProdukt.reduziereLagerbestand(bestand: 1)
 
                                 aktiverKunde?.bonuspunkteAktualisieren(betrag: betragBonuspunkte)
-                                
-                                
-                                
-                                
-                                sleep(2)
                                 beliebigetaste()
                                 
                                 
@@ -222,7 +216,7 @@ class Shop {
                     }
                     
                 } else {
-                    print("Ok, wir leiten dich jetzt zurück ins Hauptmenü!", terminator: "")
+                    print("Ok, wir leiten dich jetzt zurück ins Hauptmenü!", terminator: "\n\n\n\n\n\n")
                     sleep(2)
                     menueAnzeigen()
                 }
