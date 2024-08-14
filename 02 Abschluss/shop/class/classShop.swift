@@ -144,7 +144,7 @@ class Shop {
 
         print("""
 
-    Angemeldet: \(aktiverKunde.name)
+    Profil von \(aktiverKunde.name)
     ------------------------------------
 
     1) 🙍‍♂️ Kundenkonto anzeigen
@@ -337,7 +337,7 @@ class Shop {
             Thread.exit()
             
         case 5:
-            print("\n    >>> Vielen Dank für Ihren Besuch. Bis Bald 🙋‍♂️")
+            print("\n    >>> Vielen Dank für deinen Besuch. Bis Bald 🙋‍♂️")
             sleep(2)
             Thread.exit()
             // Bestellung abbrechen
