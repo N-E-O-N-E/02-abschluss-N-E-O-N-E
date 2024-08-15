@@ -16,21 +16,21 @@ struct Shop {
             if status == .bestellbestaetigung  {
                 print()
                 print("\tDein Warenkorb wird geladen!\n")
-                for _ in 1...5 {
+                for _ in 1...4 {
                     print("\t🛍️", terminator: " ")
                     Thread.sleep(forTimeInterval: 0.4)
                 }
             } else if status == .bestellabschluss{
                 print()
                 print("\tDer Zahlungsprozess wird geladen!\n")
-                for _ in 1...5 {
+                for _ in 1...4 {
                     print("\t💰", terminator: " ")
                     Thread.sleep(forTimeInterval: 0.4)
                 }
             } else if status == .shopping{
                 print()
                 print("\tDaten werden geladen...\n")
-                for _ in 1...5 {
+                for _ in 1...4 {
                     print("\t🔍", terminator: " ")
                     Thread.sleep(forTimeInterval: 0.4)
                 }
@@ -47,6 +47,7 @@ struct Shop {
     func beliebigetaste() {
         print("\t▶︎ Weiter mit beliebiger Taste...", terminator: " ")
         let _ = readLine()
+        
     }
     
     mutating func kundeHinzufuegen(to array: inout [Kunde], neuerKunde: Kunde) {
@@ -240,7 +241,7 @@ struct Shop {
                                 } else {
                                     print("\t❌ Du musst eine gültige Auswahl treffen!")
                                     print("\t⌛️ Die Artikelübersicht wird dir wieder angezeigt! \n")
-                                    sleep(3)
+                                    sleep(2)
                                     break
                                 }
                                 
@@ -262,7 +263,7 @@ struct Shop {
                         } else {
                             print("\tLeider ist dieses Modell nicht mehr an Lager. Aktueller Lagerbestand: \(kundenauswahlProdukt.lagerbestand) Stück")
                             print("\tDie Artikelübersicht wird dir gleich wieder angezeigt! \n")
-                            sleep(3)
+                            sleep(2)
                         }
                         
                         
@@ -270,7 +271,7 @@ struct Shop {
                     } else {
                         print("\tLeider war deine Eingabe fehlerhaft. Wähle erneut aus!")
                         print("\tDie Artikelübersicht wird dir gleich wieder angezeigt! \n")
-                        sleep(3)
+                        sleep(2)
                         
                     }
                     
@@ -317,19 +318,59 @@ struct Shop {
         
         
         
-             ██████╗██╗  ██╗███████╗ ██████╗██╗  ██╗ ██████╗ ██╗   ██╗████████╗
-            ██╔════╝██║  ██║██╔════╝██╔════╝██║ ██╔╝██╔═══██╗██║   ██║╚══██╔══╝
-            ██║     ███████║█████╗  ██║     █████╔╝ ██║   ██║██║   ██║   ██║
-            ██║     ██╔══██║██╔══╝  ██║     ██╔═██╗ ██║   ██║██║   ██║   ██║
-            ╚██████╗██║  ██║███████╗╚██████╗██║  ██╗╚██████╔╝╚██████╔╝   ██║
-            ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝    ╚═╝
-            ══════════════════════════════════════════════════════════════════
+     ██████╗██╗  ██╗███████╗ ██████╗██╗  ██╗ ██████╗ ██╗   ██╗████████╗
+    ██╔════╝██║  ██║██╔════╝██╔════╝██║ ██╔╝██╔═══██╗██║   ██║╚══██╔══╝
+    ██║     ███████║█████╗  ██║     █████╔╝ ██║   ██║██║   ██║   ██║
+    ██║     ██╔══██║██╔══╝  ██║     ██╔═██╗ ██║   ██║██║   ██║   ██║
+    ╚██████╗██║  ██║███████╗╚██████╗██║  ██╗╚██████╔╝╚██████╔╝   ██║
+    ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝    ╚═╝
+    ══════════════════════════════════════════════════════════════════
 
-        """)
+""")
+        var gesamtpreis = aktiverKunde.warenkorb.gesamtpreis(liste: produkteListe)
+        let bonuspunkteBetrag = aktiverKunde.bonuspunkte / 1000
+            
+        if gesamtpreis > 0 {
+            
+            print("\tHallo \(aktiverKunde.name), Hier findest du eine kurze Übersicht.\n")
+            
+            print("\tMenge\tArtikelname")
+            print("\t-----------------------------------------")
+            
+            for (artikelNr, menge) in aktiverKunde.warenkorb.produkte {
+                let produktMatch = aktiverKunde.warenkorb.findeArtikel(liste: produkteListe, artikelnummer: artikelNr )
+                
+                print("\t\(menge)\t\t\(produktMatch!.name)")
+                
+            }
+           
+            print()
+            print("\tWarenkorb Gesamtwert: \(gesamtpreis) €")
+            print("\tAktuelle Bonuspunkte: \(aktiverKunde.bonuspunkte) (\(bonuspunkteBetrag) €)\n")
+            
+    
+            
+            let auswahlGeschenk = aktiverKunde.warenkorb.geschenkOption(warenkorbWert: gesamtpreis)
+            if let geschenk = auswahlGeschenk {
+                aktiverKunde.warenkorb.geschenkHinzu(neuesGeschenk: geschenk)
+            }
+            
+            let rabattPruefen = aktiverKunde.warenkorb.berechneRabatt(rabatt: randDeal, preis: gesamtpreis)
+            print("\t🔥 BlackWeek! Heute ist alles \(randDeal*100)% reduziert!")
+            print("\t🔥 Heute zahlst du statt \(gesamtpreis) € nur \(rabattPruefen) €")
+            
+            gesamtpreis = rabattPruefen
             
             beliebigetaste()
+            startShopping(aktiverKunde: aktiverKunde)
             
-            Thread.exit()
+        } else {
+            print("\t🔴 Du hast keine Artikel im Warenkorb!")
+            beliebigetaste()
+            startShopping(aktiverKunde: aktiverKunde)
+            
+        }
+            
             
         case 5:
             print("\n\t>>> Vielen Dank für deinen Besuch. Bis Bald 🙋‍♂️")

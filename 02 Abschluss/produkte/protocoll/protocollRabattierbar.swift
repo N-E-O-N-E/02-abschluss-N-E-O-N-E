@@ -10,8 +10,8 @@ import Foundation
 
 protocol Rabattierbar {
     var rabatt: Double { get set }
-    var originalpreis: Double { get }
+    var rabattpreis: Double { get }
     
-    func berechnePreis() -> Double
+    func berechneRabatt(rabatt: Double, preis: Double) -> Double
     
 }

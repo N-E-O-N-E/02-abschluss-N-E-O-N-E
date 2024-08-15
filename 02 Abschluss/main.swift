@@ -1,5 +1,8 @@
 import Foundation
 
+let tagesDeals: [Double] = [0.5, 0.10, 0.15, 0.20, 0.25]
+let randDeal = tagesDeals.randomElement()!
+
 func start() {
     
     repeat

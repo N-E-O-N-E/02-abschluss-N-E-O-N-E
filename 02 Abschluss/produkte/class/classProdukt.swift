@@ -24,6 +24,7 @@ class Produkt: Kaufbar {
     
     func reduziereLagerbestand(bestand: Int) {
         
+        
         lagerbestand -= bestand
         
     }
@@ -34,9 +35,5 @@ class Produkt: Kaufbar {
         
     }
     
-    func rabattgeben(prozent: Int) {
-        
-        
-    }
     
 }

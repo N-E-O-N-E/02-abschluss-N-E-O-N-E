@@ -7,11 +7,22 @@
 
 import Foundation
 
-struct Warenkorb {
+struct Warenkorb: Rabattierbar {
     
     var produkte: [String: Int] = [:]
-    var geschenk: [Geschenk] = []
-    let geschenkGrenzen = (1000.00, 1500.00, 2000.00)
+    var geschenk: [Geschenk] = [] {
+        didSet {
+            print("\t🎁 Geschenk erhalten!")
+        }
+    }
+    
+    let geschenkGrenzen = (1000.00, 1700.00, 2000.00)
+    var rabatt: Double = 0
+    var rabattpreis: Double = 0
+    
+    func berechneRabatt(rabatt: Double, preis: Double) -> Double {
+        return preis - (preis * rabatt)
+    }
     
     mutating func hinzufuegen(artikelNr: String, mengeNeu: Int) {
            
@@ -24,26 +35,22 @@ struct Warenkorb {
     
     func geschenkOption(warenkorbWert: Double) -> Geschenk? {
         
-        if warenkorbWert >= geschenkGrenzen.0 {
-            //geschenkHinzu(geschenk: geschenk_1)
+        if warenkorbWert <= geschenkGrenzen.0 {
             return geschenk_1
         }
-        else if warenkorbWert >= geschenkGrenzen.1 {
-            //geschenkHinzu(geschenk: geschenk_2)
+        else if warenkorbWert > geschenkGrenzen.0 && warenkorbWert <= geschenkGrenzen.1 {
             return geschenk_2
         }
-        else if warenkorbWert >= geschenkGrenzen.2 {
-            //geschenkHinzu(geschenk: geschenk_3)
+        else if warenkorbWert > geschenkGrenzen.1 {
             return geschenk_3
         }
-        
         return nil
     }
     
-    func geschenkHinzu(neuesGeschenk: Geschenk) {
+    mutating func geschenkHinzu(neuesGeschenk: Geschenk) {
         
-        print("\tSuper, ein Geschenk 🎁 wurde deinem Warenkorn hinzugefügt!")
-        
+        geschenk = [neuesGeschenk]
+        print("\tDein Geschenk: \(geschenk.first!.name)")
         
     }
     
@@ -115,8 +122,8 @@ struct Warenkorb {
                 
                 print("""
 
-    Produkt:     \(produktMatch?.name ?? "Fehler")
-    Stückpreis:  \(produktMatch?.preis ?? 0) €
+    Produkt:     \(produktMatch!.name)
+    Stückpreis:  \(produktMatch!.preis) €
     Menge:       \(menge) Stück
     Gesamt:      \((produktMatch!.preis) * Double(menge)) €
     Artikel-Nr:  \(artikelkNr)
