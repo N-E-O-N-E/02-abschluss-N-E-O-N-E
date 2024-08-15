@@ -102,7 +102,7 @@ func start() {
             }
             
             
-            if let gefundenerKunde = findeKunde(kundeListe: kundenListe, kundenNr: eingabe_Kundennummer, passwort: eingabePasswort) {
+            if let gefundenerKunde = findeKunde(kundeListe: kundenListe, kundenNr: eingabe_Kundennummer.capitalized, passwort: eingabePasswort) {
                 shop_1.startShopping(aktiverKunde: gefundenerKunde)
             } else {
                 print("\t❌ Anmeldung fehlgeschlagen!")

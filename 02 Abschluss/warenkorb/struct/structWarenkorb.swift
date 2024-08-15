@@ -22,24 +22,28 @@ struct Warenkorb {
                 }
             }
     
-    mutating func geschenkOption(warenkorbWert: Double) {
+    func geschenkOption(warenkorbWert: Double) -> Geschenk? {
         
         if warenkorbWert >= geschenkGrenzen.0 {
-            geschenkHinzu(geschenk: geschenk_1)
+            //geschenkHinzu(geschenk: geschenk_1)
+            return geschenk_1
         }
         else if warenkorbWert >= geschenkGrenzen.1 {
-            geschenkHinzu(geschenk: geschenk_2)
+            //geschenkHinzu(geschenk: geschenk_2)
+            return geschenk_2
         }
         else if warenkorbWert >= geschenkGrenzen.2 {
-            geschenkHinzu(geschenk: geschenk_3)
+            //geschenkHinzu(geschenk: geschenk_3)
+            return geschenk_3
         }
         
+        return nil
     }
     
-    mutating func geschenkHinzu(geschenk: Geschenk) {
+    func geschenkHinzu(neuesGeschenk: Geschenk) {
         
         print("\tSuper, ein Geschenk 🎁 wurde deinem Warenkorn hinzugefügt!")
-        geschenk.anzeigen()
+        
         
     }
     
@@ -124,11 +128,8 @@ struct Warenkorb {
         print("\n\t💰 Gesamtwert deines Warenkorbes: \(String(format: "%.2f",warenWert)) EUR")
         print("\n\t🔸 Aktuell hast du \(aktiverKunde.bonuspunkte) Bonuspunkte (\(aktiverKunde.bonuspunkte / 1000) €)")
         
-        //geschenkOption(warenkorbWert: warenWert ?? 0.00)
         
         
-        //aktiverKunde?.bonuspunkteAktualisieren(betrag: warenWert!)
-        // Bonuspunkte bei bestellabschluß ändern!
         
     }
     
