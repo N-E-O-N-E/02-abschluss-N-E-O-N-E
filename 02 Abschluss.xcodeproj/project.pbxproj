@@ -21,7 +21,7 @@
 		FADFEAAF2C6A398A00C485A2 /* classIPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFEAAE2C6A398A00C485A2 /* classIPhone.swift */; };
 		FADFEAB12C6A399F00C485A2 /* structGeschenk.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFEAB02C6A399F00C485A2 /* structGeschenk.swift */; };
 		FADFEAB62C6A39CC00C485A2 /* protocollKaufbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFEAB52C6A39CC00C485A2 /* protocollKaufbar.swift */; };
-		FADFEAB82C6A39DB00C485A2 /* protocollRabattierbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFEAB72C6A39DB00C485A2 /* protocollRabattierbar.swift */; };
+		FADFEAB82C6A39DB00C485A2 /* protocollGeschenkoptionen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFEAB72C6A39DB00C485A2 /* protocollGeschenkoptionen.swift */; };
 		FADFEABA2C6A39EF00C485A2 /* enumShopStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFEAB92C6A39EF00C485A2 /* enumShopStatus.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +53,7 @@
 		FADFEAAE2C6A398A00C485A2 /* classIPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = classIPhone.swift; sourceTree = "<group>"; };
 		FADFEAB02C6A399F00C485A2 /* structGeschenk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = structGeschenk.swift; sourceTree = "<group>"; };
 		FADFEAB52C6A39CC00C485A2 /* protocollKaufbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = protocollKaufbar.swift; sourceTree = "<group>"; };
-		FADFEAB72C6A39DB00C485A2 /* protocollRabattierbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = protocollRabattierbar.swift; sourceTree = "<group>"; };
+		FADFEAB72C6A39DB00C485A2 /* protocollGeschenkoptionen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = protocollGeschenkoptionen.swift; sourceTree = "<group>"; };
 		FADFEAB92C6A39EF00C485A2 /* enumShopStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enumShopStatus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,7 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				FADFEAB52C6A39CC00C485A2 /* protocollKaufbar.swift */,
-				FADFEAB72C6A39DB00C485A2 /* protocollRabattierbar.swift */,
+				FADFEAB72C6A39DB00C485A2 /* protocollGeschenkoptionen.swift */,
 			);
 			path = protocoll;
 			sourceTree = "<group>";
@@ -268,7 +268,7 @@
 				FA71C5B42C6B4A15002345DB /* instanzenKunde.swift in Sources */,
 				CE95A5922C69E7A200AF3E56 /* main.swift in Sources */,
 				FA71C5B62C6B4A21002345DB /* instanzenProdukte.swift in Sources */,
-				FADFEAB82C6A39DB00C485A2 /* protocollRabattierbar.swift in Sources */,
+				FADFEAB82C6A39DB00C485A2 /* protocollGeschenkoptionen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

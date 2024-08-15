@@ -7,9 +7,9 @@
 
 import Foundation
 
-var kunde1 = Kunde(kundenNr: "K001", name: "Julia Hoffmann", passwort: "123", kontostand: 2350.59, bonuspunkte: 21000, warenkorb: Warenkorb())
-var kunde2 = Kunde(kundenNr: "K002", name: "Gregor Schönberg", passwort: "123", kontostand: 3160.26, bonuspunkte: 14000, warenkorb: Warenkorb())
-var kunde3 = Kunde(kundenNr: "K003", name: "Peter Kaufmann", passwort: "123", kontostand: 2110.94, bonuspunkte: 18000, warenkorb: Warenkorb())
+var kunde1 = Kunde(kundenNr: "K001", name: "Julia Hoffmann", passwort: "123")
+var kunde2 = Kunde(kundenNr: "K002", name: "Gregor Schönberg", passwort: "123")
+var kunde3 = Kunde(kundenNr: "K003", name: "Peter Kaufmann", passwort: "123")
 
 var kundenListe = [
     kunde1,

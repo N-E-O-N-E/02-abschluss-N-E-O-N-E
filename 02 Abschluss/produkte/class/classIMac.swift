@@ -17,9 +17,7 @@ class IMac: Produkt {
     }
     
     override func anzeigen() {
-        
         print("\tName: \(name), Preis: \(preis) EUR, Farbe: \(caseColor)")
-        
     }
     
     func upgradeScreenSize() {

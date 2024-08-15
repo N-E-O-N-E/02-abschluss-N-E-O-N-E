@@ -11,6 +11,8 @@ struct Shop {
     
     let produkte: [Produkt]
     var kunden: [Kunde]
+    let tagesDeals: [Double]
+    
     var status: ShopStatus {
         didSet {
             if status == .bestellbestaetigung  {
@@ -41,6 +43,7 @@ struct Shop {
     init(produkte: [Produkt], kunden: [Kunde], status: ShopStatus) {
         self.produkte = produkte
         self.kunden = kunden
+        self.tagesDeals = [0.5, 0.10, 0.15, 0.20, 0.25]
         self.status = status
     }
     
@@ -59,15 +62,21 @@ struct Shop {
     
     mutating func startShopping(aktiverKunde: Kunde) {
         
+        let randDeal = tagesDeals.randomElement()!
+        
         print("""
 
 \tAktuell im Shop registrierte Kunden: \n
 """)
         for kunden in kundenListe {
-            print("\t\(kunden.name)")
+            print("\t\(kunden.kundenNr)")
         }
         
         print("""
+        
+        
+        
+        
         
         
         
@@ -107,12 +116,11 @@ struct Shop {
     Kundenprofil von \(aktiverKunde.name)
     ------------------------------------
 
-    1) 🙍‍♂️ Kundenkonto anzeigen
-    2) 🛍️ Produkte auswählen
-    3) 🛒 Warenkorb anzeigen
-    4) 💳 Bestellung abschließen
-
-    5) 👋 Bestellvorgang abbrechen
+    1) 🙍‍♂️ Kundenkonto
+    2) 🛍️ Produkte
+    3) 🛒 Warenkorb
+    4) 💳 Zahlung
+    5) 👋 Beenden
 
 """)
         print("\tViel Spaß beim Shoppen.\n\tTriff eine Auswahl ▶︎ ", terminator: " ")
@@ -126,7 +134,11 @@ struct Shop {
             status = ShopStatus.shopping
             
             print("""
-    
+
+
+
+
+
 
 
 
@@ -159,16 +171,15 @@ struct Shop {
     🆔 KundenNr        \(aktiverKunde.kundenNr)
     🔑 Passwort        \(aktiverKunde.passwort)
     🙍‍♂️ Kunde           \(aktiverKunde.name)
-    💰 Guthaben        \(aktiverKunde.kontostand) EUR
+    💰 Guthaben        \(aktiverKunde.kontostand.formatierterPreis) EUR
     🔸 Bonuspunkte     \(aktiverKunde.bonuspunkte)
 
     Dein Bonuskonto entspricht aktuell
     einem Wert von: \(aktiverKunde.bonuspunkte / 1000) EUR
 
 """)
-            beliebigetaste()
-            startShopping(aktiverKunde: aktiverKunde)
-            
+        beliebigetaste()
+        startShopping(aktiverKunde: aktiverKunde)
             
         case 2: // Produktauswahl
             
@@ -254,19 +265,15 @@ struct Shop {
                                 aktiverKunde.bonuspunkteAktualisieren(betrag: betragBonuspunkte)
                                 beliebigetaste()
                                 
-                                
                             default:
                                 break
                             }
-                            
                             
                         } else {
                             print("\tLeider ist dieses Modell nicht mehr an Lager. Aktueller Lagerbestand: \(kundenauswahlProdukt.lagerbestand) Stück")
                             print("\tDie Artikelübersicht wird dir gleich wieder angezeigt! \n")
                             sleep(2)
                         }
-                        
-                        
                         
                     } else {
                         print("\tLeider war deine Eingabe fehlerhaft. Wähle erneut aus!")
@@ -281,10 +288,7 @@ struct Shop {
                     startShopping(aktiverKunde: aktiverKunde)
                 }
                 
-                
             } while true
-            
-            
             
         case 3:
             
@@ -301,23 +305,31 @@ struct Shop {
             
             print("""
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
      ██████╗██╗  ██╗███████╗ ██████╗██╗  ██╗ ██████╗ ██╗   ██╗████████╗
     ██╔════╝██║  ██║██╔════╝██╔════╝██║ ██╔╝██╔═══██╗██║   ██║╚══██╔══╝
     ██║     ███████║█████╗  ██║     █████╔╝ ██║   ██║██║   ██║   ██║
@@ -333,22 +345,18 @@ struct Shop {
         if gesamtpreis > 0 {
             
             print("\tHallo \(aktiverKunde.name), Hier findest du eine kurze Übersicht.\n")
-            
             print("\tMenge\tArtikelname")
             print("\t-----------------------------------------")
             
             for (artikelNr, menge) in aktiverKunde.warenkorb.produkte {
                 let produktMatch = aktiverKunde.warenkorb.findeArtikel(liste: produkteListe, artikelnummer: artikelNr )
-                
                 print("\t\(menge)\t\t\(produktMatch!.name)")
                 
             }
            
             print()
-            print("\tWarenkorb Gesamtwert: \(gesamtpreis) €")
+            print("\tWarenkorb Gesamtwert: \(gesamtpreis.formatierterPreis) €")
             print("\tAktuelle Bonuspunkte: \(aktiverKunde.bonuspunkte) (\(bonuspunkteBetrag) €)\n")
-            
-    
             
             let auswahlGeschenk = aktiverKunde.warenkorb.geschenkOption(warenkorbWert: gesamtpreis)
             if let geschenk = auswahlGeschenk {
@@ -357,7 +365,7 @@ struct Shop {
             
             let rabattPruefen = aktiverKunde.warenkorb.berechneRabatt(rabatt: randDeal, preis: gesamtpreis)
             print("\t🔥 BlackWeek! Heute ist alles \(randDeal*100)% reduziert!")
-            print("\t🔥 Heute zahlst du statt \(gesamtpreis) € nur \(rabattPruefen) €")
+            print("\t🔥 Heute zahlst du statt \(gesamtpreis.formatierterPreis) € nur \(rabattPruefen.formatierterPreis) €")
             
             gesamtpreis = rabattPruefen
             
@@ -365,12 +373,10 @@ struct Shop {
             startShopping(aktiverKunde: aktiverKunde)
             
         } else {
-            print("\t🔴 Du hast keine Artikel im Warenkorb!")
+            print("\t🔴 Du hast keine Artikel im Warenkorb!\n")
             beliebigetaste()
             startShopping(aktiverKunde: aktiverKunde)
-            
         }
-            
             
         case 5:
             print("\n\t>>> Vielen Dank für deinen Besuch. Bis Bald 🙋‍♂️")
@@ -378,19 +384,21 @@ struct Shop {
             Thread.exit()
             // Bestellung abbrechen
         
-            
         default:
             print("\t❌ Du musst eine gültige Auswahl treffen!")
             sleep(2)
             startShopping(aktiverKunde: aktiverKunde)
             
         }
-        
     }
     
     func produkteAnzeigen() {
         
         print("""
+        
+        
+        
+        
         
         
         
@@ -468,8 +476,4 @@ struct Shop {
         }
         print()
     }
-    
-    
-    
 }
-

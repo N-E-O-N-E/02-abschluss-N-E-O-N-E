@@ -12,7 +12,6 @@ class Kunde {
     let kundenNr: String
     let name: String
     var passwort: String
-    
     var kontostand: Double {
         didSet {
             print("\t▶︎ Dein Kontostand wurde aktualisiert! <<<\n")
@@ -33,29 +32,22 @@ class Kunde {
         }
     }
     
-    init(kundenNr: String, name: String, passwort: String, kontostand: Double, bonuspunkte: Int, warenkorb: Warenkorb) {
+    init(kundenNr: String, name: String, passwort: String) {
         self.kundenNr = kundenNr
         self.name = name
-        self.kontostand = kontostand
-        self.bonuspunkte = bonuspunkte
-        self.warenkorb = warenkorb
         self.passwort = passwort
+        self.kontostand = Double.random(in: 1800...3600)
+        self.bonuspunkte = Int.random(in: 60000...150000)
+        self.warenkorb = Warenkorb()
+        
     }
-    
 
-    
     func kontostandReduzieren(betrag: Double) {
-        
         kontostand -= betrag
-        
     }
     
     func bonuspunkteAktualisieren(betrag: Double) {
-        
         let betragBerechnet = Int(betrag * 15)
         bonuspunkte += betragBerechnet
-        
     }
-
-
 }

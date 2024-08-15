@@ -17,9 +17,7 @@ class MacBookAir: Produkt {
     }
     
     override func anzeigen() {
-        
         print("\tName: \(name), Preis: \(preis) EUR, Prozessor: \(prozessor)")
-        
     }
     
     func upgradeProzessor() {

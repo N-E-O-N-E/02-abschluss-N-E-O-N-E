@@ -13,8 +13,6 @@ class Produkt: Kaufbar {
     let name: String
     let preis: Double
     
-    
-    
     init(artikelNr: String, name: String, preis: Double, lagerbestand: Int) {
         self.artikelNr = artikelNr
         self.name = name
@@ -23,17 +21,10 @@ class Produkt: Kaufbar {
     }
     
     func reduziereLagerbestand(bestand: Int) {
-        
-        
         lagerbestand -= bestand
-        
     }
     
     func anzeigen() {
-        
         print("Lagerbestand: \(lagerbestand)\t\(name) für \(preis) EUR")
-        
     }
-    
-    
 }

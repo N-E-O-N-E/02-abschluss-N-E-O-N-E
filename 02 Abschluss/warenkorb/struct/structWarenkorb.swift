@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Warenkorb: Rabattierbar {
+struct Warenkorb: Geschenkoptionen {
     
     var produkte: [String: Int] = [:]
     var geschenk: [Geschenk] = [] {
@@ -16,9 +16,10 @@ struct Warenkorb: Rabattierbar {
         }
     }
     
-    let geschenkGrenzen = (1000.00, 1700.00, 2000.00)
+    var geschenkGrenzen = (1000.00, 1700.00, 2000.00)
     var rabatt: Double = 0
     var rabattpreis: Double = 0
+    
     
     func berechneRabatt(rabatt: Double, preis: Double) -> Double {
         return preis - (preis * rabatt)
@@ -50,7 +51,7 @@ struct Warenkorb: Rabattierbar {
     mutating func geschenkHinzu(neuesGeschenk: Geschenk) {
         
         geschenk = [neuesGeschenk]
-        print("\tDein Geschenk: \(geschenk.first!.name)")
+        geschenk[0].anzeigen()
         
     }
     
@@ -59,8 +60,7 @@ struct Warenkorb: Rabattierbar {
         // Gibt das erste Element im Array zurück bei dem die übergebene Arikelnummer der "artikelNr" in der Liste (Array) entspricht.
         return liste.first { $0.artikelNr == artikelnummer }
     }
-    
-    
+
     func gesamtpreis(liste: [Produkt]) -> Double {
         var gesamtsumme = 0.0
         
@@ -73,16 +73,20 @@ struct Warenkorb: Rabattierbar {
             } else {
                 print("\tProdukt ArtikelNr. \(artikelnummer), nicht gefunden!")
             }
-            
         }
-        
         return gesamtsumme
-    
     }
     
     func anzeigen(aktiverKunde: Kunde) {
         
         print("""
+
+
+
+
+
+
+
 
 
 
@@ -125,7 +129,7 @@ struct Warenkorb: Rabattierbar {
     Produkt:     \(produktMatch!.name)
     Stückpreis:  \(produktMatch!.preis) €
     Menge:       \(menge) Stück
-    Gesamt:      \((produktMatch!.preis) * Double(menge)) €
+    Gesamt:      \(((produktMatch!.preis) * Double(menge)).formatierterPreis) €
     Artikel-Nr:  \(artikelkNr)
 
 """)
@@ -133,12 +137,8 @@ struct Warenkorb: Rabattierbar {
         }
         
         let warenWert = aktiverKunde.warenkorb.gesamtpreis(liste: produkteListe)
-        print("\n\t💰 Gesamtwert deines Warenkorbes: \(String(format: "%.2f",warenWert)) EUR")
+        print("\n\t💰 Gesamtwert deines Warenkorbes: \(warenWert.formatierterPreis) EUR")
         print("\n\t🔸 Aktuell hast du \(aktiverKunde.bonuspunkte) Bonuspunkte (\(aktiverKunde.bonuspunkte / 1000) €)")
-        
-        
-        
-        
-    }
     
+    }
 }

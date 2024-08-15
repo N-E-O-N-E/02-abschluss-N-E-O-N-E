@@ -12,7 +12,6 @@ import Foundation
 protocol Kaufbar {
     var preis: Double { get }
     var lagerbestand: Int { get }
-    
+
     func reduziereLagerbestand(bestand: Int)
-    
 }

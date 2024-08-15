@@ -17,13 +17,10 @@ class IPhone: Produkt {
     }
     
     override func anzeigen() {
-        
         print("\tName: \(name), Preis: \(preis) EUR, Arbeitsspeicher: \(speicher) GB")
-        
     }
     
     func upgradeSpeicher() {
-        
         
     }
     
