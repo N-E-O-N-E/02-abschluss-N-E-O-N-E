@@ -40,10 +40,8 @@ func start() {
         guard let auswahl = readLine(), !auswahl.isEmpty else {
             print("\t❌ Du musst eine gültige Auswahl treffen!")
             sleep(2)
-            
-            continue
+            continue // bricht nicht ab
         }
-        
         
         switch auswahl.lowercased() {
             
@@ -181,7 +179,6 @@ func start() {
                     
                     shop_1.kundeHinzufuegen(to: &kundenListe, neuerKunde: gueltigerKunde)
                     shop_1.startShopping(aktiverKunde: gueltigerKunde)
-                    
                     
                 }
                 

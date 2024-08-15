@@ -36,7 +36,7 @@ struct Shop {
         
         print("""
 
-\tAktuell im Shop sind folgende Besucher: \n
+\tAktuell im Shop registrierte Kunden: \n
 """)
         for kunden in kundenListe {
             print("\t\(kunden.name)")
@@ -150,7 +150,7 @@ struct Shop {
             status = ShopStatus.shopping
             
             let maxIndex = produkteListe.count
-            var mengeAuswahl: Int = 0
+            //var mengeAuswahl: Int = 0
             var betragBonuspunkte: Double = 0.0
             
             repeat {
