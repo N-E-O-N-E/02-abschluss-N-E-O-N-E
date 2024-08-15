@@ -19,91 +19,11 @@ class Shop {
         self.status = status
     }
     
-    func produkteAnzeigen() {
-        
-        print("""
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-             ██████╗ ██████╗  ██████╗ ██████╗ ██╗   ██╗██╗  ██╗████████╗███████╗
-             ██╔══██╗██╔══██╗██╔═══██╗██╔══██╗██║   ██║██║ ██╔╝╚══██╔══╝██╔════╝
-             ██████╔╝██████╔╝██║   ██║██║  ██║██║   ██║█████╔╝    ██║   █████╗
-             ██╔═══╝ ██╔══██╗██║   ██║██║  ██║██║   ██║██╔═██╗    ██║   ██╔══╝
-             ██║     ██║  ██║╚██████╔╝██████╔╝╚██████╔╝██║  ██╗   ██║   ███████╗
-             ╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝
-             ═══════════════════════════════════════════════════════════════════
-        
-        """)
-        
-        print("     Nr.  Produkt                             Artikel-Nr          Preis       Bestand   Feature             ")
-        print("     ═══════════════════════════════════════════════════════════════════════════════════════════════════════")
-        
-        for (index,i) in produkteListe.enumerated() {
-        
-            if let iMac = i as? IMac { // (if i is IMac) liefert nur den Typ, kein Zugriff auf spezifische eigenschaften daher ( i as? IMac
-                // Greift jetzt auf die eigenschaften des MacBooks zurück
-            
-                let index_ = String(index + 1).spaltenbreite(laenge: 5)
-                let name_ = iMac.name.spaltenbreite(laenge: 35)
-                let artikelNr_ = iMac.artikelNr.spaltenbreite(laenge: 20)
-                let preis_ = String(iMac.preis).spaltenbreite(laenge: 12)
-                let bestad_ = String(iMac.lagerbestand).spaltenbreite(laenge: 10)
-                let feature_ = iMac.caseColor.spaltenbreite(laenge: 13)
-                
-                print("     \(index_)\(name_)\(artikelNr_)\(preis_)\(bestad_)Farbe: \(feature_)")
-                
-            }
-            else if let macBookAir = i as? MacBookAir {
-                
-                let index_ = String(index + 1).spaltenbreite(laenge: 5)
-                let name_ = macBookAir.name.spaltenbreite(laenge: 35)
-                let artikelNr_ = macBookAir.artikelNr.spaltenbreite(laenge: 20)
-                let preis_ = String(macBookAir.preis).spaltenbreite(laenge: 12)
-                let bestad_ = String(macBookAir.lagerbestand).spaltenbreite(laenge: 10)
-                let feature_ = macBookAir.prozessor.spaltenbreite(laenge: 13)
-                
-                print("     \(index_)\(name_)\(artikelNr_)\(preis_)\(bestad_)Prozessor: \(feature_)")
-                
-            }
-            else if let iPhone = i as? IPhone {
-                
-                let index_ = String(index + 1).spaltenbreite(laenge: 5)
-                let name_ = iPhone.name.spaltenbreite(laenge: 35)
-                let artikelNr_ = iPhone.artikelNr.spaltenbreite(laenge: 20)
-                let preis_ = String(iPhone.preis).spaltenbreite(laenge: 12)
-                let bestad_ = String(iPhone.lagerbestand).spaltenbreite(laenge: 10)
-                let feature_ = String(iPhone.speicher).spaltenbreite(laenge: 13)
-                
-                print("     \(index_)\(name_)\(artikelNr_)\(preis_)\(bestad_)Speicher (RAM): \(feature_)")
-                
-            }
-        }
-        print()
-    }
-    
     func beliebigetaste() {
         print("\t▶︎ Weiter mit beliebiger Taste...", terminator: " ")
         let _ = readLine()
     }
+    
     
     func startShopping(aktiverKunde: Kunde) {
         
@@ -152,7 +72,8 @@ class Shop {
     3) 🛒 Warenkorb anzeigen
     4) 💳 Bestellung abschließen
 
-    5) 👋 Bestellvorgang abbrechen
+    5) ☝️ Abmelden
+    6) 👋 Bestellvorgang abbrechen
 
 """)
         print("\tViel Spaß beim Shoppen.\n\tTriff eine Auswahl ▶︎ ", terminator: " ")
@@ -300,7 +221,6 @@ class Shop {
                             }
                             
                             
-                            
                         } else {
                             print("\tLeider ist dieses Modell nicht mehr an Lager. Aktueller Lagerbestand: \(kundenauswahlProdukt.lagerbestand) Stück")
                             print("\tDie Artikelübersicht wird dir gleich wieder angezeigt! \n")
@@ -343,6 +263,12 @@ class Shop {
             Thread.exit()
             
         case 5:
+            print("\n\t>>> Du wirst jetzt abgemeldet. Bis Bald 🙋‍♂️")
+            sleep(2)
+            break
+            
+            
+        case 6:
             print("\n\t>>> Vielen Dank für deinen Besuch. Bis Bald 🙋‍♂️")
             sleep(2)
             Thread.exit()
@@ -357,6 +283,88 @@ class Shop {
         }
         
     }
+    
+    func produkteAnzeigen() {
+        
+        print("""
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+             ██████╗ ██████╗  ██████╗ ██████╗ ██╗   ██╗██╗  ██╗████████╗███████╗
+             ██╔══██╗██╔══██╗██╔═══██╗██╔══██╗██║   ██║██║ ██╔╝╚══██╔══╝██╔════╝
+             ██████╔╝██████╔╝██║   ██║██║  ██║██║   ██║█████╔╝    ██║   █████╗
+             ██╔═══╝ ██╔══██╗██║   ██║██║  ██║██║   ██║██╔═██╗    ██║   ██╔══╝
+             ██║     ██║  ██║╚██████╔╝██████╔╝╚██████╔╝██║  ██╗   ██║   ███████╗
+             ╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝
+             ═══════════════════════════════════════════════════════════════════
+        
+        """)
+        
+        print("     Nr.  Produkt                             Artikel-Nr          Preis       Bestand   Feature             ")
+        print("     ═══════════════════════════════════════════════════════════════════════════════════════════════════════")
+        
+        for (index,i) in produkteListe.enumerated() {
+        
+            if let iMac = i as? IMac { // (if i is IMac) liefert nur den Typ, kein Zugriff auf spezifische eigenschaften daher ( i as? IMac
+                // Greift jetzt auf die eigenschaften des MacBooks zurück
+            
+                let index_ = String(index + 1).spaltenbreite(laenge: 5)
+                let name_ = iMac.name.spaltenbreite(laenge: 35)
+                let artikelNr_ = iMac.artikelNr.spaltenbreite(laenge: 20)
+                let preis_ = String(iMac.preis).spaltenbreite(laenge: 12)
+                let bestad_ = String(iMac.lagerbestand).spaltenbreite(laenge: 10)
+                let feature_ = iMac.caseColor.spaltenbreite(laenge: 13)
+                
+                print("     \(index_)\(name_)\(artikelNr_)\(preis_)\(bestad_)Farbe: \(feature_)")
+                
+            }
+            else if let macBookAir = i as? MacBookAir {
+                
+                let index_ = String(index + 1).spaltenbreite(laenge: 5)
+                let name_ = macBookAir.name.spaltenbreite(laenge: 35)
+                let artikelNr_ = macBookAir.artikelNr.spaltenbreite(laenge: 20)
+                let preis_ = String(macBookAir.preis).spaltenbreite(laenge: 12)
+                let bestad_ = String(macBookAir.lagerbestand).spaltenbreite(laenge: 10)
+                let feature_ = macBookAir.prozessor.spaltenbreite(laenge: 13)
+                
+                print("     \(index_)\(name_)\(artikelNr_)\(preis_)\(bestad_)Prozessor: \(feature_)")
+                
+            }
+            else if let iPhone = i as? IPhone {
+                
+                let index_ = String(index + 1).spaltenbreite(laenge: 5)
+                let name_ = iPhone.name.spaltenbreite(laenge: 35)
+                let artikelNr_ = iPhone.artikelNr.spaltenbreite(laenge: 20)
+                let preis_ = String(iPhone.preis).spaltenbreite(laenge: 12)
+                let bestad_ = String(iPhone.lagerbestand).spaltenbreite(laenge: 10)
+                let feature_ = String(iPhone.speicher).spaltenbreite(laenge: 13)
+                
+                print("     \(index_)\(name_)\(artikelNr_)\(preis_)\(bestad_)Speicher (RAM): \(feature_)")
+                
+            }
+        }
+        print()
+    }
+    
     
     
 }

@@ -55,7 +55,7 @@ class Kunde {
         let betragBerechnet = Int(betrag / 10)
         bonuspunkte += betragBerechnet
         
-        
     }
+
 
 }

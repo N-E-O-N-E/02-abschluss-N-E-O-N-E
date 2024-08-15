@@ -9,10 +9,7 @@ func start() {
              
         
         
-        
-        
-        
-        
+
         
         
         
@@ -52,9 +49,68 @@ func start() {
             
         case "l":
             
-            Thread.exit()
             
             
+            print("""
+            
+            
+            
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+                    
+                ██     ██ ██ ██      ██      ██   ██  ██████  ███    ███ ███    ███ ███████ ███    ██
+                ██     ██ ██ ██      ██      ██  ██  ██    ██ ████  ████ ████  ████ ██      ████   ██
+                ██  █  ██ ██ ██      ██      █████   ██    ██ ██ ████ ██ ██ ████ ██ █████   ██ ██  ██
+                ██ ███ ██ ██ ██      ██      ██  ██  ██    ██ ██  ██  ██ ██  ██  ██ ██      ██  ██ ██
+                 ███ ███  ██ ███████ ███████ ██   ██  ██████  ██      ██ ██      ██ ███████ ██   ████
+            
+                ██████████████ Herzlich Willkommen in unserem neuen Apple OnlineStore. ██████████████
+                                                                                                  
+            """)
+            
+            print("\tWie ist deine Kundennummer:", terminator: " ")
+            let eingabe_Kundennummer = readLine() ?? ""
+            
+            print("\tWie ist dein Passwort:", terminator: " ")
+            let eingabePasswort = readLine() ?? ""
+            
+            func findeKunde(kundeListe: [Kunde], kundenNr: String, passwort: String) -> Kunde? {
+                
+                if let kunde = kundeListe.first(where: { $0.kundenNr == kundenNr }) {
+                    if kunde.passwort == eingabePasswort {
+                        print("\t✅ Hallo \(kunde.name), du wurdest erfolgreich angemeldet.")
+                        sleep(4)
+                        return kunde
+                    }
+                    else {
+                        print("\t❌ Falsches Passwort!")
+                        return nil
+                    }
+                } else {
+                    print("\t❌ Kundennummer nicht in der Datenbank gefunden!")
+                    sleep(2)
+                    return nil
+                }
+            }
+            
+            
+            if let gefundenerKunde = findeKunde(kundeListe: kundenListe, kundenNr: eingabe_Kundennummer, passwort: eingabePasswort) {
+                shop_1.startShopping(aktiverKunde: gefundenerKunde)
+            } else {
+                print("\t❌ Anmeldung fehlgeschlagen!")
+                sleep(2)
+            }
+            
+            
+    
         case "r":
             
             repeat {
