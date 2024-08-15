@@ -56,7 +56,7 @@ struct Shop {
     mutating func kundeHinzufuegen(to array: inout [Kunde], neuerKunde: Kunde) {
         
         array.append(neuerKunde)
-        print("\n\t👍 Kunde hinzugefügt!")
+        print("\n\t👍 Super, jetzt kannst du dich einloggen. Viel Spaß!")
         sleep(1)
     }
     
@@ -203,7 +203,6 @@ struct Shop {
                     if kundenauswahl <= maxIndex {
                         
                         let kundenauswahlProdukt = produkteListe[kundenauswahl - 1]
-                        
                         betragBonuspunkte = kundenauswahlProdukt.preis
                         
                         if kundenauswahlProdukt.lagerbestand >= 1 {
@@ -346,12 +345,28 @@ struct Shop {
         if gesamtpreis > 0 {
             
             print("\tHallo \(aktiverKunde.name), Hier findest du eine kurze Übersicht.\n")
-            print("\tMenge\tArtikelname")
-            print("\t-----------------------------------------")
+            print("\tMenge\tArtikelname/Feature")
+            print("\t-------------------------------------------------")
             
             for (artikelNr, menge) in aktiverKunde.warenkorb.produkte {
                 let produktMatch = aktiverKunde.warenkorb.findeArtikel(liste: produkteListe, artikelnummer: artikelNr )
-                print("\t\(menge)\t\t\(produktMatch!.name)")
+                
+                if let iMac = produktMatch as? IMac {
+                    let name_ = iMac.name
+                    let feature_ = iMac.caseColor
+                    print("\t\(menge)\t\t\(name_)\t\tFarbe: \(feature_)")
+                }
+                if let MacBookAir = produktMatch as? MacBookAir {
+                    let name_ = MacBookAir.name
+                    let feature_ = MacBookAir.prozessor
+                    print("\t\(menge)\t\t\(name_)\t\tProzessor: \(feature_)")
+                }
+                if let iPhone = produktMatch as? IPhone {
+                    let name_ = iPhone.name
+                    let feature_ = iPhone.speicher
+                    print("\t\(menge)\t\t\(name_)\t\tRAM: \(feature_) GB")
+                }
+                
                 
             }
            

@@ -16,6 +16,10 @@ class IMac: Produkt {
         super.init(artikelNr: artikelNr, name: name, preis: preis, lagerbestand: lagerbestand)
     }
     
+    override func reduziereLagerbestand(bestand: Int) {
+        self.lagerbestand -= bestand
+    }
+    
     override func anzeigen() {
         print("\tName: \(name), Preis: \(preis) EUR, Farbe: \(caseColor)")
     }

@@ -124,15 +124,43 @@ struct Warenkorb: Geschenkoptionen {
             for (artikelkNr, menge) in produkte {
                 let produktMatch = findeArtikel(liste: produkteListe, artikelnummer: artikelkNr)
                 
-                print("""
+                if let iMac = produktMatch as? IMac {
+                    print("""
 
-    Produkt:     \(produktMatch!.name)
-    Stückpreis:  \(produktMatch!.preis) €
-    Menge:       \(menge) Stück
-    Gesamt:      \(((produktMatch!.preis) * Double(menge)).formatierterPreis) €
-    Artikel-Nr:  \(artikelkNr)
+        Produkt:     \(iMac.name)
+        Farbe:       \(iMac.caseColor)
+        Stückpreis:  \(iMac.preis) €
+        Menge:       \(menge) Stück
+        Gesamt:      \(((iMac.preis) * Double(menge)).formatierterPreis) €
+        Artikel-Nr:  \(artikelkNr)
 
-""")
+    """)
+                }
+                if let MacBookAir = produktMatch as? MacBookAir {
+                    print("""
+
+        Produkt:     \(MacBookAir.name)
+        Prozessor:   \(MacBookAir.prozessor)
+        Stückpreis:  \(MacBookAir.preis) €
+        Menge:       \(menge) Stück
+        Gesamt:      \(((MacBookAir.preis) * Double(menge)).formatierterPreis) €
+        Artikel-Nr:  \(artikelkNr)
+
+    """)
+                }
+                if let iPhone = produktMatch as? IPhone {
+                    print("""
+
+        Produkt:     \(iPhone.name)
+        Speicher:    \(iPhone.speicher) GB
+        Stückpreis:  \(iPhone.preis) €
+        Menge:       \(menge) Stück
+        Gesamt:      \(((iPhone.preis) * Double(menge)).formatierterPreis) €
+        Artikel-Nr:  \(artikelkNr)
+
+    """)
+                }
+                
             }
         }
         
