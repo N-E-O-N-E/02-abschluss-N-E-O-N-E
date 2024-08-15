@@ -112,6 +112,7 @@ struct Warenkorb {
             
             for (artikelkNr, menge) in produkte {
                 let produktMatch = findeArtikel(liste: produkteListe, artikelnummer: artikelkNr)
+                
                 print("""
 
     Produkt:     \(produktMatch?.name ?? "Fehler")

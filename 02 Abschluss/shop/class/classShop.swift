@@ -7,10 +7,10 @@
 
 import Foundation
 
-class Shop {
+struct Shop {
     
     let produkte: [Produkt]
-    let kunden: [Kunde]
+    var kunden: [Kunde]
     var status: ShopStatus
     
     init(produkte: [Produkt], kunden: [Kunde], status: ShopStatus) {
@@ -24,8 +24,23 @@ class Shop {
         let _ = readLine()
     }
     
+    mutating func kundeHinzufuegen(to array: inout [Kunde], neuerKunde: Kunde) {
+        
+        array.append(neuerKunde)
+
+        print("\n\t👍 Kunde hinzugefügt!")
+        sleep(1)
+    }
     
-    func startShopping(aktiverKunde: Kunde) {
+    mutating func startShopping(aktiverKunde: Kunde) {
+        
+        print("""
+
+\tAktuell im Shop sind folgende Besucher: \n
+""")
+        for kunden in kundenListe {
+            print("\t\(kunden.name)")
+        }
         
         print("""
         
@@ -64,7 +79,7 @@ class Shop {
 
         print("""
 
-    Profil von \(aktiverKunde.name)
+    Kundenprofil von \(aktiverKunde.name)
     ------------------------------------
 
     1) 🙍‍♂️ Kundenkonto anzeigen
@@ -72,8 +87,7 @@ class Shop {
     3) 🛒 Warenkorb anzeigen
     4) 💳 Bestellung abschließen
 
-    5) ☝️ Abmelden
-    6) 👋 Bestellvorgang abbrechen
+    5) 👋 Bestellvorgang abbrechen
 
 """)
         print("\tViel Spaß beim Shoppen.\n\tTriff eine Auswahl ▶︎ ", terminator: " ")
@@ -259,16 +273,9 @@ class Shop {
         case 4:
             
             status = ShopStatus.bestellabschluss
-            
             Thread.exit()
             
         case 5:
-            print("\n\t>>> Du wirst jetzt abgemeldet. Bis Bald 🙋‍♂️")
-            sleep(2)
-            break
-            
-            
-        case 6:
             print("\n\t>>> Vielen Dank für deinen Besuch. Bis Bald 🙋‍♂️")
             sleep(2)
             Thread.exit()
