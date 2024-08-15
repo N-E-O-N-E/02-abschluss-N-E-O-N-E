@@ -11,7 +11,32 @@ struct Shop {
     
     let produkte: [Produkt]
     var kunden: [Kunde]
-    var status: ShopStatus
+    var status: ShopStatus {
+        didSet {
+            if status == .bestellbestaetigung  {
+                print()
+                print("\tDein Warenkorb wird geladen!\n")
+                for _ in 1...5 {
+                    print("\t🛍️", terminator: " ")
+                    Thread.sleep(forTimeInterval: 0.4)
+                }
+            } else if status == .bestellabschluss{
+                print()
+                print("\tDer Zahlungsprozess wird geladen!\n")
+                for _ in 1...5 {
+                    print("\t💰", terminator: " ")
+                    Thread.sleep(forTimeInterval: 0.4)
+                }
+            } else if status == .shopping{
+                print()
+                print("\tDaten werden geladen...\n")
+                for _ in 1...5 {
+                    print("\t🔍", terminator: " ")
+                    Thread.sleep(forTimeInterval: 0.4)
+                }
+            }
+        }
+    }
     
     init(produkte: [Produkt], kunden: [Kunde], status: ShopStatus) {
         self.produkte = produkte
@@ -272,6 +297,38 @@ struct Shop {
         case 4:
             
             status = ShopStatus.bestellabschluss
+            
+            print("""
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+             ██████╗██╗  ██╗███████╗ ██████╗██╗  ██╗ ██████╗ ██╗   ██╗████████╗
+            ██╔════╝██║  ██║██╔════╝██╔════╝██║ ██╔╝██╔═══██╗██║   ██║╚══██╔══╝
+            ██║     ███████║█████╗  ██║     █████╔╝ ██║   ██║██║   ██║   ██║
+            ██║     ██╔══██║██╔══╝  ██║     ██╔═██╗ ██║   ██║██║   ██║   ██║
+            ╚██████╗██║  ██║███████╗╚██████╗██║  ██╗╚██████╔╝╚██████╔╝   ██║
+            ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝    ╚═╝
+            ══════════════════════════════════════════════════════════════════
+
+        """)
+            
+            beliebigetaste()
+            
             Thread.exit()
             
         case 5:
