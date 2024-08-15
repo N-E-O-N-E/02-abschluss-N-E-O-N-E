@@ -52,7 +52,7 @@ class Kunde {
     
     func bonuspunkteAktualisieren(betrag: Double) {
         
-        let betragBerechnet = Int(betrag / 10)
+        let betragBerechnet = Int(betrag * 15)
         bonuspunkte += betragBerechnet
         
     }

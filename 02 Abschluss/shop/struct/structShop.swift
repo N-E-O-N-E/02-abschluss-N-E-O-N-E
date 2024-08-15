@@ -27,7 +27,6 @@ struct Shop {
     mutating func kundeHinzufuegen(to array: inout [Kunde], neuerKunde: Kunde) {
         
         array.append(neuerKunde)
-
         print("\n\t👍 Kunde hinzugefügt!")
         sleep(1)
     }
@@ -209,7 +208,7 @@ struct Shop {
                                         
                                         aktiverKunde.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: kundenauswahlProdukt.lagerbestand)
                                         kundenauswahlProdukt.reduziereLagerbestand(bestand: kundenauswahlProdukt.lagerbestand)
-                                        aktiverKunde.bonuspunkteAktualisieren(betrag: betragBonuspunkte)
+                                        aktiverKunde.bonuspunkteAktualisieren(betrag: betragBonuspunkte * Double(mengeAuswahl))
                                         beliebigetaste()
                                     }
                                     

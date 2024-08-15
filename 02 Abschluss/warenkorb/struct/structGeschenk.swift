@@ -24,5 +24,9 @@ struct Geschenk {
 
 """)
     }
+    
+    func geschenkHinzufügen() {
+        
+    }
 
 }
