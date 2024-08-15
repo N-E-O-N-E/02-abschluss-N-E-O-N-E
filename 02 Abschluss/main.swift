@@ -216,7 +216,9 @@ func start() {
                 
                 if let gueltigerKunde = aktivenKundenAnlegen() {
                     shop_1.kundeHinzufuegen(to: &kundenListe, neuerKunde: gueltigerKunde)
-                    shop_1.startShopping(aktiverKunde: gueltigerKunde)
+                    //shop_1.startShopping(aktiverKunde: gueltigerKunde)
+                    break
+                    
                 }
                 
             } while true

@@ -120,7 +120,8 @@ struct Shop {
     2) 🛍️ Produkte
     3) 🛒 Warenkorb
     4) 💳 Zahlung
-    5) 👋 Beenden
+    5) 👋 Abmelden
+    6) 🚪 Beenden
 
 """)
         print("\tViel Spaß beim Shoppen.\n\tTriff eine Auswahl ▶︎ ", terminator: " ")
@@ -379,6 +380,10 @@ struct Shop {
         }
             
         case 5:
+
+            break
+            
+        case 6:
             print("\n\t>>> Vielen Dank für deinen Besuch. Bis Bald 🙋‍♂️")
             sleep(2)
             Thread.exit()
