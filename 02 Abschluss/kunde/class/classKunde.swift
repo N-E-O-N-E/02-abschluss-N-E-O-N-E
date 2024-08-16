@@ -14,20 +14,25 @@ class Kunde {
     var passwort: String
     var kontostand: Double {
         didSet {
-            print("\t💰 Dein Kontostand wurde aktualisiert! <<<\n")
+            print("\t💰 Dein Konto wurde mit \(kontostand - oldValue) € belastet! <<<\n")
             sleep(1)
         }
     }
     var bonuspunkte: Int {
         didSet {
             print("\t🔸 Deine Bonuspounkte wurden aktualisiert! <<<")
-            print("\tDu hast \(bonuspunkte - oldValue) Bonuspunkte erhalten!\n")
+            print("\t   Bonuspunkte: \(bonuspunkte - oldValue)\n")
             sleep(1)
         }
     }
     var warenkorb: Warenkorb {
         didSet {
-            print("\t🛍️ Dein Warenkorb wurde aktualisiert!\n")
+            if warenkorb.produkte.isEmpty {
+                print("\t🛍️ Warenkorb enthält keine Artikel mehr!\n")
+            } else {
+                print("\t🛍️ Warenkorb aktualisiert!\n")
+            }
+            
             sleep(1)
         }
     }
@@ -54,12 +59,10 @@ class Kunde {
     }
     
     func bonuspunkteAktualisieren(betrag: Double) {
-        let betragBerechnet = Int(betrag * 15)
-        bonuspunkte += betragBerechnet
+        bonuspunkte += Int(betrag * 15)
     }
     
-    func bonuspunkteReduzieren(betrag: Double) {
-        let betragBerechnet = Int(betrag * 15)
-        bonuspunkte -= betragBerechnet
+    func bonuspunkteReduzieren(punkte: Int) {
+        bonuspunkte -= punkte
     }
 }

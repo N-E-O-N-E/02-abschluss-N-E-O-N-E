@@ -355,7 +355,8 @@ struct Shop {
 
     """)
             var gesamtpreis = shopUser.warenkorb.gesamtpreis(liste: produkteListe)
-            let bonuspunkteBetrag = shopUser.bonuspunkte / 1000
+            var bonuspunkte = shopUser.bonuspunkte
+            let bonuspunkteBetrag = Double(bonuspunkte / 1000)
                 
             if gesamtpreis > 0 {
                 
@@ -387,22 +388,33 @@ struct Shop {
                
                 print()
                 print("\tWarenkorb Gesamtwert: \(gesamtpreis.formatierterPreis) €")
-                print("\tAktuelle Bonuspunkte: \(shopUser.bonuspunkte) (\(bonuspunkteBetrag) €)\n")
+                print("\tAktuelle Bonuspunkte: \(bonuspunkte) (\(bonuspunkteBetrag) €)\n")
                 
                 let auswahlGeschenk = shopUser.warenkorb.geschenkOption(warenkorbWert: gesamtpreis)
                 if let geschenk = auswahlGeschenk {
                     shopUser.warenkorb.geschenkHinzu(neuesGeschenk: geschenk)
                 }
                 
-                let rabattPruefen = shopUser.warenkorb.berechneRabatt(rabatt: randDeal, preis: gesamtpreis)
+                let rabattPreis = shopUser.warenkorb.berechneRabatt(rabatt: randDeal, preis: gesamtpreis)
                 let prozentFormatiert = randDeal.formatierterPreisOhneKomma
                 print("\t🔥 BlackWeek! Heute ist alles \(prozentFormatiert) reduziert!")
-                print("\t🔥 Heute zahlst du statt \(gesamtpreis.formatierterPreis) € nur \(rabattPruefen.formatierterPreis) €")
+                print("\t🔥 Heute zahlst du statt \(gesamtpreis.formatierterPreis) € nur \(rabattPreis.formatierterPreis) €\n")
                 
-                gesamtpreis = rabattPruefen // neuer Preis mit Rabatt
+                gesamtpreis = rabattPreis // neuer Preis mit Rabatt
+                
+                sleep(1)
+                print("\tDeine Bonuspunkte wurden auf den Warenkorbwert angerechnet!")
+                shopUser.bonuspunkteReduzieren(punkte: bonuspunkte)
+                
+                sleep(1)
+               
+                let endpreis = gesamtpreis - bonuspunkteBetrag
+                shopUser.kontostandReduzieren(betrag: endpreis)
+                aktiverKunde.warenkorb.warenkorbLeeren()
+                print("\t>>>>> Die Zahlung war erfolgreich! Vielen Dank für deinen Einkauf! <<<<<\n")
+                print(shopUser.bonuspunkte, gesamtpreis, endpreis)
                 
                 beliebigetaste()
-                //startShopping(aktiverKunde: shopUser)
                 
             } else {
                 print("\t🔴 Du hast keine Artikel im Warenkorb!\n")
@@ -413,7 +425,7 @@ struct Shop {
                 
             case 5:
                 
-                // Produkte aus dem Warenkorb müssen widder zurückgebucht werden
+                // Produkte aus dem Warenkorb müssen wieder zurückgebucht werden
                 
                 aktiverKunde.warenkorb.produkte.forEach { artikel in
                     produkteListe.forEach { treffer in
@@ -422,8 +434,6 @@ struct Shop {
                         }
                     }
                 }
-                
-                let _ = readLine() // muss noch raus
                 
                 aktiverKunde.warenkorb.warenkorbLeeren()
                 programmLaeuft = false

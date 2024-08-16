@@ -133,7 +133,7 @@ struct Warenkorb: Geschenkoptionen {
 
         Produkt:     \(iMac.name)
         Farbe:       \(iMac.caseColor)
-        Stückpreis:  \(iMac.preis) €
+        Stückpreis:  \(iMac.preis.formatierterPreis) €
         Menge:       \(menge) Stück
         Gesamt:      \(((iMac.preis) * Double(menge)).formatierterPreis) €
         Artikel-Nr:  \(artikelkNr)
