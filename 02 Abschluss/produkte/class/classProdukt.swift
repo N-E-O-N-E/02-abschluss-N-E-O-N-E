@@ -24,6 +24,10 @@ class Produkt: Kaufbar {
         lagerbestand -= bestand
     }
     
+    func erhoeheLagerbestand(bestand: Int) {
+        lagerbestand += bestand
+    }
+    
     func anzeigen() {
         print("Lagerbestand: \(lagerbestand)\t\(name) für \(preis) EUR")
     }

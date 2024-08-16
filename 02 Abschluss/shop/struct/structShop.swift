@@ -413,6 +413,19 @@ struct Shop {
                 
             case 5:
                 
+                // Produkte aus dem Warenkorb müssen widder zurückgebucht werden
+                
+                aktiverKunde.warenkorb.produkte.forEach { artikel in
+                    produkteListe.forEach { treffer in
+                        if treffer.artikelNr == artikel.key {
+                            treffer.lagerbestand += artikel.value
+                        }
+                    }
+                }
+                
+                let _ = readLine() // muss noch raus
+                
+                aktiverKunde.warenkorb.warenkorbLeeren()
                 programmLaeuft = false
                 break
                 

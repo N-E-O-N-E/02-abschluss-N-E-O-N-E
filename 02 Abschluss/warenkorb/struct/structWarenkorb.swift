@@ -77,6 +77,10 @@ struct Warenkorb: Geschenkoptionen {
         return gesamtsumme
     }
     
+    mutating func warenkorbLeeren() {
+        produkte.removeAll()
+    }
+    
     func anzeigen(aktiverKunde: Kunde) {
         
         print("""

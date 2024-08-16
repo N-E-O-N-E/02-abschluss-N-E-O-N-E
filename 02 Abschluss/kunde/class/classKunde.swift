@@ -14,7 +14,7 @@ class Kunde {
     var passwort: String
     var kontostand: Double {
         didSet {
-            print("\t▶︎ Dein Kontostand wurde aktualisiert! <<<\n")
+            print("\t💰 Dein Kontostand wurde aktualisiert! <<<\n")
             sleep(1)
         }
     }
@@ -27,7 +27,7 @@ class Kunde {
     }
     var warenkorb: Warenkorb {
         didSet {
-            print("\t▶︎ Dein Warenkorn wurde aktualisiert! <<<\n")
+            print("\t🛍️ Dein Warenkorb wurde aktualisiert!\n")
             sleep(1)
         }
     }
