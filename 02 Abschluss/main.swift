@@ -3,6 +3,11 @@ import Foundation
 func start() {
     var programmLaeuft = true
     repeat {
+        for _ in 1...20 {
+            print("    █", terminator: "")
+            Thread.sleep(forTimeInterval: 0.1)
+        }
+        
         print("""
             
         
@@ -69,6 +74,10 @@ func start() {
         switch auswahl.lowercased() {
             
         case "l":
+            for _ in 1...20 {
+                print("    █", terminator: "")
+                Thread.sleep(forTimeInterval: 0.1)
+            }
             print("""
                    
             
@@ -147,6 +156,11 @@ func start() {
             }
             
         case "r":
+            for _ in 1...20 {
+                print("    █", terminator: "")
+                Thread.sleep(forTimeInterval: 0.1)
+            }
+            
                 print("""
             
             

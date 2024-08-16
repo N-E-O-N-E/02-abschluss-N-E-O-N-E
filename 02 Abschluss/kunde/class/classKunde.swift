@@ -14,15 +14,23 @@ class Kunde {
     var passwort: String
     var kontostand: Double {
         didSet {
-            print("\t💰 Dein Konto wurde mit \(kontostand - oldValue) € belastet! <<<\n")
+            for _ in 1...4 {
+                print("\t💰", terminator: " ")
+                Thread.sleep(forTimeInterval: 0.4)
+            }
+            print("\t💰 Dein Konto wurde mit \(oldValue - kontostand) € belastet! <<<\n")
             sleep(1)
         }
     }
     var bonuspunkte: Int {
         didSet {
+            for _ in 1...4 {
+                print("\t🔸", terminator: " ")
+                Thread.sleep(forTimeInterval: 0.4)
+            }
             print("\t🔸 Deine Bonuspounkte wurden aktualisiert! <<<")
             print("\t   Bonuspunkte: \(bonuspunkte - oldValue)\n")
-            sleep(1)
+            sleep(3)
         }
     }
     var warenkorb: Warenkorb {
@@ -30,10 +38,14 @@ class Kunde {
             if warenkorb.produkte.isEmpty {
                 print("\t🛍️ Warenkorb enthält keine Artikel mehr!\n")
             } else {
-                print("\t🛍️ Warenkorb aktualisiert!\n")
+                for _ in 1...4 {
+                    print("\t🛍️", terminator: " ")
+                    Thread.sleep(forTimeInterval: 0.4)
+                }
+                print("\t🛍️ Warenkorb wurde aktualisiert!\n")
+                sleep(2)
             }
-            
-            sleep(1)
+            sleep(2)
         }
     }
     

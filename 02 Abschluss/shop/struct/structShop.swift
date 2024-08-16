@@ -61,6 +61,11 @@ struct Shop {
 //    }
     
     mutating func startShopping(aktiverKunde: Kunde) {
+        for _ in 1...20 {
+            print("    █", terminator: "")
+            Thread.sleep(forTimeInterval: 0.1)
+        }
+        
         var programmLaeuft = true
         
         repeat {
@@ -401,19 +406,23 @@ struct Shop {
                 print("\t🔥 Heute zahlst du statt \(gesamtpreis.formatierterPreis) € nur \(rabattPreis.formatierterPreis) €\n")
                 
                 gesamtpreis = rabattPreis // neuer Preis mit Rabatt
+                let endpreis = gesamtpreis - bonuspunkteBetrag
                 
                 sleep(1)
                 print("\tDeine Bonuspunkte wurden auf den Warenkorbwert angerechnet!")
                 shopUser.bonuspunkteReduzieren(punkte: bonuspunkte)
+                print("\t🔥 Du zahlst heute nur \(endpreis) €\n")
                 
                 sleep(1)
                
-                let endpreis = gesamtpreis - bonuspunkteBetrag
+                
+                print("\t")
                 shopUser.kontostandReduzieren(betrag: endpreis)
                 aktiverKunde.warenkorb.warenkorbLeeren()
-                print("\t>>>>> Die Zahlung war erfolgreich! Vielen Dank für deinen Einkauf! <<<<<\n")
-                print(shopUser.bonuspunkte, gesamtpreis, endpreis)
                 
+                print("\t>>>>> Die Zahlung war erfolgreich! Vielen Dank für deinen Einkauf! <<<<<")
+                print("\t████████████████████████████████████████████████████████████████████████\n\n")
+              
                 beliebigetaste()
                 
             } else {
