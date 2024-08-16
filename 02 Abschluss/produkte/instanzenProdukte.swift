@@ -39,9 +39,19 @@ let produkteListe = [
 ]
 
 
-let geschenk_1 = Geschenk(name: "SanDisk iXpand Flash 256 GB", wert: 49.95, beschreibung: "Ein 2-in-1 USB-C Stick mit Metallgehäuse und 256 GB Speicher.")
-let geschenk_2 = Geschenk(name: "Beats Solo Buds In-Ear", wert: 89.95, beschreibung: "Kraftvolle In-Ear Kopfhörer mit bis zu 18 Stunden Batterielaufzeit.")
-let geschenk_3 = Geschenk(name: "Apple Gift Card 250", wert: 250, beschreibung: "Unbeschwert Shoppen mit der Apple Gift Card.")
 
 let geschenkListe = [
-    geschenk_1, geschenk_2, geschenk_3 ]
+    
+    Geschenk(name: "SanDisk iXpand Flash 256 GB", 
+             wert: 49.95,
+             beschreibung: "Ein 2-in-1 USB-C Stick mit Metallgehäuse und 256 GB Speicher."),
+    
+    Geschenk(name: "Beats Solo Buds In-Ear", 
+             wert: 89.95,
+             beschreibung: "Kraftvolle In-Ear Kopfhörer mit bis zu 18 Stunden Batterielaufzeit."),
+    
+    Geschenk(name: "Apple Gift Card 250", 
+             wert: 250,
+             beschreibung: "Unbeschwert Shoppen mit der Apple Gift Card.")
+
+]

@@ -37,13 +37,13 @@ struct Warenkorb: Geschenkoptionen {
     func geschenkOption(warenkorbWert: Double) -> Geschenk? {
         
         if warenkorbWert <= geschenkGrenzen.0 {
-            return geschenk_1
+            return geschenkListe[0]
         }
         else if warenkorbWert > geschenkGrenzen.0 && warenkorbWert <= geschenkGrenzen.1 {
-            return geschenk_2
+            return geschenkListe[1]
         }
         else if warenkorbWert > geschenkGrenzen.1 {
-            return geschenk_3
+            return geschenkListe[2]
         }
         return nil
     }
