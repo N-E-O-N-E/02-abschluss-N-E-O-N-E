@@ -40,7 +40,6 @@ extension Double {
         
         let neuesFormat = NumberFormatter()
         neuesFormat.numberStyle = .percent
-        
         // Konvertiert den Double (self) in ein NSNumber-Objekt für die Methode string(from:)
         return neuesFormat.string(from: NSNumber(value: self)) ?? "Fehler"
     }

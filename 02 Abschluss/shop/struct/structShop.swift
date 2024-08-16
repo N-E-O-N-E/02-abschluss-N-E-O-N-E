@@ -418,7 +418,6 @@ struct Shop {
                 
             case 6:
                 print("\n\t>>> Vielen Dank für deinen Besuch. Bis Bald 🙋‍♂️")
-                sleep(1)
                 Thread.exit()
                 // Bestellung abbrechen
             
