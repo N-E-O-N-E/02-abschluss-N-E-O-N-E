@@ -24,7 +24,7 @@ class IMac: Produkt {
         print("\tName: \(name), Preis: \(preis) EUR, Farbe: \(caseColor)")
     }
     
-    func upgradeScreenSize() {
+    func upgradeCaseColor() {
         
     }
     

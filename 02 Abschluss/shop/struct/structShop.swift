@@ -43,7 +43,7 @@ struct Shop {
     init(produkte: [Produkt], kunden: [Kunde], status: ShopStatus) {
         self.produkte = produkte
         self.kunden = kunden
-        self.tagesDeals = [0.5, 0.10, 0.15, 0.20, 0.25]
+        self.tagesDeals = [0.05, 0.10, 0.15, 0.20, 0.25]
         self.status = status
     }
     
@@ -380,7 +380,8 @@ struct Shop {
             }
             
             let rabattPruefen = aktiverKunde.warenkorb.berechneRabatt(rabatt: randDeal, preis: gesamtpreis)
-            print("\t🔥 BlackWeek! Heute ist alles \(randDeal*100)% reduziert!")
+            let prozentFormatiert = randDeal.formatierterPreisOhneKomma
+            print("\t🔥 BlackWeek! Heute ist alles \(prozentFormatiert) reduziert!")
             print("\t🔥 Heute zahlst du statt \(gesamtpreis.formatierterPreis) € nur \(rabattPruefen.formatierterPreis) €")
             
             gesamtpreis = rabattPruefen

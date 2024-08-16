@@ -32,6 +32,16 @@ extension Double {
         neuesFormat.maximumFractionDigits = 2
         
         // Konvertiert den Double (self) in ein NSNumber-Objekt für die Methode string(from:)
-        return neuesFormat.string(from: NSNumber(value: self)) ?? "kein Wert"
+        return neuesFormat.string(from: NSNumber(value: self)) ?? "Fehler"
+    }
+    
+    // Formatierung in Prozent %
+    var formatierterPreisOhneKomma: String {
+        
+        let neuesFormat = NumberFormatter()
+        neuesFormat.numberStyle = .percent
+        
+        // Konvertiert den Double (self) in ein NSNumber-Objekt für die Methode string(from:)
+        return neuesFormat.string(from: NSNumber(value: self)) ?? "Fehler"
     }
 }
