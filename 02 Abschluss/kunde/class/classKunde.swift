@@ -9,7 +9,7 @@ import Foundation
 
 class Kunde {
     
-    let kundenNr: String
+    var kundenNr: String 
     let name: String
     var passwort: String
     var kontostand: Double {
@@ -41,6 +41,13 @@ class Kunde {
         self.warenkorb = Warenkorb()
         
     }
+    
+    func kundeHinzufuegen(neuerKunde: Kunde) {
+        
+        kundenListe.append(neuerKunde)
+        print("\n\t👍 Super, deine KundenNr. ist: \(neuerKunde.kundenNr). Viel Spaß!")
+        sleep(2)
+    }
 
     func kontostandReduzieren(betrag: Double) {
         kontostand -= betrag
@@ -49,5 +56,10 @@ class Kunde {
     func bonuspunkteAktualisieren(betrag: Double) {
         let betragBerechnet = Int(betrag * 15)
         bonuspunkte += betragBerechnet
+    }
+    
+    func bonuspunkteReduzieren(betrag: Double) {
+        let betragBerechnet = Int(betrag * 15)
+        bonuspunkte -= betragBerechnet
     }
 }

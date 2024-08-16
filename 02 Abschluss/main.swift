@@ -1,6 +1,7 @@
 import Foundation
 
 func start() {
+    var programmLaeuft = true
     repeat {
         print("""
             
@@ -68,7 +69,6 @@ func start() {
         switch auswahl.lowercased() {
             
         case "l":
-            
             print("""
                    
             
@@ -147,7 +147,6 @@ func start() {
             }
             
         case "r":
-            repeat {
                 print("""
             
             
@@ -195,17 +194,17 @@ func start() {
             """)
                 
                 func aktivenKundenAnlegen() -> Kunde? {
-                    
+
                     print("\tGib deinen Vor- und Nachnamen für das neue Konto ein:", terminator: " ")
                     guard let name = readLine(), !name.isEmpty else {
                         print("\t❌ Du musst einen gültigen Namen eingeben!")
-                        sleep(2)
+                        sleep(1)
                         return nil
                     }
                     print("\tVergib ein Passwort:", terminator: " ")
                     guard let passwort = readLine(), !passwort.isEmpty else {
                         print("\t❌ Du musst ein gültiges Passwort eingeben!")
-                        sleep(2)
+                        sleep(1)
                         return nil
                     }
                     
@@ -215,24 +214,21 @@ func start() {
                 }
                 
                 if let gueltigerKunde = aktivenKundenAnlegen() {
-                    shop_1.kundeHinzufuegen(to: &kundenListe, neuerKunde: gueltigerKunde)
-                    //shop_1.startShopping(aktiverKunde: gueltigerKunde)
-                    break
-                    
+                    //shop_1.kundeHinzufuegen(to: &kundenListe, neuerKunde: gueltigerKunde)
+                    gueltigerKunde.kundeHinzufuegen(neuerKunde: gueltigerKunde)
+                    shop_1.startShopping(aktiverKunde: gueltigerKunde)
                 }
-                
-            } while true
             
         case "b":
             print("\n    >>> Vielen Dank für deinen Besuch. Bis Bald 🙋‍♂️")
-            sleep(2)
-            Thread.exit()
+            sleep(1)
+            programmLaeuft = false
             
         default:
             print("\n    >>> Vielen Dank für deinen Besuch. Bis Bald 🙋‍♂️")
         }
         
-    } while true
+    } while programmLaeuft
                 
 }
 

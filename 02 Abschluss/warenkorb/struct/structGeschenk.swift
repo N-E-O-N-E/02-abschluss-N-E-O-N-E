@@ -15,13 +15,13 @@ struct Geschenk {
     
     
     func anzeigen() {
-        
         print("""
 
     Zugabe:         \(name)
-    Warenwert:      \(wert) €
+    Warenwert:      \(wert.formatierterPreis) €
     Beschreibung:   \(beschreibung)
 
-""")
+    """)
+        
     }
 }

@@ -53,365 +53,386 @@ struct Shop {
         
     }
     
-    mutating func kundeHinzufuegen(to array: inout [Kunde], neuerKunde: Kunde) {
-        
-        array.append(neuerKunde)
-        print("\n\t👍 Super, jetzt kannst du dich einloggen. Viel Spaß!")
-        sleep(1)
-    }
+//    mutating func kundeHinzufuegen(to array: inout [Kunde], neuerKunde: Kunde) {
+//        
+//        array.append(neuerKunde)
+//        print("\n\t👍 Super, das hat geklappt. Viel Spaß!")
+//        sleep(1)
+//    }
     
     mutating func startShopping(aktiverKunde: Kunde) {
+        var programmLaeuft = true
         
-        let randDeal = tagesDeals.randomElement()!
+        repeat {
         
-        print("""
-
-\tAktuell im Shop registrierte Kunden: \n
-""")
-        for kunden in kundenListe {
-            print("\t\(kunden.kundenNr)")
-        }
-        
-        print("""
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-            ╔════════════════════════════════════════════════════════════════════════════════════════╗
-            ║  █████╗ ██████╗ ██████╗ ██╗     ███████╗    ███████╗████████╗ ██████╗ ██████╗ ███████╗ ║
-            ║ ██╔══██╗██╔══██╗██╔══██╗██║     ██╔════╝    ██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗██╔════╝ ║
-            ║ ███████║██████╔╝██████╔╝██║     █████╗      ███████╗   ██║   ██║   ██║██████╔╝█████╗   ║
-            ║ ██╔══██║██╔═══╝ ██╔═══╝ ██║     ██╔══╝      ╚════██║   ██║   ██║   ██║██╔══██╗██╔══╝   ║
-            ║ ██║  ██║██║     ██║     ███████╗███████╗    ███████║   ██║   ╚██████╔╝██║  ██║███████╗ ║
-            ║ ╚═╝  ╚═╝╚═╝     ╚═╝     ╚══════╝╚══════╝    ╚══════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝ ║
-            ╚════════════════════════════════════════════════════════════════════════════════════════╝
-                    ████████████████████████  WILLKOMMEN IM STORE  ███████████████████████████
-
-        """)
-
-        print("""
-
-    Kundenprofil von \(aktiverKunde.name)
-    ------------------------------------
-
-    1) 🙍‍♂️ Kundenkonto
-    2) 🛍️ Produkte
-    3) 🛒 Warenkorb
-    4) 💳 Zahlung
-    5) 👋 Abmelden
-    6) 🚪 Beenden
-
-""")
-        print("\tViel Spaß beim Shoppen.\n\tTriff eine Auswahl ▶︎ ", terminator: " ")
-        let usereingabe = readLine()!
-        let auswahl = Int(usereingabe)
-        
-        switch auswahl {
-            
-        case 1: // Kundenkonto anzeigen
-            
-            status = ShopStatus.shopping
+            let shopUser: Kunde = aktiverKunde
+            let randDeal = tagesDeals.randomElement()!
             
             print("""
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     █████╗  ██████╗ ██████╗ ██████╗ ██╗   ██╗███╗   ██╗████████╗
-    ██╔══██╗██╔════╝██╔════╝██╔═══██╗██║   ██║████╗  ██║╚══██╔══╝
-    ███████║██║     ██║     ██║   ██║██║   ██║██╔██╗ ██║   ██║
-    ██╔══██║██║     ██║     ██║   ██║██║   ██║██║╚██╗██║   ██║
-    ██║  ██║╚██████╗╚██████╗╚██████╔╝╚██████╔╝██║ ╚████║   ██║
-    ╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝   ╚═╝
-    ═════════════════════════════════════════════════════════════
-
-    🆔 KundenNr        \(aktiverKunde.kundenNr)
-    🔑 Passwort        \(aktiverKunde.passwort)
-    🙍‍♂️ Kunde           \(aktiverKunde.name)
-    💰 Guthaben        \(aktiverKunde.kontostand.formatierterPreis) EUR
-    🔸 Bonuspunkte     \(aktiverKunde.bonuspunkte)
-
-    Dein Bonuskonto entspricht aktuell
-    einem Wert von: \(aktiverKunde.bonuspunkte / 1000) EUR
-
-""")
-        beliebigetaste()
-        startShopping(aktiverKunde: aktiverKunde)
+    \tAktuell im Shop registrierte Kunden: \n
+    """)
             
-        case 2: // Produktauswahl
+            kundenListe.forEach { kunde in
+                print("\t\(kunde.name), \(kunde.kundenNr)")
+            }
             
-            status = ShopStatus.shopping
+            print("""
             
-            let maxIndex = produkteListe.count
-            //var mengeAuswahl: Int = 0
-            var betragBonuspunkte: Double = 0.0
             
-            repeat {
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+                ╔════════════════════════════════════════════════════════════════════════════════════════╗
+                ║  █████╗ ██████╗ ██████╗ ██╗     ███████╗    ███████╗████████╗ ██████╗ ██████╗ ███████╗ ║
+                ║ ██╔══██╗██╔══██╗██╔══██╗██║     ██╔════╝    ██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗██╔════╝ ║
+                ║ ███████║██████╔╝██████╔╝██║     █████╗      ███████╗   ██║   ██║   ██║██████╔╝█████╗   ║
+                ║ ██╔══██║██╔═══╝ ██╔═══╝ ██║     ██╔══╝      ╚════██║   ██║   ██║   ██║██╔══██╗██╔══╝   ║
+                ║ ██║  ██║██║     ██║     ███████╗███████╗    ███████║   ██║   ╚██████╔╝██║  ██║███████╗ ║
+                ║ ╚═╝  ╚═╝╚═╝     ╚═╝     ╚══════╝╚══════╝    ╚══════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝ ║
+                ╚════════════════════════════════════════════════════════════════════════════════════════╝
+                        ████████████████████████  WILLKOMMEN IM STORE  ███████████████████████████
+
+            """)
+
+            print("""
+        Kundenprofil von \(shopUser.name)
+        ------------------------------------
+
+        1) 🙍‍♂️ Kundenkonto
+        2) 🛍️ Produkte
+        3) 🛒 Warenkorb
+        4) 💳 Zahlung
+    
+        5) 👋 Abmelden
+        6) 🚪 Beenden
+
+    """)
+            print("\tViel Spaß beim Shoppen.\n\tTriff eine Auswahl ▶︎ ", terminator: " ")
+            let usereingabe = readLine()!
+            let auswahl = Int(usereingabe)
+            
+            switch auswahl {
                 
-                produkteAnzeigen()
+            case 1: // Kundenkonto anzeigen
                 
-                print()
-                print("\t🔍 Wähle zwischen \(produkteListe.startIndex + 1) und \(produkteListe.endIndex) aus dem Sortiment.")
-                print("\t❓ Triff eine Auswahl oder mit <ENTER> zum Menü: ", terminator: "")
+                status = ShopStatus.shopping
                 
-                if let kundenauswahl = Int(readLine()!) {
+                print("""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         █████╗  ██████╗ ██████╗ ██████╗ ██╗   ██╗███╗   ██╗████████╗
+        ██╔══██╗██╔════╝██╔════╝██╔═══██╗██║   ██║████╗  ██║╚══██╔══╝
+        ███████║██║     ██║     ██║   ██║██║   ██║██╔██╗ ██║   ██║
+        ██╔══██║██║     ██║     ██║   ██║██║   ██║██║╚██╗██║   ██║
+        ██║  ██║╚██████╗╚██████╗╚██████╔╝╚██████╔╝██║ ╚████║   ██║
+        ╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝   ╚═╝
+        ═════════════════════════════════════════════════════════════
+
+        🆔 KundenNr        \(shopUser.kundenNr)
+        🔑 Passwort        \(shopUser.passwort)
+        🙍‍♂️ Kunde           \(shopUser.name)
+        💰 Guthaben        \(shopUser.kontostand.formatierterPreis) EUR
+        🔸 Bonuspunkte     \(shopUser.bonuspunkte)
+
+        Dein Bonuskonto entspricht aktuell
+        einem Wert von: \(shopUser.bonuspunkte / 1000) EUR
+
+    """)
+            beliebigetaste()
+            //startShopping(aktiverKunde: shopUser)
+                
+            case 2: // Produktauswahl
+                
+                status = ShopStatus.shopping
+                
+                let maxIndex = produkteListe.count
+                //var mengeAuswahl: Int = 0
+                var betragBonuspunkte: Double = 0.0
+                
+                repeat {
                     
-                    if kundenauswahl <= maxIndex {
+                    produkteAnzeigen()
+                    
+                    print()
+                    print("\t🔍 Wähle zwischen \(produkteListe.startIndex + 1) und \(produkteListe.endIndex) aus dem Sortiment.")
+                    print("\t❓ Triff eine Auswahl oder mit <ENTER> zum Menü: ", terminator: "")
+                    
+                    if let kundenauswahl = Int(readLine()!) {
                         
-                        let kundenauswahlProdukt = produkteListe[kundenauswahl - 1]
-                        betragBonuspunkte = kundenauswahlProdukt.preis
-                        
-                        if kundenauswahlProdukt.lagerbestand >= 1 {
+                        if kundenauswahl <= maxIndex {
                             
-                            print("\t🙂 Super, du hast dich für ein \(kundenauswahlProdukt.name.split(separator: " ")[1]) entschieden.")
-                            kundenauswahlProdukt.anzeigen()
+                            let kundenauswahlProdukt = produkteListe[kundenauswahl - 1]
+                            betragBonuspunkte = kundenauswahlProdukt.preis
                             
-                            print("\t🤷‍♂️ Möchtest du mehr als ein Gerät kaufen? (j/n): ", terminator: " ")
-                            let auswahl = readLine()!
-                            
-                            switch auswahl {
+                            if kundenauswahlProdukt.lagerbestand >= 1 {
                                 
-                            case "j":
+                                print("\t🙂 Super, du hast dich für ein \(kundenauswahlProdukt.name.split(separator: " ")[1]) entschieden.")
+                                kundenauswahlProdukt.anzeigen()
                                 
-                                print("\t❓ Wieviele möchtest du kaufen: ", terminator: " ")
+                                print("\t🤷‍♂️ Möchtest du mehr als ein Gerät kaufen? (j/n): ", terminator: " ")
+                                let auswahl = readLine()!
                                 
-                                guard let mengeAuswahl = Int(readLine()!), !auswahl.isEmpty else {
-                                    print("\t❌ Du musst eine gültige Auswahl treffen!")
-                                    sleep(2)
+                                switch auswahl {
                                     
-                                    continue
-                                }
-                                //mengeAuswahl = Int(readLine()!)!
-                                
-                                if mengeAuswahl > 0 {
+                                case "j":
                                     
-                                    if mengeAuswahl < kundenauswahlProdukt.lagerbestand {
+                                    print("\t❓ Wieviele möchtest du kaufen: ", terminator: " ")
+                                    
+                                    guard let mengeAuswahl = Int(readLine()!), !auswahl.isEmpty else {
+                                        print("\t❌ Du musst eine gültige Auswahl treffen!")
+                                        sleep(1)
                                         
-                                        print("\t🛍️ \(mengeAuswahl) Stk. wurden dem Warenkorb hinzugefügt!")
-                                        kundenauswahlProdukt.reduziereLagerbestand(bestand: mengeAuswahl)
-                                        aktiverKunde.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: mengeAuswahl)
-                                        aktiverKunde.bonuspunkteAktualisieren(betrag: betragBonuspunkte * Double(mengeAuswahl))
+                                        continue
+                                    }
+                                    //mengeAuswahl = Int(readLine()!)!
+                                    
+                                    if mengeAuswahl > 0 {
                                         
-                                        beliebigetaste()
+                                        if mengeAuswahl < kundenauswahlProdukt.lagerbestand {
+                                            
+                                            print("\t🛍️ \(mengeAuswahl) Stk. wurden dem Warenkorb hinzugefügt!")
+                                            
+                                            kundenauswahlProdukt.reduziereLagerbestand(bestand: mengeAuswahl)
+                                            
+                                            shopUser.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: mengeAuswahl)
+                                            
+                                            shopUser.bonuspunkteAktualisieren(betrag: betragBonuspunkte * Double(mengeAuswahl))
+                                            
+                                            beliebigetaste()
+                                            break
+                                            
+                                        } else {
+                                            
+                                            print("\t⭕️ Leider ist unser Lagerbestnd zu gering.")
+                                            print("\t🛍️ Es wurden dir nur \(kundenauswahlProdukt.lagerbestand) Stk in den Warenkorb gelegt!")
+                                            
+                                            shopUser.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: kundenauswahlProdukt.lagerbestand)
+                                            
+                                            kundenauswahlProdukt.reduziereLagerbestand(bestand: kundenauswahlProdukt.lagerbestand)
+                                            
+                                            shopUser.bonuspunkteAktualisieren(betrag: betragBonuspunkte * Double(mengeAuswahl))
+                                            
+                                            beliebigetaste()
+                                        }
                                         
                                     } else {
+                                        print("\t❌ Du musst eine gültige Auswahl treffen!")
+                                        print("\t⌛️ Die Artikelübersicht wird dir wieder angezeigt! \n")
+                                        sleep(1)
                                         
-                                        print("\t⭕️ Leider ist unser Lagerbestnd zu gering.")
-                                        print("\t🛍️ Es wurden dir nur \(kundenauswahlProdukt.lagerbestand) Stk in den Warenkorb gelegt!")
-                                        
-                                        aktiverKunde.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: kundenauswahlProdukt.lagerbestand)
-                                        kundenauswahlProdukt.reduziereLagerbestand(bestand: kundenauswahlProdukt.lagerbestand)
-                                        aktiverKunde.bonuspunkteAktualisieren(betrag: betragBonuspunkte * Double(mengeAuswahl))
-                                        beliebigetaste()
                                     }
                                     
-                                } else {
-                                    print("\t❌ Du musst eine gültige Auswahl treffen!")
-                                    print("\t⌛️ Die Artikelübersicht wird dir wieder angezeigt! \n")
-                                    sleep(2)
+                                case "n":
+                                    print()
+                                    print("\t👍 Dein Produkt wurde 1x dem Warenkorb hinzugefügt!")
+                                    shopUser.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: 1)
+                                    
+                                    kundenauswahlProdukt.reduziereLagerbestand(bestand: 1)
+                                    shopUser.bonuspunkteAktualisieren(betrag: betragBonuspunkte)
+                                    
+                                    beliebigetaste()
+                                    break
+                                    
+                                default:
                                     break
                                 }
                                 
-                            case "n":
-                                print()
-                                print("\t👍 Dein Produkt wurde 1x dem Warenkorb hinzugefügt!")
-                                aktiverKunde.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: 1)
-                                kundenauswahlProdukt.reduziereLagerbestand(bestand: 1)
-
-                                aktiverKunde.bonuspunkteAktualisieren(betrag: betragBonuspunkte)
-                                beliebigetaste()
-                                
-                            default:
-                                break
+                            } else {
+                                print("\tLeider ist dieses Modell nicht mehr an Lager. Aktueller Lagerbestand: \(kundenauswahlProdukt.lagerbestand) Stück")
+                                print("\tDie Artikelübersicht wird dir gleich wieder angezeigt! \n")
+                                sleep(1)
                             }
                             
                         } else {
-                            print("\tLeider ist dieses Modell nicht mehr an Lager. Aktueller Lagerbestand: \(kundenauswahlProdukt.lagerbestand) Stück")
+                            print("\tLeider war deine Eingabe fehlerhaft. Wähle erneut aus!")
                             print("\tDie Artikelübersicht wird dir gleich wieder angezeigt! \n")
-                            sleep(2)
+                            sleep(1)
+                            
                         }
                         
                     } else {
-                        print("\tLeider war deine Eingabe fehlerhaft. Wähle erneut aus!")
-                        print("\tDie Artikelübersicht wird dir gleich wieder angezeigt! \n")
-                        sleep(2)
-                        
+                        print("\t👍 Es geht zurück ins Hauptmenü!")
+                        sleep(1)
+                        break
+                        //startShopping(aktiverKunde: shopUser)
                     }
                     
-                } else {
-                    print("\t👍 Es geht zurück ins Hauptmenü!")
-                    sleep(2)
-                    startShopping(aktiverKunde: aktiverKunde)
+                } while true
+                
+            case 3:
+                
+                status = ShopStatus.bestellbestaetigung
+                
+                shopUser.warenkorb.anzeigen(aktiverKunde: shopUser)
+                print()
+                beliebigetaste()
+                //startShopping(aktiverKunde: shopUser)
+                
+            case 4:
+                
+                status = ShopStatus.bestellabschluss
+                
+                print("""
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         ██████╗██╗  ██╗███████╗ ██████╗██╗  ██╗ ██████╗ ██╗   ██╗████████╗
+        ██╔════╝██║  ██║██╔════╝██╔════╝██║ ██╔╝██╔═══██╗██║   ██║╚══██╔══╝
+        ██║     ███████║█████╗  ██║     █████╔╝ ██║   ██║██║   ██║   ██║
+        ██║     ██╔══██║██╔══╝  ██║     ██╔═██╗ ██║   ██║██║   ██║   ██║
+        ╚██████╗██║  ██║███████╗╚██████╗██║  ██╗╚██████╔╝╚██████╔╝   ██║
+        ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝    ╚═╝
+        ══════════════════════════════════════════════════════════════════
+
+    """)
+            var gesamtpreis = shopUser.warenkorb.gesamtpreis(liste: produkteListe)
+            let bonuspunkteBetrag = shopUser.bonuspunkte / 1000
+                
+            if gesamtpreis > 0 {
+                
+                print("\tHallo \(shopUser.name), Hier findest du eine kurze Übersicht.\n")
+                print("\tMenge\tArtikelname/Feature")
+                print("\t-------------------------------------------------")
+                
+                for (artikelNr, menge) in shopUser.warenkorb.produkte {
+                    let produktMatch = shopUser.warenkorb.findeArtikel(liste: produkteListe, artikelnummer: artikelNr )
+                    
+                    if let iMac = produktMatch as? IMac {
+                        let name_ = iMac.name
+                        let feature_ = iMac.caseColor
+                        print("\t\(menge)\t\t\(name_)\t\tFarbe: \(feature_)")
+                    }
+                    if let MacBookAir = produktMatch as? MacBookAir {
+                        let name_ = MacBookAir.name
+                        let feature_ = MacBookAir.prozessor
+                        print("\t\(menge)\t\t\(name_)\t\tProzessor: \(feature_)")
+                    }
+                    if let iPhone = produktMatch as? IPhone {
+                        let name_ = iPhone.name
+                        let feature_ = iPhone.speicher
+                        print("\t\(menge)\t\t\(name_)\t\tRAM: \(feature_) GB")
+                    }
+                    
+                    
+                }
+               
+                print()
+                print("\tWarenkorb Gesamtwert: \(gesamtpreis.formatierterPreis) €")
+                print("\tAktuelle Bonuspunkte: \(shopUser.bonuspunkte) (\(bonuspunkteBetrag) €)\n")
+                
+                let auswahlGeschenk = shopUser.warenkorb.geschenkOption(warenkorbWert: gesamtpreis)
+                if let geschenk = auswahlGeschenk {
+                    shopUser.warenkorb.geschenkHinzu(neuesGeschenk: geschenk)
                 }
                 
-            } while true
-            
-        case 3:
-            
-            status = ShopStatus.bestellbestaetigung
-            
-            aktiverKunde.warenkorb.anzeigen(aktiverKunde: aktiverKunde)
-            print()
-            beliebigetaste()
-            startShopping(aktiverKunde: aktiverKunde)
-            
-        case 4:
-            
-            status = ShopStatus.bestellabschluss
-            
-            print("""
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     ██████╗██╗  ██╗███████╗ ██████╗██╗  ██╗ ██████╗ ██╗   ██╗████████╗
-    ██╔════╝██║  ██║██╔════╝██╔════╝██║ ██╔╝██╔═══██╗██║   ██║╚══██╔══╝
-    ██║     ███████║█████╗  ██║     █████╔╝ ██║   ██║██║   ██║   ██║
-    ██║     ██╔══██║██╔══╝  ██║     ██╔═██╗ ██║   ██║██║   ██║   ██║
-    ╚██████╗██║  ██║███████╗╚██████╗██║  ██╗╚██████╔╝╚██████╔╝   ██║
-    ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝    ╚═╝
-    ══════════════════════════════════════════════════════════════════
-
-""")
-        var gesamtpreis = aktiverKunde.warenkorb.gesamtpreis(liste: produkteListe)
-        let bonuspunkteBetrag = aktiverKunde.bonuspunkte / 1000
-            
-        if gesamtpreis > 0 {
-            
-            print("\tHallo \(aktiverKunde.name), Hier findest du eine kurze Übersicht.\n")
-            print("\tMenge\tArtikelname/Feature")
-            print("\t-------------------------------------------------")
-            
-            for (artikelNr, menge) in aktiverKunde.warenkorb.produkte {
-                let produktMatch = aktiverKunde.warenkorb.findeArtikel(liste: produkteListe, artikelnummer: artikelNr )
+                let rabattPruefen = shopUser.warenkorb.berechneRabatt(rabatt: randDeal, preis: gesamtpreis)
+                let prozentFormatiert = randDeal.formatierterPreisOhneKomma
+                print("\t🔥 BlackWeek! Heute ist alles \(prozentFormatiert) reduziert!")
+                print("\t🔥 Heute zahlst du statt \(gesamtpreis.formatierterPreis) € nur \(rabattPruefen.formatierterPreis) €")
                 
-                if let iMac = produktMatch as? IMac {
-                    let name_ = iMac.name
-                    let feature_ = iMac.caseColor
-                    print("\t\(menge)\t\t\(name_)\t\tFarbe: \(feature_)")
-                }
-                if let MacBookAir = produktMatch as? MacBookAir {
-                    let name_ = MacBookAir.name
-                    let feature_ = MacBookAir.prozessor
-                    print("\t\(menge)\t\t\(name_)\t\tProzessor: \(feature_)")
-                }
-                if let iPhone = produktMatch as? IPhone {
-                    let name_ = iPhone.name
-                    let feature_ = iPhone.speicher
-                    print("\t\(menge)\t\t\(name_)\t\tRAM: \(feature_) GB")
-                }
+                gesamtpreis = rabattPruefen // neuer Preis mit Rabatt
                 
+                beliebigetaste()
+                //startShopping(aktiverKunde: shopUser)
+                
+            } else {
+                print("\t🔴 Du hast keine Artikel im Warenkorb!\n")
+                beliebigetaste()
+                break
+                //startShopping(aktiverKunde: shopUser)
+            }
+                
+            case 5:
+                
+                programmLaeuft = false
+                break
+                
+            case 6:
+                print("\n\t>>> Vielen Dank für deinen Besuch. Bis Bald 🙋‍♂️")
+                sleep(1)
+                Thread.exit()
+                // Bestellung abbrechen
+            
+            default:
+                print("\t❌ Du musst eine gültige Auswahl treffen!")
+                sleep(1)
+                break
+                //startShopping(aktiverKunde: shopUser)
                 
             }
-           
-            print()
-            print("\tWarenkorb Gesamtwert: \(gesamtpreis.formatierterPreis) €")
-            print("\tAktuelle Bonuspunkte: \(aktiverKunde.bonuspunkte) (\(bonuspunkteBetrag) €)\n")
-            
-            let auswahlGeschenk = aktiverKunde.warenkorb.geschenkOption(warenkorbWert: gesamtpreis)
-            if let geschenk = auswahlGeschenk {
-                aktiverKunde.warenkorb.geschenkHinzu(neuesGeschenk: geschenk)
-            }
-            
-            let rabattPruefen = aktiverKunde.warenkorb.berechneRabatt(rabatt: randDeal, preis: gesamtpreis)
-            let prozentFormatiert = randDeal.formatierterPreisOhneKomma
-            print("\t🔥 BlackWeek! Heute ist alles \(prozentFormatiert) reduziert!")
-            print("\t🔥 Heute zahlst du statt \(gesamtpreis.formatierterPreis) € nur \(rabattPruefen.formatierterPreis) €")
-            
-            gesamtpreis = rabattPruefen
-            
-            beliebigetaste()
-            startShopping(aktiverKunde: aktiverKunde)
-            
-        } else {
-            print("\t🔴 Du hast keine Artikel im Warenkorb!\n")
-            beliebigetaste()
-            startShopping(aktiverKunde: aktiverKunde)
-        }
-            
-        case 5:
-
-            break
-            
-        case 6:
-            print("\n\t>>> Vielen Dank für deinen Besuch. Bis Bald 🙋‍♂️")
-            sleep(2)
-            Thread.exit()
-            // Bestellung abbrechen
+        } while programmLaeuft
         
-        default:
-            print("\t❌ Du musst eine gültige Auswahl treffen!")
-            sleep(2)
-            startShopping(aktiverKunde: aktiverKunde)
-            
-        }
     }
+    
     
     func produkteAnzeigen() {
         
