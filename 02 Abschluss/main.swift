@@ -239,7 +239,7 @@ func start() {
             programmLaeuft = false
             
         default:
-            print("\n    >>> Vielen Dank für deinen Besuch. Bis Bald 🙋‍♂️")
+            print("\n    !!! Fehler bei Laden - einen Moment geduld... !!! ")
         }
         
     } while programmLaeuft
