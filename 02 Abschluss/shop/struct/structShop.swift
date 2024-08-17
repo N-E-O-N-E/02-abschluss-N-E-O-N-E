@@ -360,7 +360,7 @@ struct Shop {
 
     """)
             var gesamtpreis = shopUser.warenkorb.gesamtpreis(liste: produkteListe)
-            var bonuspunkte = shopUser.bonuspunkte
+            let bonuspunkte = shopUser.bonuspunkte
             let bonuspunkteBetrag = Double(bonuspunkte / 1000)
                 
             if gesamtpreis > 0 {
