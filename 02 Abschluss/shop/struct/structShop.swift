@@ -113,7 +113,7 @@ struct Shop {
         🆔 KundenNr        \(shopUser.kundenNr)
         🔑 Passwort        \(shopUser.passwort)
         🙍‍♂️ Kunde           \(shopUser.name)
-        💰 Guthaben        \(shopUser.kontostand.formatierterPreis) EUR
+        💰 Kontostand      \(shopUser.kontostand.formatierterPreis) EUR
         🔸 Bonuspunkte     \(shopUser.bonuspunkte)
 
         Dein Bonuskonto entspricht aktuell
