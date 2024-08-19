@@ -13,6 +13,7 @@
 		FA71C5B82C6B4F27002345DB /* instanzenShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71C5B72C6B4F27002345DB /* instanzenShop.swift */; };
 		FAAB9F372C6CCCAD00F03FF6 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAB9F362C6CCCAD00F03FF6 /* extensions.swift */; };
 		FABE025B2C7329D800D55FAB /* allgemFunktionen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABE025A2C7329D800D55FAB /* allgemFunktionen.swift */; };
+		FABE025D2C737A0D00D55FAB /* protocollShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABE025C2C737A0D00D55FAB /* protocollShop.swift */; };
 		FADFEAA32C6A393000C485A2 /* structShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFEAA22C6A393000C485A2 /* structShop.swift */; };
 		FADFEAA52C6A393C00C485A2 /* classKunde.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFEAA42C6A393C00C485A2 /* classKunde.swift */; };
 		FADFEAA72C6A394E00C485A2 /* structWarenkorb.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADFEAA62C6A394E00C485A2 /* structWarenkorb.swift */; };
@@ -46,6 +47,7 @@
 		FA71C5B72C6B4F27002345DB /* instanzenShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = instanzenShop.swift; sourceTree = "<group>"; };
 		FAAB9F362C6CCCAD00F03FF6 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		FABE025A2C7329D800D55FAB /* allgemFunktionen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = allgemFunktionen.swift; sourceTree = "<group>"; };
+		FABE025C2C737A0D00D55FAB /* protocollShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = protocollShop.swift; sourceTree = "<group>"; };
 		FADFEAA22C6A393000C485A2 /* structShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = structShop.swift; sourceTree = "<group>"; };
 		FADFEAA42C6A393C00C485A2 /* classKunde.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = classKunde.swift; sourceTree = "<group>"; };
 		FADFEAA62C6A394E00C485A2 /* structWarenkorb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = structWarenkorb.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				FADFEAB52C6A39CC00C485A2 /* protocollKaufbar.swift */,
 				FADFEAB72C6A39DB00C485A2 /* protocollGeschenkoptionen.swift */,
+				FABE025C2C737A0D00D55FAB /* protocollShop.swift */,
 			);
 			path = protocoll;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				FAAB9F372C6CCCAD00F03FF6 /* extensions.swift in Sources */,
 				FADFEAB12C6A399F00C485A2 /* structGeschenk.swift in Sources */,
 				FA71C5B82C6B4F27002345DB /* instanzenShop.swift in Sources */,
+				FABE025D2C737A0D00D55FAB /* protocollShop.swift in Sources */,
 				FADFEAA92C6A396B00C485A2 /* classProdukt.swift in Sources */,
 				FADFEAAB2C6A397700C485A2 /* classIMac.swift in Sources */,
 				FADFEAA32C6A393000C485A2 /* structShop.swift in Sources */,

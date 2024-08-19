@@ -3,12 +3,7 @@ import Foundation
 struct Warenkorb: Geschenkoptionen { // mit Protokoll
     
     var produkte: [String: Int] = [:]
-    var geschenk: [Geschenk] = [] {
-        didSet {
-            print("\t🎁 Geschenk erhalten!")
-        }
-    }
-    
+    var geschenk: [Geschenk] = []
     var geschenkGrenzen = (1000.00, 1700.00, 2000.00)
     var rabatt: Double = 0
     var rabattpreis: Double = 0
@@ -78,6 +73,7 @@ struct Warenkorb: Geschenkoptionen { // mit Protokoll
     mutating func warenkorbLeeren() {
     // Löscht alle Artikel im Warenkorb
         produkte.removeAll()
+        geschenk.removeAll()
     }
     
     func anzeigen(aktiverKunde: Kunde) {

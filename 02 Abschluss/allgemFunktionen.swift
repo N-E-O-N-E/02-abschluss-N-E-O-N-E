@@ -117,3 +117,42 @@ func produkteAnzeigen() {
     
 } //endFunc
 
+
+func captchaBilder() -> String {
+// Stellt eine Auswahl an Captcha zur Verfügung für das Login
+    
+    let bilder = [
+        
+        ("Katze", """
+        
+             /\\_/\\
+             ( o.o )
+              > ^ <
+        """),
+                
+        ("Hund", """
+        
+               / \\__
+              (    @\\___
+              /         O
+             /   (_____/
+            /_____/
+        """),
+        
+        ("Haus", """
+    
+           ____||____
+         ++++++++++++++
+        ****************
+        |     _   _    |
+        |    | |_| |   |
+        |    | |_| |   |
+        |______________|
+    """)
+    ]
+    
+    let auswahl = bilder.randomElement()!
+        print(auswahl.1)
+        
+    return auswahl.0
+}

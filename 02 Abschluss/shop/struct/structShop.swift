@@ -1,10 +1,11 @@
 import Foundation
 
-struct Shop {
+struct Shop: Shopsystem {
     
-    let produkte: [Produkt]
+    var produkte: [Produkt]
     var kunden: [Kunde]
-    let tagesDeals: [Double]
+    var tagesDeals: [Double]
+    var pay: Zahlungsmethode
     var status: ShopStatus {
         
         didSet {
@@ -40,6 +41,7 @@ struct Shop {
         self.produkte = produkte
         self.kunden = kunden
         self.tagesDeals = [0.05, 0.10, 0.15, 0.20, 0.25]
+        self.pay = .Rechnung
         self.status = status
     }
     
@@ -298,9 +300,12 @@ struct Shop {
                 print("\tWarenkorb Gesamtwert: \(gesamtpreis.formatierterPreis) €")
                 print("\tAktuelle Bonuspunkte: \(bonuspunkte) (\(bonuspunkteBetrag) €)\n")
                 
+                // Geschenk auswahl auf Basis des Wertes aller Artikel
                 let auswahlGeschenk = shopUser.warenkorb.geschenkOption(warenkorbWert: gesamtpreis)
                 if let geschenk = auswahlGeschenk {
+                    print("\t🎁 Geschenk erhalten!")
                     shopUser.warenkorb.geschenkHinzu(neuesGeschenk: geschenk)
+                    
                 }
                 
                 let rabattPreis = shopUser.warenkorb.berechneRabatt(rabatt: randDeal, preis: gesamtpreis)
@@ -308,10 +313,13 @@ struct Shop {
                 print("\t🔥 BlackWeek! Heute ist alles \(prozentFormatiert) reduziert!")
                 print("\t🔥 Heute zahlst du statt \(gesamtpreis.formatierterPreis) € nur \(rabattPreis.formatierterPreis) €\n")
                 
+                sleep(2)
+                
                 gesamtpreis = rabattPreis // neuer Preis mit Rabatt
                 let endpreis = gesamtpreis - bonuspunkteBetrag
                 
                 sleep(1)
+                
                 print("\tDeine Bonuspunkte werden jetzt auf den Warenkorbwert angerechnet! \n")
                 shopUser.bonuspunkteReduzieren(punkte: bonuspunkte)
                 print("\t🔥 Es wurden dir Bonuspunkte im Wert von: \(gesamtpreis - endpreis) € gutgeschrieben!\n")
@@ -319,13 +327,15 @@ struct Shop {
                 
                 sleep(1)
                
+                // ggf. Zahlungsmethode
+                
                 print()
                 shopUser.kontostandReduzieren(betrag: endpreis)
-                aktiverKunde.warenkorb.warenkorbLeeren()
-                
                 print("\t>>>>> Die Zahlung war erfolgreich! Vielen Dank für deinen Einkauf! <<<<<")
                 print("\t████████████████████████████████████████████████████████████████████████\n\n")
-              
+                
+                aktiverKunde.warenkorb.warenkorbLeeren()
+                
                 beliebigetaste()
                 
             } else {

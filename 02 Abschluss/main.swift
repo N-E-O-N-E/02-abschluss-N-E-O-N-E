@@ -2,6 +2,7 @@ import Foundation
 
 func start() {
     var programmLaeuft = true
+    var captchaPruefung = false
     
     repeat {
         
@@ -90,7 +91,30 @@ func start() {
             let eingabePasswort = readLine() ?? ""
             
             if let gefundenerKunde = findeKundeLogin(kundeListe: kundenListe, kundenNr: eingabe_Kundennummer.capitalized, passwort: eingabePasswort) {
-                shop_1.startShopping(aktiverKunde: gefundenerKunde)
+                
+                if captchaPruefung == false {
+                    
+                    let richtigesCaptcha = captchaBilder()
+                    
+                    print("\tWas siehst du für ein Bild?")
+                    
+                    let eingabe = readLine()?.lowercased() ?? ""
+                    
+                    if eingabe == richtigesCaptcha.lowercased() {
+                        print("\tSuper, CAPTCHA gelöst!")
+                       
+                        captchaPruefung = true
+                        shop_1.startShopping(aktiverKunde: gefundenerKunde)
+                       
+                    } else {
+                        print("\tCAPTCHA fehlgeschlagen. Bitte versuche es nochmal.")
+                        
+                    }
+                }
+                else {
+                    shop_1.startShopping(aktiverKunde: gefundenerKunde)
+                }
+                
             } else {
                 print("\t❌ Anmeldung fehlgeschlagen!")
                 sleep(2)
