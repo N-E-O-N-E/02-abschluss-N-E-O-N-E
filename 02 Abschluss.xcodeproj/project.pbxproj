@@ -93,8 +93,8 @@
 				FADFEA9E2C6A386900C485A2 /* shop */,
 				FADFEA9D2C6A386400C485A2 /* produkte */,
 				FADFEA9C2C6A385D00C485A2 /* kunde */,
-				CE95A5912C69E7A200AF3E56 /* main.swift */,
 				FABE025A2C7329D800D55FAB /* allgemFunktionen.swift */,
+				CE95A5912C69E7A200AF3E56 /* main.swift */,
 			);
 			path = "02 Abschluss";
 			sourceTree = "<group>";

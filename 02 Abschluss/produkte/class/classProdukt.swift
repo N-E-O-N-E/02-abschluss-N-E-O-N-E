@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Produkt: Kaufbar {
+open class Produkt: Kaufbar {
     var lagerbestand: Int
     let artikelNr: String
     let name: String

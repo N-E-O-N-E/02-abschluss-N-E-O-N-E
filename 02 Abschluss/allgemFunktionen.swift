@@ -21,9 +21,16 @@ func beliebigetaste() {
 }
 
 func ladenAnzeigen() {
-    for _ in 1...15 {
-        print("    🟡", terminator: "")
+    
+    print("\n")
+    print("\tLOADING...", terminator: " ")
+    
+    for _ in 1...9 {
+        print("  🍏", terminator: "")
         Thread.sleep(forTimeInterval: 0.1)
+        print("  🍎", terminator: "")
+        Thread.sleep(forTimeInterval: 0.1)
+        
     }
     newScreen()
 }
