@@ -12,8 +12,8 @@ struct Shop {
     let produkte: [Produkt]
     var kunden: [Kunde]
     let tagesDeals: [Double]
-    
     var status: ShopStatus {
+        
         didSet {
             if status == .bestellbestaetigung  {
                 print()
@@ -22,20 +22,23 @@ struct Shop {
                     print("\t🛍️", terminator: " ")
                     Thread.sleep(forTimeInterval: 0.4)
                 }
+                newScreen()
             } else if status == .bestellabschluss{
                 print()
                 print("\tDer Zahlungsprozess wird geladen!\n")
                 for _ in 1...4 {
                     print("\t💰", terminator: " ")
                     Thread.sleep(forTimeInterval: 0.4)
-                }
+                } 
+                newScreen()
             } else if status == .shopping{
                 print()
                 print("\tDaten werden geladen...\n")
                 for _ in 1...4 {
-                    print("\t🔍", terminator: " ")
+                    print("\t⌛️", terminator: " ")
                     Thread.sleep(forTimeInterval: 0.4)
-                }
+                } 
+                newScreen()
             }
         }
     }
@@ -47,25 +50,9 @@ struct Shop {
         self.status = status
     }
     
-    func beliebigetaste() {
-        print("\t▶︎ Weiter mit beliebiger Taste...", terminator: " ")
-        let _ = readLine()
-        
-    }
-    
-//    mutating func kundeHinzufuegen(to array: inout [Kunde], neuerKunde: Kunde) {
-//        
-//        array.append(neuerKunde)
-//        print("\n\t👍 Super, das hat geklappt. Viel Spaß!")
-//        sleep(1)
-//    }
-    
     mutating func startShopping(aktiverKunde: Kunde) {
-        for _ in 1...20 {
-            print("    █", terminator: "")
-            Thread.sleep(forTimeInterval: 0.1)
-        }
         
+        ladenAnzeigen()
         var programmLaeuft = true
         
         repeat {
@@ -74,40 +61,6 @@ struct Shop {
             let randDeal = tagesDeals.randomElement()!
             
             print("""
-
-    \tAktuell im Shop registrierte Kunden: \n
-    """)
-            
-            kundenListe.forEach { kunde in
-                print("\t\(kunde.name), \(kunde.kundenNr)")
-            }
-            
-            print("""
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
             
                 ╔════════════════════════════════════════════════════════════════════════════════════════╗
                 ║  █████╗ ██████╗ ██████╗ ██╗     ███████╗    ███████╗████████╗ ██████╗ ██████╗ ███████╗ ║
@@ -119,9 +72,14 @@ struct Shop {
                 ╚════════════════════════════════════════════════════════════════════════════════════════╝
                         ████████████████████████  WILLKOMMEN IM STORE  ███████████████████████████
 
+            
+
+            
+            
             """)
 
             print("""
+    
         Kundenprofil von \(shopUser.name)
         ------------------------------------
 
@@ -146,31 +104,6 @@ struct Shop {
                 
                 print("""
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
          █████╗  ██████╗ ██████╗ ██████╗ ██╗   ██╗███╗   ██╗████████╗
         ██╔══██╗██╔════╝██╔════╝██╔═══██╗██║   ██║████╗  ██║╚══██╔══╝
         ███████║██║     ██║     ██║   ██║██║   ██║██╔██╗ ██║   ██║
@@ -190,7 +123,6 @@ struct Shop {
 
     """)
             beliebigetaste()
-            //startShopping(aktiverKunde: shopUser)
                 
             case 2: // Produktauswahl
                 
@@ -275,7 +207,7 @@ struct Shop {
                                     
                                 case "n":
                                     print()
-                                    print("\t👍 Dein Produkt wurde 1x dem Warenkorb hinzugefügt!")
+                                    print("\t👍 Dein Produkt wurde 1x dem Warenkorb hinzugefügt! \n")
                                     shopUser.warenkorb.hinzufuegen(artikelNr: kundenauswahlProdukt.artikelNr, mengeNeu: 1)
                                     
                                     kundenauswahlProdukt.reduziereLagerbestand(bestand: 1)
@@ -324,32 +256,7 @@ struct Shop {
                 status = ShopStatus.bestellabschluss
                 
                 print("""
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
          ██████╗██╗  ██╗███████╗ ██████╗██╗  ██╗ ██████╗ ██╗   ██╗████████╗
         ██╔════╝██║  ██║██╔════╝██╔════╝██║ ██╔╝██╔═══██╗██║   ██║╚══██╔══╝
         ██║     ███████║█████╗  ██║     █████╔╝ ██║   ██║██║   ██║   ██║
@@ -409,9 +316,10 @@ struct Shop {
                 let endpreis = gesamtpreis - bonuspunkteBetrag
                 
                 sleep(1)
-                print("\tDeine Bonuspunkte wurden auf den Warenkorbwert angerechnet!")
+                print("\tDeine Bonuspunkte werden jetzt auf den Warenkorbwert angerechnet! \n")
                 shopUser.bonuspunkteReduzieren(punkte: bonuspunkte)
-                print("\t🔥 Du zahlst heute nur \(endpreis) €\n")
+                print("\t🔥 Es wurden dir Bonuspunkte im Wert von: \(gesamtpreis - endpreis) € gutgeschrieben!\n")
+                print("\t🔥 Du zahlst von \(gesamtpreis) € nur noch \(endpreis) €\n")
                 
                 sleep(1)
                
@@ -468,32 +376,7 @@ struct Shop {
     func produkteAnzeigen() {
         
         print("""
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
              ██████╗ ██████╗  ██████╗ ██████╗ ██╗   ██╗██╗  ██╗████████╗███████╗
              ██╔══██╗██╔══██╗██╔═══██╗██╔══██╗██║   ██║██║ ██╔╝╚══██╔══╝██╔════╝
              ██████╔╝██████╔╝██║   ██║██║  ██║██║   ██║█████╔╝    ██║   █████╗

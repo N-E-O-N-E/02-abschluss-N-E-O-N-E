@@ -2,38 +2,13 @@ import Foundation
 
 func start() {
     var programmLaeuft = true
+    
     repeat {
-        for _ in 1...20 {
-            print("    █", terminator: "")
-            Thread.sleep(forTimeInterval: 0.1)
-        }
+        
+        ladenAnzeigen()
+        newScreen()
         
         print("""
-            
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
             ██     ██ ██ ██      ██      ██   ██  ██████  ███    ███ ███    ███ ███████ ███    ██
             ██     ██ ██ ██      ██      ██  ██  ██    ██ ████  ████ ████  ████ ██      ████   ██
@@ -74,26 +49,11 @@ func start() {
         switch auswahl.lowercased() {
             
         case "l":
-            for _ in 1...20 {
-                print("    █", terminator: "")
-                Thread.sleep(forTimeInterval: 0.1)
-            }
+            
+            ladenAnzeigen()
+            
             print("""
-                   
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+                
                                                             .88
                                                           .888'
                                                           888'
@@ -156,26 +116,10 @@ func start() {
             }
             
         case "r":
-            for _ in 1...20 {
-                print("    █", terminator: "")
-                Thread.sleep(forTimeInterval: 0.1)
-            }
+            
+            ladenAnzeigen()
             
                 print("""
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
             
                                                             .88
                                                           .888'
@@ -236,10 +180,12 @@ func start() {
         case "b":
             print("\n    >>> Vielen Dank für deinen Besuch. Bis Bald 🙋‍♂️")
             sleep(1)
+            newScreen()
             programmLaeuft = false
             
         default:
             print("\n    !!! Fehler bei Laden - einen Moment geduld... !!! ")
+            newScreen()
         }
         
     } while programmLaeuft

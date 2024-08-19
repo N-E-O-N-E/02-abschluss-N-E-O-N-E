@@ -18,6 +18,7 @@ class Kunde {
                 print("\t💰", terminator: " ")
                 Thread.sleep(forTimeInterval: 0.4)
             }
+            print()
             print("\t💰 Dein Konto wurde mit \(oldValue - kontostand) € belastet! <<<\n")
             sleep(1)
         }
@@ -28,6 +29,7 @@ class Kunde {
                 print("\t🔸", terminator: " ")
                 Thread.sleep(forTimeInterval: 0.4)
             }
+            print()
             print("\t🔸 Deine Bonuspounkte wurden aktualisiert! <<<")
             print("\t   Bonuspunkte: \(bonuspunkte - oldValue)\n")
             sleep(3)
@@ -42,8 +44,9 @@ class Kunde {
                     print("\t🛍️", terminator: " ")
                     Thread.sleep(forTimeInterval: 0.4)
                 }
+                print()
                 print("\t🛍️ Warenkorb wurde aktualisiert!\n")
-                sleep(2)
+                sleep(1)
             }
             sleep(2)
         }
