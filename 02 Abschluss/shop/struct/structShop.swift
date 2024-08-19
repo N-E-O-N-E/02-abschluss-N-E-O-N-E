@@ -307,7 +307,7 @@ struct Shop: Shopsystem {
                     shopUser.warenkorb.geschenkHinzu(neuesGeschenk: geschenk)
                     
                 }
-                
+                beliebigetaste()
                 let rabattPreis = shopUser.warenkorb.berechneRabatt(rabatt: randDeal, preis: gesamtpreis)
                 let prozentFormatiert = randDeal.alsProzent
                 print("\t🔥 BlackWeek! Heute ist alles \(prozentFormatiert) reduziert!")
