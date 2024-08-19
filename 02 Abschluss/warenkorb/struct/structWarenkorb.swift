@@ -1,13 +1,6 @@
-//
-//  structWarenkorb.swift
-//  02 Abschluss
-//
-//  Created by Markus Wirtz on 12.08.24.
-//
-
 import Foundation
 
-struct Warenkorb: Geschenkoptionen {
+struct Warenkorb: Geschenkoptionen { // mit Protokoll
     
     var produkte: [String: Int] = [:]
     var geschenk: [Geschenk] = [] {
@@ -20,13 +13,14 @@ struct Warenkorb: Geschenkoptionen {
     var rabatt: Double = 0
     var rabattpreis: Double = 0
     
-    
     func berechneRabatt(rabatt: Double, preis: Double) -> Double {
+    // Rabatt wird berechnet
         return preis - (preis * rabatt)
     }
     
     mutating func hinzufuegen(artikelNr: String, mengeNeu: Int) {
-           
+    // ändert im Dict den Value wenn die Artikelnummer stimmt
+        
                 if let menge = produkte[artikelNr] {
                     produkte[artikelNr] = menge + mengeNeu
                 } else {
@@ -35,6 +29,7 @@ struct Warenkorb: Geschenkoptionen {
             }
     
     func geschenkOption(warenkorbWert: Double) -> Geschenk? {
+    // liefert ein Geschenk in Abhängigkeit des Warenkorbwertes aus dem Array Geschenkeliste
         
         if warenkorbWert <= geschenkGrenzen.0 {
             return geschenkListe[0]
@@ -49,9 +44,12 @@ struct Warenkorb: Geschenkoptionen {
     }
     
     mutating func geschenkHinzu(neuesGeschenk: Geschenk) {
+    // ein Geschenk wird hinzugefügt und angezeit
         
-        geschenk = [neuesGeschenk]
-        geschenk[0].anzeigen()
+        geschenk.append(neuesGeschenk)
+        geschenk.forEach { Item in
+            Item.anzeigen()
+        }
         
     }
     
@@ -64,7 +62,7 @@ struct Warenkorb: Geschenkoptionen {
     func gesamtpreis(liste: [Produkt]) -> Double {
         var gesamtsumme = 0.0
         
-        // durchläuft alle Artikelnummern, Mengen in den Produkten des Warenkorbes
+        // durchläuft alle Artikelnummern/Mengen in den Produkten des Warenkorbes
         for (artikelnummer, menge) in produkte {
             
             // speichert den gefundenen Artikel vom Typ Produkt in match
@@ -78,37 +76,14 @@ struct Warenkorb: Geschenkoptionen {
     }
     
     mutating func warenkorbLeeren() {
+    // Löscht alle Artikel im Warenkorb
         produkte.removeAll()
     }
     
     func anzeigen(aktiverKunde: Kunde) {
+    // Zeit den Warenkorn für den Kunden an
         
         print("""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     ███████╗██╗  ██╗ ██████╗ ██████╗ ██████╗ ██╗███╗   ██╗ ██████╗      ██████╗ █████╗ ██████╗ ████████╗
     ██╔════╝██║  ██║██╔═══██╗██╔══██╗██╔══██╗██║████╗  ██║██╔════╝     ██╔════╝██╔══██╗██╔══██╗╚══██╔══╝
@@ -121,7 +96,7 @@ struct Warenkorb: Geschenkoptionen {
 """)
         
         if produkte.isEmpty {
-            print("\t🔴 Der Warenkornb ist leer!")
+            print("\t🔴 Der Warenkornb ist noch leer!")
         } else {
             print("\t\(aktiverKunde.name), dein Warenkorb enthällt aktuell:")
             
@@ -130,47 +105,52 @@ struct Warenkorb: Geschenkoptionen {
                 
                 if let iMac = produktMatch as? IMac {
                     print("""
-
+    
         Produkt:     \(iMac.name)
         Farbe:       \(iMac.caseColor)
         Stückpreis:  \(iMac.preis.formatierterPreis) €
         Menge:       \(menge) Stück
         Gesamt:      \(((iMac.preis) * Double(menge)).formatierterPreis) €
         Artikel-Nr:  \(artikelkNr)
-
+    
     """)
                 }
                 if let MacBookAir = produktMatch as? MacBookAir {
                     print("""
-
+    
         Produkt:     \(MacBookAir.name)
         Prozessor:   \(MacBookAir.prozessor)
         Stückpreis:  \(MacBookAir.preis) €
         Menge:       \(menge) Stück
         Gesamt:      \(((MacBookAir.preis) * Double(menge)).formatierterPreis) €
         Artikel-Nr:  \(artikelkNr)
-
+    
     """)
                 }
                 if let iPhone = produktMatch as? IPhone {
                     print("""
-
+    
         Produkt:     \(iPhone.name)
         Speicher:    \(iPhone.speicher) GB
         Stückpreis:  \(iPhone.preis) €
         Menge:       \(menge) Stück
         Gesamt:      \(((iPhone.preis) * Double(menge)).formatierterPreis) €
         Artikel-Nr:  \(artikelkNr)
-
+    
     """)
                 }
                 
             }
+            
+            let warenWert = aktiverKunde.warenkorb.gesamtpreis(liste: produkteListe)
+            print("\n\t💰 Gesamtwert deines Warenkorbes: \(warenWert.formatierterPreis) EUR")
+            print("\n\t🔸 Aktuell hast du \(aktiverKunde.bonuspunkte) Bonuspunkte (\(aktiverKunde.bonuspunkte / 1000) €)")
+            
+        } // endElse
+            
+        geschenk.forEach { Item in
+            Item.anzeigen()
         }
         
-        let warenWert = aktiverKunde.warenkorb.gesamtpreis(liste: produkteListe)
-        print("\n\t💰 Gesamtwert deines Warenkorbes: \(warenWert.formatierterPreis) EUR")
-        print("\n\t🔸 Aktuell hast du \(aktiverKunde.bonuspunkte) Bonuspunkte (\(aktiverKunde.bonuspunkte / 1000) €)")
-    
-    }
-}
+    } // endFunc
+} // End Struct

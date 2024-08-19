@@ -1,20 +1,13 @@
-//
-//  extensions.swift
-//  02 Abschluss
-//
-//  Created by Markus Wirtz on 14.08.24.
-//
-
 import Foundation
 
-// Zur korrekten Darstellung der Tabelle im Shop
+// Zur korrekten Darstellung der Tabelle im Shop.
 extension String {
     
     func spaltenbreite(laenge: Int) -> String {
         if self.count < laenge {
-            return self + String(repeating: " ", count: laenge - self.count) // erweitert die länge mit leerzeichen
+            return self + String(repeating: " ", count: laenge - self.count) // erweitert die geforderte länge durch leerzeichen
         } else {
-            return String(self.prefix(laenge)) // lürzt die länge fals .self zu kange ist
+            return String(self.prefix(laenge)) // kürzt die länge fals der String schon zu lange ist
         }
     }
 }
@@ -36,7 +29,7 @@ extension Double {
     }
     
     // Formatierung in Prozent %
-    var formatierterPreisOhneKomma: String {
+    var alsProzent: String {
         
         let neuesFormat = NumberFormatter()
         neuesFormat.numberStyle = .percent

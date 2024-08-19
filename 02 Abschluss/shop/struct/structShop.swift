@@ -1,10 +1,3 @@
-//
-//  classShop.swift
-//  02 Abschluss
-//
-//  Created by Markus Wirtz on 12.08.24.
-//
-
 import Foundation
 
 struct Shop {
@@ -51,11 +44,12 @@ struct Shop {
     }
     
     mutating func startShopping(aktiverKunde: Kunde) {
+    // Shopping startet mit einem übergebenen Typ Kunden -------------------------------------------------------------
         
-        ladenAnzeigen()
+        ladenAnzeigen() // Ladebalken
         var programmLaeuft = true
         
-        repeat {
+        repeat { // läuft solange programmLäuft auf true
         
             let shopUser: Kunde = aktiverKunde
             let randDeal = tagesDeals.randomElement()!
@@ -98,7 +92,11 @@ struct Shop {
             
             switch auswahl {
                 
-            case 1: // Kundenkonto anzeigen
+                
+                
+                
+                
+            case 1: // Kundenkonto anzeigen ---------------------------------------------------------
                 
                 status = ShopStatus.shopping
                 
@@ -111,7 +109,7 @@ struct Shop {
         ██║  ██║╚██████╗╚██████╗╚██████╔╝╚██████╔╝██║ ╚████║   ██║
         ╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝   ╚═╝
         ═════════════════════════════════════════════════════════════
-
+        
         🆔 KundenNr        \(shopUser.kundenNr)
         🔑 Passwort        \(shopUser.passwort)
         🙍‍♂️ Kunde           \(shopUser.name)
@@ -124,33 +122,36 @@ struct Shop {
     """)
             beliebigetaste()
                 
-            case 2: // Produktauswahl
+                
+
+            case 2: // Produktauswahl ----------------------------------------------------------------------------
                 
                 status = ShopStatus.shopping
-                
-                let maxIndex = produkteListe.count
-                //var mengeAuswahl: Int = 0
+                let maxIndex = produkteListe.count // legt die listengröße an
                 var betragBonuspunkte: Double = 0.0
                 
                 repeat {
                     
-                    produkteAnzeigen()
+                    produkteAnzeigen() // ruft die anzeige der produktliste auf
                     
                     print()
                     print("\t🔍 Wähle zwischen \(produkteListe.startIndex + 1) und \(produkteListe.endIndex) aus dem Sortiment.")
                     print("\t❓ Triff eine Auswahl oder mit <ENTER> zum Menü: ", terminator: "")
                     
-                    if let kundenauswahl = Int(readLine()!) {
+                    // stellt sicher das Kundeneingabe ein Int ist und ggf. ein leerer String
+                    if let kundenauswahl = Int(readLine() ?? "") {
                         
                         if kundenauswahl <= maxIndex {
                             
-                            let kundenauswahlProdukt = produkteListe[kundenauswahl - 1]
+                            let kundenauswahlProdukt = produkte[kundenauswahl - 1]
                             betragBonuspunkte = kundenauswahlProdukt.preis
+                            // Betrag als grundlage zur punkteberechnung
                             
                             if kundenauswahlProdukt.lagerbestand >= 1 {
                                 
                                 print("\t🙂 Super, du hast dich für ein \(kundenauswahlProdukt.name.split(separator: " ")[1]) entschieden.")
                                 kundenauswahlProdukt.anzeigen()
+                                // Zeigt den zweiten Teil [1] des Poduktnamen an da er danach beim Leerzeichen abschneiden " "
                                 
                                 print("\t🤷‍♂️ Möchtest du mehr als ein Gerät kaufen? (j/n): ", terminator: " ")
                                 let auswahl = readLine()!
@@ -161,17 +162,15 @@ struct Shop {
                                     
                                     print("\t❓ Wieviele möchtest du kaufen: ", terminator: " ")
                                     
-                                    guard let mengeAuswahl = Int(readLine()!), !auswahl.isEmpty else {
-                                        print("\t❌ Du musst eine gültige Auswahl treffen!")
-                                        sleep(1)
-                                        
+                                    guard let mengeAuswahl = Int(readLine()!) else {
+                                        keineGueltigeAuswahl()
                                         continue
                                     }
-                                    //mengeAuswahl = Int(readLine()!)!
+                                    // guard let fürht seinen Code aus wenn nichts eingebeben wird
                                     
-                                    if mengeAuswahl > 0 {
+                                    if mengeAuswahl > 0 { // mengenangabe größer 0
                                         
-                                        if mengeAuswahl < kundenauswahlProdukt.lagerbestand {
+                                        if mengeAuswahl < kundenauswahlProdukt.lagerbestand { // menge kleiner als aktueller Lagerbestand
                                             
                                             print("\t🛍️ \(mengeAuswahl) Stk. wurden dem Warenkorb hinzugefügt!")
                                             
@@ -199,10 +198,7 @@ struct Shop {
                                         }
                                         
                                     } else {
-                                        print("\t❌ Du musst eine gültige Auswahl treffen!")
-                                        print("\t⌛️ Die Artikelübersicht wird dir wieder angezeigt! \n")
-                                        sleep(1)
-                                        
+                                        keineGueltigeAuswahl()
                                     }
                                     
                                 case "n":
@@ -217,6 +213,7 @@ struct Shop {
                                     break
                                     
                                 default:
+                                    keineGueltigeAuswahl()
                                     break
                                 }
                                 
@@ -227,9 +224,7 @@ struct Shop {
                             }
                             
                         } else {
-                            print("\tLeider war deine Eingabe fehlerhaft. Wähle erneut aus!")
-                            print("\tDie Artikelübersicht wird dir gleich wieder angezeigt! \n")
-                            sleep(1)
+                            keineGueltigeAuswahl()
                             
                         }
                         
@@ -242,16 +237,17 @@ struct Shop {
                     
                 } while true
                 
-            case 3:
+                
+            
+            case 3: // Warenkorb anzeigen --------------------------------------------------------------
                 
                 status = ShopStatus.bestellbestaetigung
-                
                 shopUser.warenkorb.anzeigen(aktiverKunde: shopUser)
                 print()
                 beliebigetaste()
-                //startShopping(aktiverKunde: shopUser)
+              
                 
-            case 4:
+            case 4: // Zahlung und Checkout --------------------------------------------------------------
                 
                 status = ShopStatus.bestellabschluss
                 
@@ -308,7 +304,7 @@ struct Shop {
                 }
                 
                 let rabattPreis = shopUser.warenkorb.berechneRabatt(rabatt: randDeal, preis: gesamtpreis)
-                let prozentFormatiert = randDeal.formatierterPreisOhneKomma
+                let prozentFormatiert = randDeal.alsProzent
                 print("\t🔥 BlackWeek! Heute ist alles \(prozentFormatiert) reduziert!")
                 print("\t🔥 Heute zahlst du statt \(gesamtpreis.formatierterPreis) € nur \(rabattPreis.formatierterPreis) €\n")
                 
@@ -319,12 +315,11 @@ struct Shop {
                 print("\tDeine Bonuspunkte werden jetzt auf den Warenkorbwert angerechnet! \n")
                 shopUser.bonuspunkteReduzieren(punkte: bonuspunkte)
                 print("\t🔥 Es wurden dir Bonuspunkte im Wert von: \(gesamtpreis - endpreis) € gutgeschrieben!\n")
-                print("\t🔥 Du zahlst von \(gesamtpreis) € nur noch \(endpreis) €\n")
+                print("\t🔥 Du zahlst von \(gesamtpreis.formatierterPreis) € nur noch \(endpreis.formatierterPreis) €\n")
                 
                 sleep(1)
                
-                
-                print("\t")
+                print()
                 shopUser.kontostandReduzieren(betrag: endpreis)
                 aktiverKunde.warenkorb.warenkorbLeeren()
                 
@@ -340,14 +335,14 @@ struct Shop {
                 //startShopping(aktiverKunde: shopUser)
             }
                 
-            case 5:
+            case 5: // Abmelden ----------------------------------------------------------------------------
                 
                 // Produkte aus dem Warenkorb müssen wieder zurückgebucht werden
                 
                 aktiverKunde.warenkorb.produkte.forEach { artikel in
                     produkteListe.forEach { treffer in
                         if treffer.artikelNr == artikel.key {
-                            treffer.lagerbestand += artikel.value
+                            treffer.erhoeheLagerbestand(bestand: artikel.value)
                         }
                     }
                 }
@@ -372,64 +367,4 @@ struct Shop {
         
     }
     
-    
-    func produkteAnzeigen() {
-        
-        print("""
-
-             ██████╗ ██████╗  ██████╗ ██████╗ ██╗   ██╗██╗  ██╗████████╗███████╗
-             ██╔══██╗██╔══██╗██╔═══██╗██╔══██╗██║   ██║██║ ██╔╝╚══██╔══╝██╔════╝
-             ██████╔╝██████╔╝██║   ██║██║  ██║██║   ██║█████╔╝    ██║   █████╗
-             ██╔═══╝ ██╔══██╗██║   ██║██║  ██║██║   ██║██╔═██╗    ██║   ██╔══╝
-             ██║     ██║  ██║╚██████╔╝██████╔╝╚██████╔╝██║  ██╗   ██║   ███████╗
-             ╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝
-             ═══════════════════════════════════════════════════════════════════
-        
-        """)
-        
-        print("     Nr.  Produkt                             Artikel-Nr          Preis       Bestand   Feature             ")
-        print("     ═══════════════════════════════════════════════════════════════════════════════════════════════════════")
-        
-        for (index,i) in produkteListe.enumerated() {
-        
-            if let iMac = i as? IMac { // (if i is IMac) liefert nur den Typ, kein Zugriff auf spezifische eigenschaften daher ( i as? IMac
-                // Greift jetzt auf die eigenschaften des MacBooks zurück
-            
-                let index_ = String(index + 1).spaltenbreite(laenge: 5)
-                let name_ = iMac.name.spaltenbreite(laenge: 35)
-                let artikelNr_ = iMac.artikelNr.spaltenbreite(laenge: 20)
-                let preis_ = String(iMac.preis).spaltenbreite(laenge: 12)
-                let bestad_ = String(iMac.lagerbestand).spaltenbreite(laenge: 10)
-                let feature_ = iMac.caseColor.spaltenbreite(laenge: 13)
-                
-                print("     \(index_)\(name_)\(artikelNr_)\(preis_)\(bestad_)Farbe: \(feature_)")
-                
-            }
-            else if let macBookAir = i as? MacBookAir {
-                
-                let index_ = String(index + 1).spaltenbreite(laenge: 5)
-                let name_ = macBookAir.name.spaltenbreite(laenge: 35)
-                let artikelNr_ = macBookAir.artikelNr.spaltenbreite(laenge: 20)
-                let preis_ = String(macBookAir.preis).spaltenbreite(laenge: 12)
-                let bestad_ = String(macBookAir.lagerbestand).spaltenbreite(laenge: 10)
-                let feature_ = macBookAir.prozessor.spaltenbreite(laenge: 13)
-                
-                print("     \(index_)\(name_)\(artikelNr_)\(preis_)\(bestad_)Prozessor: \(feature_)")
-                
-            }
-            else if let iPhone = i as? IPhone {
-                
-                let index_ = String(index + 1).spaltenbreite(laenge: 5)
-                let name_ = iPhone.name.spaltenbreite(laenge: 35)
-                let artikelNr_ = iPhone.artikelNr.spaltenbreite(laenge: 20)
-                let preis_ = String(iPhone.preis).spaltenbreite(laenge: 12)
-                let bestad_ = String(iPhone.lagerbestand).spaltenbreite(laenge: 10)
-                let feature_ = String(iPhone.speicher).spaltenbreite(laenge: 13)
-                
-                print("     \(index_)\(name_)\(artikelNr_)\(preis_)\(bestad_)Speicher (RAM): \(feature_)")
-                
-            }
-        }
-        print()
-    }
-}
+} // endScruct

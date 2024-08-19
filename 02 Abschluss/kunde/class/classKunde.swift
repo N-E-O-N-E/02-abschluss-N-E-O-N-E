@@ -1,10 +1,3 @@
-//
-//  classKunde.swift
-//  02 Abschluss
-//
-//  Created by Markus Wirtz on 12.08.24.
-//
-
 import Foundation
 
 class Kunde {
@@ -48,7 +41,6 @@ class Kunde {
                 print("\t🛍️ Warenkorb wurde aktualisiert!\n")
                 sleep(1)
             }
-            sleep(2)
         }
     }
     

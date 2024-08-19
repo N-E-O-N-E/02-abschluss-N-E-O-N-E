@@ -6,7 +6,6 @@ func start() {
     repeat {
         
         ladenAnzeigen()
-        newScreen()
         
         print("""
         
@@ -90,25 +89,7 @@ func start() {
             print("\tWie ist dein Passwort:", terminator: " ")
             let eingabePasswort = readLine() ?? ""
             
-            func findeKunde(kundeListe: [Kunde], kundenNr: String, passwort: String) -> Kunde? {
-                
-                if let kunde = kundeListe.first(where: { $0.kundenNr == kundenNr }) {
-                    if kunde.passwort == eingabePasswort {
-                        print("\n\t✅ Hallo \(kunde.name), du wurdest erfolgreich angemeldet.")
-                        sleep(2)
-                        return kunde
-                    } else {
-                        print("\t❌ Falsches Passwort!")
-                        return nil
-                    }
-                } else {
-                    print("\t❌ Kundennummer nicht in der Datenbank gefunden!")
-                    sleep(2)
-                    return nil
-                }
-            }
-            
-            if let gefundenerKunde = findeKunde(kundeListe: kundenListe, kundenNr: eingabe_Kundennummer.capitalized, passwort: eingabePasswort) {
+            if let gefundenerKunde = findeKundeLogin(kundeListe: kundenListe, kundenNr: eingabe_Kundennummer.capitalized, passwort: eingabePasswort) {
                 shop_1.startShopping(aktiverKunde: gefundenerKunde)
             } else {
                 print("\t❌ Anmeldung fehlgeschlagen!")
@@ -172,7 +153,6 @@ func start() {
                 }
                 
                 if let gueltigerKunde = aktivenKundenAnlegen() {
-                    //shop_1.kundeHinzufuegen(to: &kundenListe, neuerKunde: gueltigerKunde)
                     gueltigerKunde.kundeHinzufuegen(neuerKunde: gueltigerKunde)
                     shop_1.startShopping(aktiverKunde: gueltigerKunde)
                 }
@@ -186,10 +166,11 @@ func start() {
         default:
             print("\n    !!! Fehler bei Laden - einen Moment geduld... !!! ")
             newScreen()
-        }
+            
+        } // endSwitch
         
     } while programmLaeuft
                 
-}
+} //endFuncStart
 
 start()
