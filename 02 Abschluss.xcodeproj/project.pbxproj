@@ -97,7 +97,6 @@
 			isa = PBXGroup;
 			children = (
 				FA0973AD2C748B98001D25AF /* upbeat.mp3 */,
-				FABE025A2C7329D800D55FAB /* allgemFunktionen.swift */,
 				FADFEA9F2C6A387D00C485A2 /* warenkorb */,
 				FADFEA9E2C6A386900C485A2 /* shop */,
 				FADFEA9D2C6A386400C485A2 /* produkte */,
@@ -146,6 +145,7 @@
 		FADFEA9E2C6A386900C485A2 /* shop */ = {
 			isa = PBXGroup;
 			children = (
+				FABE025A2C7329D800D55FAB /* allgemFunktionen.swift */,
 				FA71C5B72C6B4F27002345DB /* instanzenShop.swift */,
 				FA77DD432C6E023000B48626 /* struct */,
 				FAAB9F352C6CCC9600F03FF6 /* extension */,

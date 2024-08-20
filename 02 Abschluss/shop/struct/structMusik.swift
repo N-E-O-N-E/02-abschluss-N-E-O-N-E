@@ -14,25 +14,35 @@ struct Hintergrundmusik {
         let url: URL = URL(fileURLWithPath: upbeat)
         
         do {
-            
             audioPlayer?.prepareToPlay() // ließt die datei vorsichtshalber neu ein
             audioPlayer = try AVAudioPlayer(contentsOf: url)
             audioPlayer?.numberOfLoops = -1 // endlos
-            audioPlayer?.setVolume(0.03, fadeDuration: 100) // lautstärke minimal im Hintergrund
-            
+            audioPlayer?.setVolume(0.04, fadeDuration: 100) // lautstärke minimal im Hintergrund
             audioPlayer?.play()
-            
             
         } catch {
             print("Fehler mit der Audiodatei!")
         }
-        
-        
-        
     }
     
-    mutating func stopMusik() {
-        
+    mutating func stop() {
         audioPlayer?.stop()
     }
-}
+    
+    mutating func maxMusik() {
+        if audioPlayer!.volume < 1.0 {
+            audioPlayer!.volume += 0.04
+        } else {
+            audioPlayer!.volume = 1.0
+        }
+    }
+    
+    mutating func minMusik() {
+        if audioPlayer!.volume >= 0.04 {
+            audioPlayer!.volume -= 0.04
+        } else {
+            audioPlayer!.volume = 0.0
+        }
+    }
+    
+}//ende Struct

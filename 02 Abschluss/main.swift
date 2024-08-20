@@ -188,21 +188,18 @@ func start() {
         case "b":
             print("\n    >>> Vielen Dank für deinen Besuch. Bis Bald 🙋‍♂️")
             sleep(1)
-            musik.stopMusik()
+            musik.stop()
             newScreen()
             programmLaeuft = false
             
         case "+":
-            musik.audioPlayer!.volume += 0.05
-            
+            musik.maxMusik()
         case "-":
-            musik.audioPlayer!.volume -= 0.05
-            
+            musik.minMusik()
         case "p":
-            musik.audioPlayer?.play()
-            
+            musik.play()
         case "s":
-            musik.audioPlayer?.stop()
+            musik.stop()
             
         default:
             print("\n    !!! Fehler bei Laden - einen Moment geduld... !!! ")

@@ -6,7 +6,6 @@ struct Shop: Shopsystem {
     var kunden: [Kunde]
     var tagesDeals: [Double]
     var status: ShopStatus {
-        
         didSet {
             if status == .bestellbestaetigung  {
                 print()
@@ -33,8 +32,8 @@ struct Shop: Shopsystem {
                 }
                 newScreen()
             }
-        }
-    }
+        } // end didSet
+    } // end Status
     
     init(produkte: [Produkt], kunden: [Kunde], status: ShopStatus) {
         self.produkte = produkte
@@ -74,15 +73,15 @@ struct Shop: Shopsystem {
             
             print("""
     
-        Kundenprofil von \(shopUser.name)
-        ------------------------------------
+        Kundenprofil von \(shopUser.name) - Kunden-Nr.: \(shopUser.kundenNr)
+        ---------------------------------------------------------
     
-        1) 🙍‍♂️ Kundenkonto
-        2) 🛍️ Produkte
-        3) 🛒 Warenkorb
-        4) 💳 Zahlung
+        1) 🙍‍♂️ Mein Kundenkonto
+        2) 🛍️ Produkte aussuchen
+        3) 🛒 Warenkorb anzeigen
+        4) 💳 Bestellung abschließen
     
-        5) 🚪 Abmelden
+        5) 🚪 Benutzer abmelden
     
     """)
             print("\tViel Spaß beim Shoppen.\n\tTriff eine Auswahl ▶︎ ", terminator: " ")
@@ -90,11 +89,10 @@ struct Shop: Shopsystem {
             let auswahl = Int(usereingabe)
             
             switch auswahl {
-                
-                
+
             case 1: // Kundenkonto anzeigen ---------------------------------------------------------
                 
-                status = ShopStatus.shopping
+                status = ShopStatus.shopping // wichtig für Ladeanimation
                 
                 print("""
     
@@ -117,14 +115,13 @@ struct Shop: Shopsystem {
     
     """)
                 beliebigetaste()
-                
-                
-                
+
             case 2: // Produktauswahl ----------------------------------------------------------------------------
                 
                 status = ShopStatus.shopping
-                let maxIndex = produkteListe.count // legt die listengröße an
-                var betragBonuspunkte: Double = 0.0
+                
+                let maxIndex = produkteListe.count
+                var betragBonuspunkte: Double
                 
                 repeat {
                     
@@ -146,8 +143,12 @@ struct Shop: Shopsystem {
                             if kundenauswahlProdukt.lagerbestand >= 1 {
                                 
                                 print("\t🙂 Super, du hast dich für ein \(kundenauswahlProdukt.name.split(separator: " ")[1]) entschieden.")
+                                sleep(1)
+                                
                                 kundenauswahlProdukt.anzeigen()
                                 // Zeigt den zweiten Teil [1] des Poduktnamen an da er danach beim Leerzeichen abschneiden " "
+                                
+                                sleep(2)
                                 
                                 print("\t🤷‍♂️ Möchtest du mehr als ein Gerät kaufen? (j/n): ", terminator: " ")
                                 let auswahl = readLine()!
@@ -231,8 +232,7 @@ struct Shop: Shopsystem {
                         //startShopping(aktiverKunde: shopUser)
                     }
                     
-                } while true
-                
+                } while true // läuft endlos bis break sie unterbricht
                 
                 
             case 3: // Warenkorb anzeigen --------------------------------------------------------------
@@ -305,6 +305,7 @@ struct Shop: Shopsystem {
                     
                     let rabattPreis = shopUser.warenkorb.berechneRabatt(rabatt: randDeal, preis: gesamtpreis)
                     let prozentFormatiert = randDeal.alsProzent
+                    
                     print("\n\t🔥 BlackWeek! Heute ist alles \(prozentFormatiert) reduziert!")
                     print("\t🔥 Heute zahlst du statt \(gesamtpreis.formatierterPreis) € nur \(rabattPreis.formatierterPreis) €\n")
                     
@@ -317,6 +318,7 @@ struct Shop: Shopsystem {
                     
                     print("\tDeine Bonuspunkte werden jetzt auf den Warenkorbwert angerechnet! \n")
                     shopUser.bonuspunkteReduzieren(punkte: bonuspunkte)
+                    
                     print("\t🔥 Es wurden dir Bonuspunkte im Wert von: \(gesamtpreis - endpreis) € gutgeschrieben!\n")
                     print("\t🔥 Du zahlst von \(gesamtpreis.formatierterPreis) € nur noch \(endpreis.formatierterPreis) €\n")
                     
@@ -325,9 +327,9 @@ struct Shop: Shopsystem {
                     shopUser.zahlungsmethodeAendern()
                     
                     sleep(1)
-                    
                     print()
                     shopUser.kontostandReduzieren(betrag: endpreis)
+                    
                     print("\t>>>>> Die Zahlung war erfolgreich! Vielen Dank für deinen Einkauf! <<<<<")
                     print("\t████████████████████████████████████████████████████████████████████████\n\n")
                     
@@ -362,11 +364,11 @@ struct Shop: Shopsystem {
                 print("\t❌ Du musst eine gültige Auswahl treffen!")
                 sleep(1)
                 break
-                //startShopping(aktiverKunde: shopUser)
                 
-            }
+            } // ende Switch
+            
         } while programmLaeuft
         
-    }
+    } //ende StartShopping funktion
     
 } // endScruct

@@ -1,11 +1,9 @@
 import Foundation
 
 struct Geschenk {
-    
     let name: String
     let wert: Double
     let beschreibung: String
-    
     
     func anzeigen() {
         print("""
@@ -15,7 +13,6 @@ struct Geschenk {
         Beschreibung:   \(beschreibung)
 
     """)
-        
         sleep(2)
     }
 }

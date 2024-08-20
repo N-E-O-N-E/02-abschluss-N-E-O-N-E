@@ -11,20 +11,18 @@ func newScreen() {
 func beliebigetaste() {
     print("\t▶︎ Weiter mit beliebiger Taste...", terminator: " ")
     let _ = readLine()
-    
 }
 
 // Ladeanzeige mit newScreen Aufruf
 func ladenAnzeigen() {
-    
     print("\n")
     print("\tLOADING...", terminator: " ")
     
     for _ in 1...9 {
         print("  🍏", terminator: "")
-        Thread.sleep(forTimeInterval: 0.1)
+        Thread.sleep(forTimeInterval: 0.11)
         print("  🍎", terminator: "")
-        Thread.sleep(forTimeInterval: 0.1)
+        Thread.sleep(forTimeInterval: 0.11)
         
     }
     newScreen()
@@ -35,7 +33,6 @@ func keineGueltigeAuswahl() {
     sleep(1)
     newScreen()
 }
-
 
 func findeKundeLogin(kundeListe: [Kunde], kundenNr: String, passwort: String) -> Kunde? {
 // sucht kunde in der kundenListe
@@ -114,12 +111,11 @@ func produkteAnzeigen() {
         
     } // endForSchleife
     print()
-    
 } //endFunc
 
 
 func captchaBilder() -> String {
-// Stellt eine Auswahl an Captcha zur Verfügung für das Login
+// Stellt eine Auswahl an Captcha Bilder zur Verfügung für das Login
     
     let bilder = [
         
@@ -163,22 +159,22 @@ func intro() {
     
     for inhalt in text {
         print(inhalt, terminator: "")
-        Thread.sleep(forTimeInterval: 0.1)
+        Thread.sleep(forTimeInterval: 0.11)
     }
     
     sleep(1)
-    print("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\"Zitat: Steve Jobs\"")
-    sleep(1)
+    print("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\"Zitat: Steve Jobs\"", terminator: "")
+    sleep(2)
     
     for _ in 1...14 {
-        Thread.sleep(forTimeInterval: 0.1)
+        Thread.sleep(forTimeInterval: 0.11)
         print()
     }
     
     sleep(4)
     
     for _ in 1...20 {
-        Thread.sleep(forTimeInterval: 0.1)
+        Thread.sleep(forTimeInterval: 0.11)
         print()
     }
     

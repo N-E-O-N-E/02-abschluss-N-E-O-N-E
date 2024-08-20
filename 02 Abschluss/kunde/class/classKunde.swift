@@ -25,7 +25,7 @@ class Kunde: Kundendaten {
             print()
             print("\t🔸 Deine Bonuspounkte wurden aktualisiert! <<<")
             print("\t   Bonuspunkte: \(bonuspunkte - oldValue)\n")
-            sleep(3)
+            sleep(1)
         }
     }
     var warenkorb: Warenkorb {
@@ -50,14 +50,13 @@ class Kunde: Kundendaten {
         self.name = name
         self.passwort = passwort
         self.kontostand = Double.random(in: 1800...3600)
-        self.bonuspunkte = Int.random(in: 60000...150000)
+        self.bonuspunkte = Int.random(in: 95000...210000)
         self.warenkorb = Warenkorb()
         self.zahlungsart = .Rechnung
         
     }
     
     func kundeHinzufuegen(neuerKunde: Kunde) {
-        
         kundenListe.append(neuerKunde)
         print("\n\t👍 Super, deine KundenNr. ist: \(neuerKunde.kundenNr). Viel Spaß!")
         sleep(2)
@@ -76,7 +75,6 @@ class Kunde: Kundendaten {
     }
     
     func zahlungsmethodeAendern() {
-        
         print("\t💶 Deine standardmäßige Zahlungsmethode ist \(zahlungsart).")
         print("\t Möchtest du deine Zahlungsmethode ändern? (j/n) ▶︎ ", terminator: "")
         
@@ -87,7 +85,7 @@ class Kunde: Kundendaten {
             
             print("""
 
-            (R)echnung
+            (pR)echnung
             (K)reditkarte
             (P)ayPal
 

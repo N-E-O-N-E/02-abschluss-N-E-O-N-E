@@ -79,7 +79,7 @@ struct Warenkorb: Geschenkoptionen { // mit Protokoll
     func anzeigen(aktiverKunde: Kunde) {
     // Zeit den Warenkorn für den Kunden an
         
-        print("""
+print("""
 
     ███████╗██╗  ██╗ ██████╗ ██████╗ ██████╗ ██╗███╗   ██╗ ██████╗      ██████╗ █████╗ ██████╗ ████████╗
     ██╔════╝██║  ██║██╔═══██╗██╔══██╗██╔══██╗██║████╗  ██║██╔════╝     ██╔════╝██╔══██╗██╔══██╗╚══██╔══╝
@@ -101,27 +101,27 @@ struct Warenkorb: Geschenkoptionen { // mit Protokoll
                 
                 if let iMac = produktMatch as? IMac {
                     print("""
-    
+
         Produkt:     \(iMac.name)
         Farbe:       \(iMac.caseColor)
         Stückpreis:  \(iMac.preis.formatierterPreis) €
         Menge:       \(menge) Stück
         Gesamt:      \(((iMac.preis) * Double(menge)).formatierterPreis) €
         Artikel-Nr:  \(artikelkNr)
-    
-    """)
+
+""")
                 }
                 if let MacBookAir = produktMatch as? MacBookAir {
                     print("""
-    
+
         Produkt:     \(MacBookAir.name)
         Prozessor:   \(MacBookAir.prozessor)
         Stückpreis:  \(MacBookAir.preis) €
         Menge:       \(menge) Stück
         Gesamt:      \(((MacBookAir.preis) * Double(menge)).formatierterPreis) €
         Artikel-Nr:  \(artikelkNr)
-    
-    """)
+
+""")
                 }
                 if let iPhone = produktMatch as? IPhone {
                     print("""
@@ -133,12 +133,12 @@ struct Warenkorb: Geschenkoptionen { // mit Protokoll
         Gesamt:      \(((iPhone.preis) * Double(menge)).formatierterPreis) €
         Artikel-Nr:  \(artikelkNr)
     
-    """)
+""")
                 }
                 
-            }
+            } // ende der schleife
             
-            let warenWert = aktiverKunde.warenkorb.gesamtpreis(liste: produkteListe)
+            let warenWert = gesamtpreis(liste: produkteListe)
             print("\n\t💰 Gesamtwert deines Warenkorbes: \(warenWert.formatierterPreis) EUR")
             print("\n\t🔸 Aktuell hast du \(aktiverKunde.bonuspunkte) Bonuspunkte (\(aktiverKunde.bonuspunkte / 1000) €)")
             
