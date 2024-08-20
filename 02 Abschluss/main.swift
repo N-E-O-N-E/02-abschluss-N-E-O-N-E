@@ -17,7 +17,7 @@ func start() {
              ███ ███  ██ ███████ ███████ ██   ██  ██████  ██      ██ ██      ██ ███████ ██   ████
         
             ██████████████ Herzlich Willkommen in unserem neuen Apple OnlineStore. ██████████████
-                                                                                   🔈 Musik (+/-)
+                                                                            🔈 Musik (p)(s)(+)(-)
                                                     .88
                                                   .888'
                                                   888'
@@ -194,6 +194,12 @@ func start() {
         case "-":
             musik.audioPlayer!.volume -= 0.05
             
+        case "p":
+            musik.audioPlayer?.play()
+        
+        case "s":
+            musik.audioPlayer?.stop()
+            
         default:
             print("\n    !!! Fehler bei Laden - einen Moment geduld... !!! ")
             newScreen()
@@ -207,4 +213,5 @@ func start() {
 
 musik.play()
 intro()
+ladenAnzeigen()
 start()
