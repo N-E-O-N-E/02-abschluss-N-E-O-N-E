@@ -18,11 +18,14 @@ struct Hintergrundmusik {
             audioPlayer?.prepareToPlay() // ließt die datei vorsichtshalber neu ein
             audioPlayer = try AVAudioPlayer(contentsOf: url)
             audioPlayer?.numberOfLoops = -1 // endlos
-            audioPlayer?.setVolume(0.1, fadeDuration: 100) // lautstärke minimal im Hintergrund
+            audioPlayer?.setVolume(0.05, fadeDuration: 100) // lautstärke minimal im Hintergrund
+            
             audioPlayer?.play()
-
+            
+            
         } catch {
             print("Fehler mit der Audiodatei!")
         }
+        
     }
 }

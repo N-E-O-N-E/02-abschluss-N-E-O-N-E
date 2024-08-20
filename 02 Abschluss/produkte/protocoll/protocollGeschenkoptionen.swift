@@ -1,5 +1,6 @@
 import Foundation
 
+
 // Wird im Warenkorb verwendet
 
 protocol Geschenkoptionen {

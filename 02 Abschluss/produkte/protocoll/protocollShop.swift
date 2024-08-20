@@ -1,9 +1,3 @@
-//
-//  protocollShop.swift
-//  02 Abschluss
-//
-//  Created by Markus Wirtz on 19.08.24.
-//
 
 import Foundation
 

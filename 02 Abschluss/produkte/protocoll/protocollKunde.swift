@@ -1,7 +1,6 @@
 import Foundation
 
 
-
 protocol Kundendaten {
     
     var kundenNr: String { get set }
