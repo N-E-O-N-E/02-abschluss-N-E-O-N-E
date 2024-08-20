@@ -9,6 +9,7 @@ protocol Kundendaten {
     var kontostand: Double { get set }
     var bonuspunkte: Int { get set }
     var warenkorb: Warenkorb { get set }
+    var zahlungsart: Zahlungsmethode { get set}
     
     func kundeHinzufuegen(neuerKunde: Kunde)
     

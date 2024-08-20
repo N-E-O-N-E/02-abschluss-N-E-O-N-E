@@ -2,7 +2,7 @@ import Foundation
 
 class Kunde: Kundendaten {
     
-    var kundenNr: String 
+    var kundenNr: String
     let name: String
     var passwort: String
     var kontostand: Double {
@@ -12,7 +12,7 @@ class Kunde: Kundendaten {
                 Thread.sleep(forTimeInterval: 0.4)
             }
             print()
-            print("\t💰 Dein Konto wurde mit \(oldValue - kontostand) € belastet! <<<\n")
+            print("\t💰 Via \(zahlungsart) wurden dir \(oldValue - kontostand) € berechnet! <<<\n")
             sleep(1)
         }
     }
@@ -43,6 +43,7 @@ class Kunde: Kundendaten {
             }
         }
     }
+    var zahlungsart: Zahlungsmethode
     
     init(kundenNr: String, name: String, passwort: String) {
         self.kundenNr = kundenNr
@@ -51,6 +52,7 @@ class Kunde: Kundendaten {
         self.kontostand = Double.random(in: 1800...3600)
         self.bonuspunkte = Int.random(in: 60000...150000)
         self.warenkorb = Warenkorb()
+        self.zahlungsart = .Rechnung
         
     }
     
@@ -60,7 +62,7 @@ class Kunde: Kundendaten {
         print("\n\t👍 Super, deine KundenNr. ist: \(neuerKunde.kundenNr). Viel Spaß!")
         sleep(2)
     }
-
+    
     func kontostandReduzieren(betrag: Double) {
         kontostand -= betrag
     }
@@ -71,5 +73,45 @@ class Kunde: Kundendaten {
     
     func bonuspunkteReduzieren(punkte: Int) {
         bonuspunkte -= punkte
+    }
+    
+    func zahlungsmethodeAendern() {
+        
+        print("\t💶 Deine standardmäßige Zahlungsmethode ist \(zahlungsart).")
+        print("\t Möchtest du deine Zahlungsmethode ändern? (j/n)")
+        
+        var auswahl = readLine()!.lowercased()
+        
+        if auswahl == "j" {
+            print("\tOk, wie möchtest du zahlen: ")
+            
+            print("""
+
+            (R)echnung
+            (K)reditkarte
+            (P)ayPal
+
+""")
+            auswahl = readLine()!.lowercased()
+            
+            if auswahl == "r" {
+                zahlungsart = .Rechnung
+                print("\t💶 Deine neue Zahlungsmethode ist \(zahlungsart).")
+            } else if auswahl == "k" {
+                zahlungsart = .Kreditkarte
+                print("\t💶 Deine neue Zahlungsmethode ist \(zahlungsart).")
+            } else if auswahl == "p" {
+                zahlungsart = .PayPal
+                print("\t💶 Deine neue Zahlungsmethode ist \(zahlungsart).")
+            } else {
+                print("\tEs wird deine hinterlegte Zahlungsmethode verwendet!")
+            }
+            
+        } else if auswahl == "n" {
+            print("\tEs wird deine hinterlegte Zahlungsmethode verwendet!")
+        } else {
+            print("\tDu hast keine Gültige Auswahl getroffen.")
+            print("\tEs wird deine hinterlegte Zahlungsmethode verwendet!")
+        }
     }
 }

@@ -5,7 +5,6 @@ struct Shop: Shopsystem {
     var produkte: [Produkt]
     var kunden: [Kunde]
     var tagesDeals: [Double]
-    var pay: Zahlungsmethode
     var status: ShopStatus {
         
         didSet {
@@ -23,7 +22,7 @@ struct Shop: Shopsystem {
                 for _ in 1...4 {
                     print("\t💰", terminator: " ")
                     Thread.sleep(forTimeInterval: 0.4)
-                } 
+                }
                 newScreen()
             } else if status == .shopping{
                 print()
@@ -31,7 +30,7 @@ struct Shop: Shopsystem {
                 for _ in 1...4 {
                     print("\t⌛️", terminator: " ")
                     Thread.sleep(forTimeInterval: 0.4)
-                } 
+                }
                 newScreen()
             }
         }
@@ -41,18 +40,17 @@ struct Shop: Shopsystem {
         self.produkte = produkte
         self.kunden = kunden
         self.tagesDeals = [0.05, 0.10, 0.15, 0.20, 0.25]
-        self.pay = .Rechnung
         self.status = status
     }
     
     mutating func startShopping(aktiverKunde: Kunde) {
-    // Shopping startet mit einem übergebenen Typ Kunden -------------------------------------------------------------
+        // Shopping startet mit einem übergebenen Typ Kunden -------------------------------------------------------------
         
         ladenAnzeigen() // Ladebalken
         var programmLaeuft = true
         
         repeat { // läuft solange programmLäuft auf true
-        
+            
             let shopUser: Kunde = aktiverKunde
             let randDeal = tagesDeals.randomElement()!
             
@@ -69,37 +67,37 @@ struct Shop: Shopsystem {
                         
             
                         ████████████████████████  WILLKOMMEN IM STORE  ███████████████████████████
-
+            
             
             
             """)
-
+            
             print("""
     
         Kundenprofil von \(shopUser.name)
         ------------------------------------
-
+    
         1) 🙍‍♂️ Kundenkonto
         2) 🛍️ Produkte
         3) 🛒 Warenkorb
         4) 💳 Zahlung
     
         5) 🚪 Abmelden
-
+    
     """)
             print("\tViel Spaß beim Shoppen.\n\tTriff eine Auswahl ▶︎ ", terminator: " ")
             let usereingabe = readLine()!
             let auswahl = Int(usereingabe)
             
             switch auswahl {
-    
+                
                 
             case 1: // Kundenkonto anzeigen ---------------------------------------------------------
                 
                 status = ShopStatus.shopping
                 
                 print("""
-
+    
          █████╗  ██████╗ ██████╗ ██████╗ ██╗   ██╗███╗   ██╗████████╗
         ██╔══██╗██╔════╝██╔════╝██╔═══██╗██║   ██║████╗  ██║╚══██╔══╝
         ███████║██║     ██║     ██║   ██║██║   ██║██╔██╗ ██║   ██║
@@ -113,15 +111,15 @@ struct Shop: Shopsystem {
         🙍‍♂️ Kunde           \(shopUser.name)
         💰 Kontostand      \(shopUser.kontostand.formatierterPreis) EUR
         🔸 Bonuspunkte     \(shopUser.bonuspunkte)
-
+    
         Dein Bonuskonto entspricht aktuell
         einem Wert von: \(shopUser.bonuspunkte / 1000) EUR
-
+    
     """)
-            beliebigetaste()
+                beliebigetaste()
                 
                 
-
+                
             case 2: // Produktauswahl ----------------------------------------------------------------------------
                 
                 status = ShopStatus.shopping
@@ -236,14 +234,14 @@ struct Shop: Shopsystem {
                 } while true
                 
                 
-            
+                
             case 3: // Warenkorb anzeigen --------------------------------------------------------------
                 
                 status = ShopStatus.bestellbestaetigung
                 shopUser.warenkorb.anzeigen(aktiverKunde: shopUser)
                 print()
                 beliebigetaste()
-              
+                
                 
             case 4: // Zahlung und Checkout --------------------------------------------------------------
                 
@@ -258,88 +256,90 @@ struct Shop: Shopsystem {
         ╚██████╗██║  ██║███████╗╚██████╗██║  ██╗╚██████╔╝╚██████╔╝   ██║
         ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝    ╚═╝
         ══════════════════════════════════════════════════════════════════
-
+    
     """)
-            var gesamtpreis = shopUser.warenkorb.gesamtpreis(liste: produkteListe)
-            let bonuspunkte = shopUser.bonuspunkte
-            let bonuspunkteBetrag = Double(bonuspunkte / 1000)
+                var gesamtpreis = shopUser.warenkorb.gesamtpreis(liste: produkteListe)
+                let bonuspunkte = shopUser.bonuspunkte
+                let bonuspunkteBetrag = Double(bonuspunkte / 1000)
                 
-            if gesamtpreis > 0 {
-                
-                print("\tHallo \(shopUser.name), Hier findest du eine kurze Übersicht.\n")
-                print("\tMenge\tArtikelname/Feature")
-                print("\t-------------------------------------------------")
-                
-                for (artikelNr, menge) in shopUser.warenkorb.produkte {
-                    let produktMatch = shopUser.warenkorb.findeArtikel(liste: produkteListe, artikelnummer: artikelNr )
+                if gesamtpreis > 0 {
                     
-                    if let iMac = produktMatch as? IMac {
-                        let name_ = iMac.name
-                        let feature_ = iMac.caseColor
-                        print("\t\(menge)\t\t\(name_)\t\tFarbe: \(feature_)")
-                    }
-                    if let MacBookAir = produktMatch as? MacBookAir {
-                        let name_ = MacBookAir.name
-                        let feature_ = MacBookAir.prozessor
-                        print("\t\(menge)\t\t\(name_)\t\tProzessor: \(feature_)")
-                    }
-                    if let iPhone = produktMatch as? IPhone {
-                        let name_ = iPhone.name
-                        let feature_ = iPhone.speicher
-                        print("\t\(menge)\t\t\(name_)\t\tRAM: \(feature_) GB")
+                    print("\tHallo \(shopUser.name), Hier findest du eine kurze Übersicht.\n")
+                    print("\tMenge\tArtikelname/Feature")
+                    print("\t-------------------------------------------------")
+                    
+                    for (artikelNr, menge) in shopUser.warenkorb.produkte {
+                        let produktMatch = shopUser.warenkorb.findeArtikel(liste: produkteListe, artikelnummer: artikelNr )
+                        
+                        if let iMac = produktMatch as? IMac {
+                            let name_ = iMac.name
+                            let feature_ = iMac.caseColor
+                            print("\t\(menge)\t\t\(name_)\t\tFarbe: \(feature_)")
+                        }
+                        if let MacBookAir = produktMatch as? MacBookAir {
+                            let name_ = MacBookAir.name
+                            let feature_ = MacBookAir.prozessor
+                            print("\t\(menge)\t\t\(name_)\t\tProzessor: \(feature_)")
+                        }
+                        if let iPhone = produktMatch as? IPhone {
+                            let name_ = iPhone.name
+                            let feature_ = iPhone.speicher
+                            print("\t\(menge)\t\t\(name_)\t\tRAM: \(feature_) GB")
+                        }
+                        
+                        
                     }
                     
+                    print()
+                    print("\tWarenkorb Gesamtwert: \(gesamtpreis.formatierterPreis) €")
+                    print("\tAktuelle Bonuspunkte: \(bonuspunkte) (\(bonuspunkteBetrag) €)\n")
                     
+                    // Geschenk auswahl auf Basis des Wertes aller Artikel
+                    let auswahlGeschenk = shopUser.warenkorb.geschenkOption(warenkorbWert: gesamtpreis)
+                    if let geschenk = auswahlGeschenk {
+                        print("\t🎁 Geschenk erhalten!")
+                        shopUser.warenkorb.geschenkHinzu(neuesGeschenk: geschenk)
+                        
+                    }
+                    beliebigetaste()
+                    let rabattPreis = shopUser.warenkorb.berechneRabatt(rabatt: randDeal, preis: gesamtpreis)
+                    let prozentFormatiert = randDeal.alsProzent
+                    print("\t🔥 BlackWeek! Heute ist alles \(prozentFormatiert) reduziert!")
+                    print("\t🔥 Heute zahlst du statt \(gesamtpreis.formatierterPreis) € nur \(rabattPreis.formatierterPreis) €\n")
+                    
+                    sleep(2)
+                    
+                    gesamtpreis = rabattPreis // neuer Preis mit Rabatt
+                    let endpreis = gesamtpreis - bonuspunkteBetrag
+                    
+                    sleep(1)
+                    
+                    print("\tDeine Bonuspunkte werden jetzt auf den Warenkorbwert angerechnet! \n")
+                    shopUser.bonuspunkteReduzieren(punkte: bonuspunkte)
+                    print("\t🔥 Es wurden dir Bonuspunkte im Wert von: \(gesamtpreis - endpreis) € gutgeschrieben!\n")
+                    print("\t🔥 Du zahlst von \(gesamtpreis.formatierterPreis) € nur noch \(endpreis.formatierterPreis) €\n")
+                    
+                    sleep(1)
+                    
+                    shopUser.zahlungsmethodeAendern()
+                    
+                    sleep(1)
+                    
+                    print()
+                    shopUser.kontostandReduzieren(betrag: endpreis)
+                    print("\t>>>>> Die Zahlung war erfolgreich! Vielen Dank für deinen Einkauf! <<<<<")
+                    print("\t████████████████████████████████████████████████████████████████████████\n\n")
+                    
+                    aktiverKunde.warenkorb.warenkorbLeeren()
+                    
+                    beliebigetaste()
+                    
+                } else {
+                    print("\t🔴 Du hast keine Artikel im Warenkorb!\n")
+                    beliebigetaste()
+                    break
+                    //startShopping(aktiverKunde: shopUser)
                 }
-               
-                print()
-                print("\tWarenkorb Gesamtwert: \(gesamtpreis.formatierterPreis) €")
-                print("\tAktuelle Bonuspunkte: \(bonuspunkte) (\(bonuspunkteBetrag) €)\n")
-                
-                // Geschenk auswahl auf Basis des Wertes aller Artikel
-                let auswahlGeschenk = shopUser.warenkorb.geschenkOption(warenkorbWert: gesamtpreis)
-                if let geschenk = auswahlGeschenk {
-                    print("\t🎁 Geschenk erhalten!")
-                    shopUser.warenkorb.geschenkHinzu(neuesGeschenk: geschenk)
-                    
-                }
-                beliebigetaste()
-                let rabattPreis = shopUser.warenkorb.berechneRabatt(rabatt: randDeal, preis: gesamtpreis)
-                let prozentFormatiert = randDeal.alsProzent
-                print("\t🔥 BlackWeek! Heute ist alles \(prozentFormatiert) reduziert!")
-                print("\t🔥 Heute zahlst du statt \(gesamtpreis.formatierterPreis) € nur \(rabattPreis.formatierterPreis) €\n")
-                
-                sleep(2)
-                
-                gesamtpreis = rabattPreis // neuer Preis mit Rabatt
-                let endpreis = gesamtpreis - bonuspunkteBetrag
-                
-                sleep(1)
-                
-                print("\tDeine Bonuspunkte werden jetzt auf den Warenkorbwert angerechnet! \n")
-                shopUser.bonuspunkteReduzieren(punkte: bonuspunkte)
-                print("\t🔥 Es wurden dir Bonuspunkte im Wert von: \(gesamtpreis - endpreis) € gutgeschrieben!\n")
-                print("\t🔥 Du zahlst von \(gesamtpreis.formatierterPreis) € nur noch \(endpreis.formatierterPreis) €\n")
-                
-                sleep(1)
-               
-                // ggf. Zahlungsmethode
-                
-                print()
-                shopUser.kontostandReduzieren(betrag: endpreis)
-                print("\t>>>>> Die Zahlung war erfolgreich! Vielen Dank für deinen Einkauf! <<<<<")
-                print("\t████████████████████████████████████████████████████████████████████████\n\n")
-                
-                aktiverKunde.warenkorb.warenkorbLeeren()
-                
-                beliebigetaste()
-                
-            } else {
-                print("\t🔴 Du hast keine Artikel im Warenkorb!\n")
-                beliebigetaste()
-                break
-                //startShopping(aktiverKunde: shopUser)
-            }
                 
             case 5: // Abmelden ----------------------------------------------------------------------------
                 
