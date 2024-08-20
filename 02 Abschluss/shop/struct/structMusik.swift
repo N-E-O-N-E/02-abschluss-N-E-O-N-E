@@ -1,8 +1,6 @@
 
 import Foundation
 import AVFoundation
-import CoreAudio // Damit die fehlermeldung verschwindet
-
 
 // Als Struct eingebettet damit die Musik konstant läuft
 struct Hintergrundmusik {
