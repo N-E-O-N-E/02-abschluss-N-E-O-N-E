@@ -10,28 +10,31 @@
 ###
 ---
 Der Apple Online Store ist ein Abschlussprojekt für die Prüfung des Modul2 zum 
-Thema "Grundlagen der Programmierung" mit Swift.
-
-Er dient als Nachweis das gelerntes Wissen verstanden und angewendet werden kann.
+Thema "Grundlagen der Programmierung" mit Swift. Er dient als Nachweis das gelerntes 
+Wissen verstanden und angewendet werden kann.
 
 ### Das Programm
-- Simulation eines Online-Shop Systems mit eingeschränktem Funktionsumfang
+- Simulation eines interaktives Online-Shop Systems mit eingeschränktem Funktionsumfang
 - Umsetzung unter Berücksichtigung der Prüfungsanforderungen (Mindest- und Weiterführende)
 
 ## Features
-- Login- und Registrierungsmöglichkeit 
-- Shop Übersichtsmenü
-  - Kundenkonto
-  - Produktauswahl
-  - Warenkorb
-  - Checkout
-  - Abmelden oder Beenden
+- Login mit zufälligem Captcha
+- Registrierungsmöglichkeit 
+- Shop mit durchgängiger Hintergrundmusik
+  - Einblick Kundenkonto
+  - Produktauswahl für Warenkorb
+  - Warenkorb Übersicht
+  - Checkout mit verrechnung von:
+    - Kontostand, Bonuspunkten, Aktionsrabatt
+  - Kaufen/Abmelden oder Beenden als Programmausstieg
 
 - Verwendung von Superklassen und Klassen (Vererbung)
 - Verwendung von Structs
 - Einsatz von Enums und Protokollen
 - Nutzung von Extensions
-
+  
+Alle verwendeten Bestandteile wie Sounds und ASCII Bilder
+standen OpenSource bzw. Lizenzfrei zur Verfügung.
 
 ---
 #### Grundlagen der Programmierung Abschluss - UML V 1.0
