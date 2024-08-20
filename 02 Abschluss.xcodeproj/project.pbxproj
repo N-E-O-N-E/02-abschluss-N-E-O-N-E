@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CE95A5922C69E7A200AF3E56 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE95A5912C69E7A200AF3E56 /* main.swift */; };
+		FA0973AC2C74849C001D25AF /* protocollKunde.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0973AB2C74849C001D25AF /* protocollKunde.swift */; };
+		FA0973AF2C748D38001D25AF /* structMusik.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0973AE2C748D38001D25AF /* structMusik.swift */; };
 		FA71C5B42C6B4A15002345DB /* instanzenKunde.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71C5B32C6B4A15002345DB /* instanzenKunde.swift */; };
 		FA71C5B62C6B4A21002345DB /* instanzenProdukte.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71C5B52C6B4A21002345DB /* instanzenProdukte.swift */; };
 		FA71C5B82C6B4F27002345DB /* instanzenShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71C5B72C6B4F27002345DB /* instanzenShop.swift */; };
@@ -42,6 +44,9 @@
 /* Begin PBXFileReference section */
 		CE95A58E2C69E7A200AF3E56 /* 02 Abschluss */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "02 Abschluss"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE95A5912C69E7A200AF3E56 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		FA0973AB2C74849C001D25AF /* protocollKunde.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = protocollKunde.swift; sourceTree = "<group>"; };
+		FA0973AD2C748B98001D25AF /* upbeat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = upbeat.mp3; path = "/Users/markuswirtz/Entwicklung/Projekte/02-abschluss-N-E-O-N-E/02 Abschluss/upbeat.mp3"; sourceTree = "<absolute>"; };
+		FA0973AE2C748D38001D25AF /* structMusik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = structMusik.swift; sourceTree = "<group>"; };
 		FA71C5B32C6B4A15002345DB /* instanzenKunde.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = instanzenKunde.swift; sourceTree = "<group>"; };
 		FA71C5B52C6B4A21002345DB /* instanzenProdukte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = instanzenProdukte.swift; sourceTree = "<group>"; };
 		FA71C5B72C6B4F27002345DB /* instanzenShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = instanzenShop.swift; sourceTree = "<group>"; };
@@ -91,11 +96,12 @@
 		CE95A5902C69E7A200AF3E56 /* 02 Abschluss */ = {
 			isa = PBXGroup;
 			children = (
+				FA0973AD2C748B98001D25AF /* upbeat.mp3 */,
+				FABE025A2C7329D800D55FAB /* allgemFunktionen.swift */,
 				FADFEA9F2C6A387D00C485A2 /* warenkorb */,
 				FADFEA9E2C6A386900C485A2 /* shop */,
 				FADFEA9D2C6A386400C485A2 /* produkte */,
 				FADFEA9C2C6A385D00C485A2 /* kunde */,
-				FABE025A2C7329D800D55FAB /* allgemFunktionen.swift */,
 				CE95A5912C69E7A200AF3E56 /* main.swift */,
 			);
 			path = "02 Abschluss";
@@ -104,6 +110,7 @@
 		FA77DD432C6E023000B48626 /* struct */ = {
 			isa = PBXGroup;
 			children = (
+				FA0973AE2C748D38001D25AF /* structMusik.swift */,
 				FADFEAA22C6A393000C485A2 /* structShop.swift */,
 			);
 			path = struct;
@@ -161,6 +168,7 @@
 				FADFEAB52C6A39CC00C485A2 /* protocollKaufbar.swift */,
 				FADFEAB72C6A39DB00C485A2 /* protocollGeschenkoptionen.swift */,
 				FABE025C2C737A0D00D55FAB /* protocollShop.swift */,
+				FA0973AB2C74849C001D25AF /* protocollKunde.swift */,
 			);
 			path = protocoll;
 			sourceTree = "<group>";
@@ -262,8 +270,10 @@
 				FADFEAA72C6A394E00C485A2 /* structWarenkorb.swift in Sources */,
 				FAAB9F372C6CCCAD00F03FF6 /* extensions.swift in Sources */,
 				FADFEAB12C6A399F00C485A2 /* structGeschenk.swift in Sources */,
+				FA0973AC2C74849C001D25AF /* protocollKunde.swift in Sources */,
 				FA71C5B82C6B4F27002345DB /* instanzenShop.swift in Sources */,
 				FABE025D2C737A0D00D55FAB /* protocollShop.swift in Sources */,
+				FA0973AF2C748D38001D25AF /* structMusik.swift in Sources */,
 				FADFEAA92C6A396B00C485A2 /* classProdukt.swift in Sources */,
 				FADFEAAB2C6A397700C485A2 /* classIMac.swift in Sources */,
 				FADFEAA32C6A393000C485A2 /* structShop.swift in Sources */,

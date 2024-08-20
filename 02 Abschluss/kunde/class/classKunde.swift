@@ -1,6 +1,6 @@
 import Foundation
 
-class Kunde {
+class Kunde: Kundendaten {
     
     var kundenNr: String 
     let name: String

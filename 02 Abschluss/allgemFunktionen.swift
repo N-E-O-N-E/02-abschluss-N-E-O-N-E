@@ -1,4 +1,5 @@
 import Foundation
+import AVFoundation
 
 // erzeugt leere Zeilen für einen quasi leeren Screen
 func newScreen() {
@@ -155,4 +156,33 @@ func captchaBilder() -> String {
         print(auswahl.1)
         
     return auswahl.0
+}
+
+func intro() {
+    
+    
+    let text = ("""
+
+
+
+
+
+
+                        "Wir haben immer davon geträumt... Jetzt können wir es bauen. Es ist ziemlich toll."
+
+
+""")
+                                                                     
+    for char in text {
+        print(char, terminator: "")
+       // fflush(stdout) // sofortige Ausgabe auf dem Screen
+        Thread.sleep(forTimeInterval: 0.1)
+    }
+    sleep(1)
+    print("""
+
+                                                                                        Steve Jobs
+""")
+    sleep(5)
+    newScreen()
 }

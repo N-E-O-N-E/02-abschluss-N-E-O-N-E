@@ -197,4 +197,6 @@ func start() {
                 
 } //endFuncStart
 
+musik.play()
+intro()
 start()
