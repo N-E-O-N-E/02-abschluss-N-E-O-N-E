@@ -6,7 +6,7 @@ func start() {
     
     repeat {
         
-        ladenAnzeigen()
+        
         
         print("""
         
@@ -17,7 +17,7 @@ func start() {
              ███ ███  ██ ███████ ███████ ██   ██  ██████  ██      ██ ██      ██ ███████ ██   ████
         
             ██████████████ Herzlich Willkommen in unserem neuen Apple OnlineStore. ██████████████
-        
+                                                                                   🔈 Musik (+/-)
                                                     .88
                                                   .888'
                                                   888'
@@ -36,7 +36,7 @@ func start() {
                                     `###########################'
                                       `#######################'
                                         `#########''########'
-                                
+
             █████████████████████  (L)ogin  (R)egistrieren  (B)eenden  ███████████████████████████
         """)
         
@@ -184,8 +184,15 @@ func start() {
         case "b":
             print("\n    >>> Vielen Dank für deinen Besuch. Bis Bald 🙋‍♂️")
             sleep(1)
+            musik.stopMusik()
             newScreen()
             programmLaeuft = false
+            
+        case "+":
+            musik.audioPlayer!.volume += 0.05
+            
+        case "-":
+            musik.audioPlayer!.volume -= 0.05
             
         default:
             print("\n    !!! Fehler bei Laden - einen Moment geduld... !!! ")
@@ -196,7 +203,6 @@ func start() {
     } while programmLaeuft
                 
 } //endFuncStart
-
 
 
 musik.play()
