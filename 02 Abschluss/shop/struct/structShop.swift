@@ -132,7 +132,7 @@ struct Shop: Shopsystem {
                     
                     print()
                     print("\t🔍 Wähle zwischen \(produkteListe.startIndex + 1) und \(produkteListe.endIndex) aus dem Sortiment.")
-                    print("\t❓ Triff eine Auswahl oder mit <ENTER> zum Menü: ", terminator: "")
+                    print("\t❓ Triff eine Auswahl oder mit <ENTER> zum Menü ▶︎ ", terminator: "")
                     
                     // stellt sicher das Kundeneingabe ein Int ist und ggf. ein leerer String
                     if let kundenauswahl = Int(readLine() ?? "") {
@@ -156,7 +156,7 @@ struct Shop: Shopsystem {
                                     
                                 case "j":
                                     
-                                    print("\t❓ Wieviele möchtest du kaufen: ", terminator: " ")
+                                    print("\t❓ Wieviele möchtest du kaufen ▶︎ ", terminator: " ")
                                     
                                     guard let mengeAuswahl = Int(readLine()!) else {
                                         keineGueltigeAuswahl()
@@ -302,9 +302,10 @@ struct Shop: Shopsystem {
                         
                     }
                     beliebigetaste()
+                    
                     let rabattPreis = shopUser.warenkorb.berechneRabatt(rabatt: randDeal, preis: gesamtpreis)
                     let prozentFormatiert = randDeal.alsProzent
-                    print("\t🔥 BlackWeek! Heute ist alles \(prozentFormatiert) reduziert!")
+                    print("\n\t🔥 BlackWeek! Heute ist alles \(prozentFormatiert) reduziert!")
                     print("\t🔥 Heute zahlst du statt \(gesamtpreis.formatierterPreis) € nur \(rabattPreis.formatierterPreis) €\n")
                     
                     sleep(2)

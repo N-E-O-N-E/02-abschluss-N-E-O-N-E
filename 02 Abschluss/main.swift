@@ -40,9 +40,10 @@ func start() {
             █████████████████████  (L)ogin  (R)egistrieren  (B)eenden  ███████████████████████████
         """)
         
+        print("\tWähle einen Menüpunkt ▶︎ ", terminator: "")
         guard let auswahl = readLine(), !auswahl.isEmpty else {
             print("\t❌ Du musst eine gültige Auswahl treffen!")
-            sleep(2)
+            newScreen()
             continue // bricht nicht ab
         }
         
@@ -96,7 +97,7 @@ func start() {
                     
                     let richtigesCaptcha = captchaBilder()
                     
-                    print("\tWas siehst du für ein Bild?")
+                    print("\tWas siehst du für ein Bild ▶︎ ", terminator: "")
                     
                     let eingabe = readLine()?.lowercased() ?? ""
                     
@@ -117,6 +118,7 @@ func start() {
                 
             } else {
                 print("\t❌ Anmeldung fehlgeschlagen!")
+                newScreen()
                 sleep(2)
             }
             
@@ -161,12 +163,14 @@ func start() {
                 print("\tGib deinen Vor- und Nachnamen für das neue Konto ein:", terminator: " ")
                 guard let name = readLine(), !name.isEmpty else {
                     print("\t❌ Du musst einen gültigen Namen eingeben!")
+                    newScreen()
                     sleep(1)
                     return nil
                 }
                 print("\tVergib ein Passwort:", terminator: " ")
                 guard let passwort = readLine(), !passwort.isEmpty else {
                     print("\t❌ Du musst ein gültiges Passwort eingeben!")
+                    newScreen()
                     sleep(1)
                     return nil
                 }

@@ -78,12 +78,12 @@ class Kunde: Kundendaten {
     func zahlungsmethodeAendern() {
         
         print("\t💶 Deine standardmäßige Zahlungsmethode ist \(zahlungsart).")
-        print("\t Möchtest du deine Zahlungsmethode ändern? (j/n)")
+        print("\t Möchtest du deine Zahlungsmethode ändern? (j/n) ▶︎ ", terminator: "")
         
         var auswahl = readLine()!.lowercased()
         
         if auswahl == "j" {
-            print("\tOk, wie möchtest du zahlen: ")
+            print("\tSuper, wie möchtest du zukünftig zahlen: ")
             
             print("""
 
@@ -92,6 +92,7 @@ class Kunde: Kundendaten {
             (P)ayPal
 
 """)
+            print("\tTriff eine Auswahl ▶︎ ", terminator: "")
             auswahl = readLine()!.lowercased()
             
             if auswahl == "r" {

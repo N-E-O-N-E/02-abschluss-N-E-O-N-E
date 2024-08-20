@@ -170,7 +170,7 @@ func intro() {
     print("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\"Zitat: Steve Jobs\"")
     sleep(1)
     
-    for _ in 1...10 {
+    for _ in 1...14 {
         Thread.sleep(forTimeInterval: 0.1)
         print()
     }
