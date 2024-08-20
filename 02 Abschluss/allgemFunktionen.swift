@@ -158,32 +158,29 @@ func captchaBilder() -> String {
 }
 
 func intro() {
-    
     newScreen()
+    let text = ("\t\t\t\t\"Wir haben immer davon geträumt... Jetzt können wir es bauen. Es ist ziemlich toll.\"\n\n")
     
-    let text = ("""
-
-
-
-
-
-
-
-                "Wir haben immer davon geträumt... Jetzt können wir es bauen. Es ist ziemlich toll."
-
-""")
-    
-    for char in text {
-        print(char, terminator: "")
+    for inhalt in text {
+        print(inhalt, terminator: "")
         Thread.sleep(forTimeInterval: 0.1)
     }
     
     sleep(1)
-    print("""
-
-                                                                                Zitat: Steve Jobs
-""")
-    print("\n\n\n\n\n\n\n\n\n")
-    sleep(5)
+    print("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\"Zitat: Steve Jobs\"")
+    sleep(1)
+    
+    for _ in 1...10 {
+        Thread.sleep(forTimeInterval: 0.1)
+        print()
+    }
+    
+    sleep(4)
+    
+    for _ in 1...20 {
+        Thread.sleep(forTimeInterval: 0.1)
+        print()
+    }
+    
     newScreen()
 }
