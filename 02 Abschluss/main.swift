@@ -36,7 +36,7 @@ func start() {
                                     `###########################'
                                       `#######################'
                                         `#########''########'
-
+        
             █████████████████████  (L)ogin  (R)egistrieren  (B)eenden  ███████████████████████████
         """)
         
@@ -72,7 +72,7 @@ func start() {
                                             `###########################'
                                               `#######################'
                                                 `#########''########'
-
+            
               
                                        ██       ██████   ██████  ██ ███    ██
                                        ██      ██    ██ ██       ██ ████   ██
@@ -102,10 +102,10 @@ func start() {
                     
                     if eingabe == richtigesCaptcha.lowercased() {
                         print("\tSuper, CAPTCHA gelöst!")
-                       
+                        
                         captchaPruefung = true
                         shop_1.startShopping(aktiverKunde: gefundenerKunde)
-                       
+                        
                     } else {
                         print("\tCAPTCHA fehlgeschlagen. Bitte versuche es nochmal.")
                         
@@ -124,7 +124,7 @@ func start() {
             
             ladenAnzeigen()
             
-                print("""
+            print("""
             
                                                             .88
                                                           .888'
@@ -144,7 +144,7 @@ func start() {
                                             `###########################'
                                               `#######################'
                                                 `#########''########'
-
+            
             
                                ██████  ███████  ██████  ██ ███████ ████████ ██████
                                ██   ██ ██      ██       ██ ██         ██    ██   ██
@@ -155,31 +155,31 @@ func start() {
                 ██████████████ Herzlich Willkommen in unserem neuen Apple OnlineStore. ██████████████
                                                                                                   
             """)
+            
+            func aktivenKundenAnlegen() -> Kunde? {
                 
-                func aktivenKundenAnlegen() -> Kunde? {
-
-                    print("\tGib deinen Vor- und Nachnamen für das neue Konto ein:", terminator: " ")
-                    guard let name = readLine(), !name.isEmpty else {
-                        print("\t❌ Du musst einen gültigen Namen eingeben!")
-                        sleep(1)
-                        return nil
-                    }
-                    print("\tVergib ein Passwort:", terminator: " ")
-                    guard let passwort = readLine(), !passwort.isEmpty else {
-                        print("\t❌ Du musst ein gültiges Passwort eingeben!")
-                        sleep(1)
-                        return nil
-                    }
-                    
-                    let neuerKunde = Kunde(kundenNr: "K" + "\(Int.random(in: 100...999))", name: name, passwort: passwort)
-                    
-                    return neuerKunde
+                print("\tGib deinen Vor- und Nachnamen für das neue Konto ein:", terminator: " ")
+                guard let name = readLine(), !name.isEmpty else {
+                    print("\t❌ Du musst einen gültigen Namen eingeben!")
+                    sleep(1)
+                    return nil
+                }
+                print("\tVergib ein Passwort:", terminator: " ")
+                guard let passwort = readLine(), !passwort.isEmpty else {
+                    print("\t❌ Du musst ein gültiges Passwort eingeben!")
+                    sleep(1)
+                    return nil
                 }
                 
-                if let gueltigerKunde = aktivenKundenAnlegen() {
-                    gueltigerKunde.kundeHinzufuegen(neuerKunde: gueltigerKunde)
-                    shop_1.startShopping(aktiverKunde: gueltigerKunde)
-                }
+                let neuerKunde = Kunde(kundenNr: "K" + "\(Int.random(in: 100...999))", name: name, passwort: passwort)
+                
+                return neuerKunde
+            }
+            
+            if let gueltigerKunde = aktivenKundenAnlegen() {
+                gueltigerKunde.kundeHinzufuegen(neuerKunde: gueltigerKunde)
+                shop_1.startShopping(aktiverKunde: gueltigerKunde)
+            }
             
         case "b":
             print("\n    >>> Vielen Dank für deinen Besuch. Bis Bald 🙋‍♂️")
@@ -196,7 +196,7 @@ func start() {
             
         case "p":
             musik.audioPlayer?.play()
-        
+            
         case "s":
             musik.audioPlayer?.stop()
             
@@ -207,7 +207,7 @@ func start() {
         } // endSwitch
         
     } while programmLaeuft
-                
+    
 } //endFuncStart
 
 
