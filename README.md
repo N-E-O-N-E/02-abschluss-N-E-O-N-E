@@ -42,6 +42,7 @@ standen OpenSource bzw. Lizenzfrei zur Verfügung.
   
 #### Grundlagen der Programmierung Abschluss - UserFlow V 1.1
 [NEONE_Grundlagen_Abschluss_UserFlow](https://github.com/user-attachments/files/16664716/NEONE_Grundlagen_Abschluss_UserFlow.drawio.pdf)
-[Bild: UserFlow](//ReadmeData/UserFlow.png)
+
+![Bild UserFlow](https://github.com/SI-Classroom-Batch-020/02-abschluss-N-E-O-N-E/blob/master/02%20ReadmeData/UserFlow.png)
 ---
 Markus Wirtz
