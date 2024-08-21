@@ -38,12 +38,10 @@ standen OpenSource bzw. Lizenzfrei zur Verfügung.
 
 ---
 #### Grundlagen der Programmierung Abschluss - UML V 1.0
-[NEONE_Grundlagen_Abschluss_SyntaxUML.pdf](https://github.com/user-attachments/files/16581531/NEONE_Grundlagen_Abschluss_SyntaxUML.pdf)
+[NEONE_Grundlagen_Abschluss_SyntaxUML](https://github.com/user-attachments/files/16581531/NEONE_Grundlagen_Abschluss_SyntaxUML.pdf)
   
 #### Grundlagen der Programmierung Abschluss - UserFlow V 1.1
-[NEONE_Grundlagen_Abschluss_UserFlow.drawio.pdf](https://github.com/user-attachments/files/16664716/NEONE_Grundlagen_Abschluss_UserFlow.drawio.pdf)
-
-
-### PDFs teils veraltet! _Überarbeitete sind Version 1.1_
+[NEONE_Grundlagen_Abschluss_UserFlow](https://github.com/user-attachments/files/16664716/NEONE_Grundlagen_Abschluss_UserFlow.drawio.pdf)
+[Bild: UserFlow](//ReadmeData/UserFlow.png)
 ---
 Markus Wirtz
