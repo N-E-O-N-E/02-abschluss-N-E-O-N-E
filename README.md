@@ -60,9 +60,9 @@ Alle verwendeten Bestandteile wie Sounds und ASCII Bilder standen OpenSource bzw
 
 ---
 #### Grundlagen der Programmierung Abschluss - UML V 1.1
-[NEONE_Grundlagen_Abschluss_SyntaxUML.pdf](https://github.com/user-attachments/files/16689130/NEONE_Grundlagen_Abschluss_SyntaxUML.pdf)
+[NEONE_Grundlagen_Abschluss_SyntaxUML.pdf](https://github.com/user-attachments/files/16689986/NEONE_Grundlagen_Abschluss_SyntaxUML.pdf)
 
-![NEONE_Grundlagen_Abschluss_SyntaxUML](https://github.com/user-attachments/assets/72943a86-aaf1-48d3-abfa-b40794240796)
+![NEONE_Grundlagen_Abschluss_SyntaxUML](https://github.com/user-attachments/assets/17d20f36-e050-48c4-98d0-8cf625dba27c)
 
 
 #### Grundlagen der Programmierung Abschluss - UserFlow V 1.1
