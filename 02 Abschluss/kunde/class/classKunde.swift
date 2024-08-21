@@ -85,7 +85,7 @@ class Kunde: Kundendaten {
             
             print("""
 
-            (pR)echnung
+            (R)echnung
             (K)reditkarte
             (P)ayPal
 
