@@ -119,7 +119,7 @@ func start() {
             } else {
                 print("\t❌ Anmeldung fehlgeschlagen!")
                 newScreen()
-                sleep(2)
+                sleep(1)
             }
             
         case "r":
@@ -211,7 +211,7 @@ func start() {
     
 } //endFuncStart
 
-
+beliebigetaste()
 musik.play()
 intro()
 ladenAnzeigen()

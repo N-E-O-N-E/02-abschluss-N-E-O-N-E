@@ -7,24 +7,24 @@ class Kunde: Kundendaten {
     var passwort: String
     var kontostand: Double {
         didSet {
-            for _ in 1...4 {
+            for _ in 1...5 {
                 print("\t💰", terminator: " ")
-                Thread.sleep(forTimeInterval: 0.4)
+                Thread.sleep(forTimeInterval: 0.2)
             }
             print()
-            print("\t💰 Via \(zahlungsart) wurden dir \(oldValue - kontostand) € berechnet! <<<\n")
+            print("\tPer \(zahlungsart) wurden dir \(oldValue - kontostand) € berechnet! <<<\n")
             sleep(1)
         }
     }
     var bonuspunkte: Int {
         didSet {
-            for _ in 1...4 {
+            for _ in 1...5 {
                 print("\t🔸", terminator: " ")
-                Thread.sleep(forTimeInterval: 0.4)
+                Thread.sleep(forTimeInterval: 0.2)
             }
             print()
-            print("\t🔸 Deine Bonuspounkte wurden aktualisiert! <<<")
-            print("\t   Bonuspunkte: \(bonuspunkte - oldValue)\n")
+            print("\tDeine Bonuspounkte wurden aktualisiert! <<<")
+            print("\tBonuspunkte: \(bonuspunkte - oldValue)\n")
             sleep(1)
         }
     }
@@ -33,12 +33,12 @@ class Kunde: Kundendaten {
             if warenkorb.produkte.isEmpty {
                 print("\t🛍️ Warenkorb enthält keine Artikel mehr!\n")
             } else {
-                for _ in 1...4 {
+                for _ in 1...5 {
                     print("\t🛍️", terminator: " ")
-                    Thread.sleep(forTimeInterval: 0.4)
+                    Thread.sleep(forTimeInterval: 0.2)
                 }
                 print()
-                print("\t🛍️ Warenkorb wurde aktualisiert!\n")
+                print("\tWarenkorb wurde aktualisiert!\n")
                 sleep(1)
             }
         }
@@ -49,8 +49,8 @@ class Kunde: Kundendaten {
         self.kundenNr = kundenNr
         self.name = name
         self.passwort = passwort
-        self.kontostand = Double.random(in: 1800...3600)
-        self.bonuspunkte = Int.random(in: 95000...210000)
+        self.kontostand = Double.random(in: 3800...5600)
+        self.bonuspunkte = Int.random(in: 125000...260000)
         self.warenkorb = Warenkorb()
         self.zahlungsart = .Rechnung
         
@@ -59,7 +59,7 @@ class Kunde: Kundendaten {
     func kundeHinzufuegen(neuerKunde: Kunde) {
         kundenListe.append(neuerKunde)
         print("\n\t👍 Super, deine KundenNr. ist: \(neuerKunde.kundenNr). Viel Spaß!")
-        sleep(2)
+        beliebigetaste()
     }
     
     func kontostandReduzieren(betrag: Double) {
@@ -76,7 +76,7 @@ class Kunde: Kundendaten {
     
     func zahlungsmethodeAendern() {
         print("\t💶 Deine standardmäßige Zahlungsmethode ist \(zahlungsart).")
-        print("\t Möchtest du deine Zahlungsmethode ändern? (j/n) ▶︎ ", terminator: "")
+        print("\tMöchtest du deine Zahlungsmethode ändern? (j/n) ▶︎ ", terminator: "")
         
         var auswahl = readLine()!.lowercased()
         

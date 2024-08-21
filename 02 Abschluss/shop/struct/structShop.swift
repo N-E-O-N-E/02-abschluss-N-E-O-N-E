@@ -10,25 +10,25 @@ struct Shop: Shopsystem {
             if status == .bestellbestaetigung  {
                 print()
                 print("\tDein Warenkorb wird geladen!\n")
-                for _ in 1...4 {
+                for _ in 1...5 {
                     print("\t🛍️", terminator: " ")
-                    Thread.sleep(forTimeInterval: 0.4)
+                    Thread.sleep(forTimeInterval: 0.2)
                 }
                 newScreen()
             } else if status == .bestellabschluss{
                 print()
                 print("\tDer Zahlungsprozess wird geladen!\n")
-                for _ in 1...4 {
+                for _ in 1...5 {
                     print("\t💰", terminator: " ")
-                    Thread.sleep(forTimeInterval: 0.4)
+                    Thread.sleep(forTimeInterval: 0.2)
                 }
                 newScreen()
             } else if status == .shopping{
                 print()
                 print("\tDaten werden geladen...\n")
-                for _ in 1...4 {
+                for _ in 1...5 {
                     print("\t⌛️", terminator: " ")
-                    Thread.sleep(forTimeInterval: 0.4)
+                    Thread.sleep(forTimeInterval: 0.2)
                 }
                 newScreen()
             }
@@ -148,7 +148,7 @@ struct Shop: Shopsystem {
                                 kundenauswahlProdukt.anzeigen()
                                 // Zeigt den zweiten Teil [1] des Poduktnamen an da er danach beim Leerzeichen abschneiden " "
                                 
-                                sleep(2)
+                                sleep(1)
                                 
                                 print("\t🤷‍♂️ Möchtest du mehr als ein Gerät kaufen? (j/n): ", terminator: " ")
                                 let auswahl = readLine()!
@@ -169,7 +169,7 @@ struct Shop: Shopsystem {
                                         
                                         if mengeAuswahl < kundenauswahlProdukt.lagerbestand { // menge kleiner als aktueller Lagerbestand
                                             
-                                            print("\t🛍️ \(mengeAuswahl) Stk. wurden dem Warenkorb hinzugefügt!")
+                                            print("\t🛍️ \(mengeAuswahl) Stk. wurden dem Warenkorb hinzugefügt!\n")
                                             
                                             kundenauswahlProdukt.reduziereLagerbestand(bestand: mengeAuswahl)
                                             
@@ -309,7 +309,7 @@ struct Shop: Shopsystem {
                     print("\n\t🔥 BlackWeek! Heute ist alles \(prozentFormatiert) reduziert!")
                     print("\t🔥 Heute zahlst du statt \(gesamtpreis.formatierterPreis) € nur \(rabattPreis.formatierterPreis) €\n")
                     
-                    sleep(2)
+                    sleep(1)
                     
                     gesamtpreis = rabattPreis // neuer Preis mit Rabatt
                     let endpreis = gesamtpreis - bonuspunkteBetrag

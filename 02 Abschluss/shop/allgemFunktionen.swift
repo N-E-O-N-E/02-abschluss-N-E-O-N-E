@@ -18,7 +18,7 @@ func ladenAnzeigen() {
     print("\n")
     print("\tLOADING...", terminator: " ")
     
-    for _ in 1...9 {
+    for _ in 1...5 {
         print("  🍏", terminator: "")
         Thread.sleep(forTimeInterval: 0.11)
         print("  🍎", terminator: "")
@@ -39,7 +39,7 @@ func findeKundeLogin(kundeListe: [Kunde], kundenNr: String, passwort: String) ->
     if let kunde = kundeListe.first(where: { $0.kundenNr == kundenNr }) {
         if kunde.passwort == passwort {
             print("\n\t✅ Hallo \(kunde.name), du wurdest erfolgreich angemeldet.")
-            sleep(2)
+            sleep(1)
             return kunde
         } else {
             print("\t❌ Falsches Passwort!")
@@ -47,7 +47,7 @@ func findeKundeLogin(kundeListe: [Kunde], kundenNr: String, passwort: String) ->
         }
     } else {
         print("\t❌ Kundennummer nicht in der Datenbank gefunden!")
-        sleep(2)
+        sleep(1)
         return nil
     }
 }
@@ -124,6 +124,7 @@ func captchaBilder() -> String {
              /\\_/\\
              ( o.o )
               > ^ <
+        
         """),
                 
         ("Hund", """
@@ -133,6 +134,7 @@ func captchaBilder() -> String {
               /         O
              /   (_____/
             /_____/
+        
         """),
         
         ("Haus", """
@@ -144,7 +146,24 @@ func captchaBilder() -> String {
         |    | |_| |   |
         |    | |_| |   |
         |______________|
-    """)
+    
+    """),
+        
+        ("Eule", """
+          __,_
+         (o,o)
+        /)  )
+        "  "
+        
+        """),
+        
+        ("Fisch", """
+        
+           ><(((º>
+        
+        """),
+        
+        
     ]
     
     let auswahl = bilder.randomElement()!
@@ -155,23 +174,23 @@ func captchaBilder() -> String {
 
 func intro() {
     newScreen()
-    let text = ("\t\t\t\t\"Wir haben immer davon geträumt... Jetzt können wir es bauen. Es ist ziemlich toll.\"\n\n")
+    let text = ("\t\t\t\tWir haben immer davon geträumt... Jetzt können wir es bauen. Es ist ziemlich toll.\n\n")
     
     for inhalt in text {
         print(inhalt, terminator: "")
         Thread.sleep(forTimeInterval: 0.11)
     }
     
+    
+    print("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\"Steve Jobs\"", terminator: "")
     sleep(1)
-    print("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\"Zitat: Steve Jobs\"", terminator: "")
-    sleep(2)
     
     for _ in 1...14 {
         Thread.sleep(forTimeInterval: 0.11)
         print()
     }
     
-    sleep(4)
+    sleep(3)
     
     for _ in 1...20 {
         Thread.sleep(forTimeInterval: 0.11)

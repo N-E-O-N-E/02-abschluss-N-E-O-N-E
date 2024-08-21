@@ -13,6 +13,6 @@ struct Geschenk {
         Beschreibung:   \(beschreibung)
 
     """)
-        sleep(2)
+        sleep(1)
     }
 }
