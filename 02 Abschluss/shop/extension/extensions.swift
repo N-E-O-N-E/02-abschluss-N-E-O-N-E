@@ -5,7 +5,8 @@ extension String {
     
     func spaltenbreite(laenge: Int) -> String {
         if self.count < laenge {
-            return self + String(repeating: " ", count: laenge - self.count) // erweitert die geforderte länge durch leerzeichen
+            return self + String(repeating: " ", count: laenge - self.count) 
+            // erweitert die geforderte länge durch leerzeichen
         } else {
             return String(self.prefix(laenge)) // kürzt die länge fals der String schon zu lange ist
         }

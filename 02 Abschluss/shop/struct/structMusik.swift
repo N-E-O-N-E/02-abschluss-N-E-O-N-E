@@ -27,21 +27,26 @@ struct Hintergrundmusik {
     
     mutating func stop() {
         audioPlayer?.stop()
+        newScreen()
     }
     
     mutating func maxMusik() {
         if audioPlayer!.volume < 1.0 {
             audioPlayer!.volume += 0.04
+            newScreen()
         } else {
             audioPlayer!.volume = 1.0
+            newScreen()
         }
     }
     
     mutating func minMusik() {
         if audioPlayer!.volume >= 0.04 {
             audioPlayer!.volume -= 0.04
+            newScreen()
         } else {
             audioPlayer!.volume = 0.0
+            newScreen()
         }
     }
     

@@ -12,7 +12,7 @@ class Kunde: Kundendaten {
                 Thread.sleep(forTimeInterval: 0.2)
             }
             print()
-            print("\tPer \(zahlungsart) wurden dir \(oldValue - kontostand) € berechnet! <<<\n")
+            print("\tPer \(zahlungsart) wurden dir \(String((oldValue - kontostand).formatierterPreis)) € berechnet! <<<\n")
             sleep(1)
         }
     }

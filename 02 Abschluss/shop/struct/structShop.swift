@@ -301,6 +301,7 @@ struct Shop: Shopsystem {
                         shopUser.warenkorb.geschenkHinzu(neuesGeschenk: geschenk)
                         
                     }
+                    
                     beliebigetaste()
                     
                     let rabattPreis = shopUser.warenkorb.berechneRabatt(rabatt: randDeal, preis: gesamtpreis)
